@@ -1,0 +1,57 @@
+{
+    "permissions": [
+
+        "index-academic-year", "create-academic-year", "update-academic-year", "show-academic-year",
+        "delete-academic-year", "index-year-semester", "create-year-semester", "get-year-class-classrooms", "create-classroom",
+
+        "update-semester", "delete-semester", "show-semester",
+
+        "index-user", "create-user", "update-user", "update-profile", "show-user",
+        "delete-user", "change-password", "add-role-user", "remove-role-user",
+
+        "index-class", "create-class", "delete-class", "update-class",
+        "add-class-subject", "delete-class-subject", "get-class-subjects",
+
+        "update-classroom", "delete-classroom",
+
+        "index-subject", "create-subject", "delete-subject",
+        "assign-teacher-subjects", "get-teacher-subjects", "assign-semester-teacher"
+    ],
+
+    "roles": [{
+            "name": "teacher",
+            "permissions": ["show-user", "change-password", "update-user", "update-profile", "get-teacher-subjects",
+                "index-academic-year", "show-academic-year", "index-year-semester", "get-year-class-classrooms", "show-semester"
+            ]
+        },
+        {
+            "name": "manager",
+            "permissions": ["index-academic-year", "create-academic-year", "update-academic-year", "show-academic-year", "show-semester",
+                "delete-academic-year", "index-year-semester", "create-year-semester", "get-year-class-classrooms", "create-classroom",
+
+                "index-user", "create-user", "show-user", "update-user",
+                "update-profile", "delete-user", "change-password", "add-role-user", "remove-role-user",
+                "index-subject ", "create-subject", "delete-subject",
+                "assign-teacher-subjects", "get-teacher-subjects",
+                "index-class", "create-class", "delete-class", "update-class",
+                "add-class-subject", "delete-class-subject", "get-class-subjects",
+                "update-classroom", "delete-classroom",
+                "index-subject", "create-subject", "delete-subject",
+                "assign-teacher-subjects", "get-teacher-subjects", "assign-semester-teacher"
+            ]
+        },
+        {
+            "name": "supervisor",
+            "permissions": ["show-user", "change-password", "update-user", "update-profile",
+                "index-academic-year", "show-academic-year", "index-year-semester", "get-year-class-classrooms", "show-semester"
+            ]
+        },
+        {
+            "name": "secretary",
+            "permissions": ["show-user", "change-password", "update-user", "update-profile",
+                "index-academic-year", "show-academic-year", "index-year-semester", "get-year-class-classrooms", "show-semester"
+            ]
+        }
+    ]
+
+}

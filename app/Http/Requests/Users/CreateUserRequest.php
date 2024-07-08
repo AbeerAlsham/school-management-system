@@ -1,0 +1,50 @@
+<?php
+
+namespace App\Http\Requests\Users;
+
+use Illuminate\Foundation\Http\FormRequest;
+use App\Enums\StudyLevel;
+use App\Enums\University;
+use Illuminate\Validation\Rule;
+use Illuminate\Validation\Rules\Password;
+
+class CreateUserRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     */
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
+     */
+    public function rules(): array
+    {
+        return [
+            'username' => 'required|unique:users,username|min:4|max:255',
+            'password' => [
+                'required',
+                Password::min(8)
+                    ->letters()
+                    ->mixedCase()
+                    ->numbers()
+                    ->symbols()
+            ],
+            'profile.first_name' => 'required|min:4|max:255',
+            'profile.father_name' => 'required|min:4|max:255',
+            'profile.mother_name' => 'required|min:4|max:255',
+            'profile.last_name' => 'required|min:4|max:255',
+            'profile.study_level' => ['required', Rule::enum(StudyLevel::class)],
+            'profile.university' => ['required', Rule::enum(University::class)],
+            'profile.national_number' => 'unique:profiles,national_number|required|digits:11',
+            'profile.family_book_number'=>'required|integer',
+            'roleIds.*' => 'integer|exists:roles,id',
+
+        ];
+    }
+}

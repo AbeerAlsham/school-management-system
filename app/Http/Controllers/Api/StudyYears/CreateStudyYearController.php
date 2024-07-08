@@ -1,0 +1,27 @@
+<?php
+
+namespace App\Http\Controllers\Api\StudyYears;
+
+use App\Http\Controllers\Controller;
+use App\Models\AcademicYear\Semester;
+use App\Models\AcademicYear\StudyYear;
+use App\Http\Requests\StudyYears\CreateYearRequest;
+
+use function PHPUnit\Framework\containsOnly;
+
+class CreateStudyYearController extends Controller
+{
+    /**
+     * Handle the incoming request.
+     */
+    public function __invoke(CreateYearRequest $request)
+    {
+        $academicYear = StudyYear::create($request->only(['name', 'startDate', 'endDate']));
+
+        $semesters = array_map(function ($semester) {
+            return new Semester($semester);
+        }, $request->semesters);
+        $academicYear->semesters()->saveMany($semesters);
+        return $this->createdResponse(['StudyYear' => $academicYear->load('semesters')], 'StudyYear added successfully');
+    }
+}

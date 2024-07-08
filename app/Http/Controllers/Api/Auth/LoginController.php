@@ -1,0 +1,25 @@
+<?php
+
+namespace App\Http\Controllers\Api\Auth;
+
+use App\Http\Controllers\Controller;
+use App\Models\Accounts\User;
+use App\Http\Requests\Auth\LoginRequest;
+use Illuminate\Support\Facades\Hash;
+
+class LoginController extends Controller
+{
+    /**
+     * Handle the incoming request.
+     */
+    public function __invoke(LoginRequest $request)
+    {
+        $user = User::where('username', $request->username)->first();
+        if (!$user || !Hash::check($request->password, $user->password)) {
+            return $this->unprocessableResponse('password or username not correct');
+        }
+        $token = $user->createToken('schoolSixth')->plainTextToken;
+        return $this->okResponse(['user' => $user, 'roles' => $user->roles,'token'=>$token], " user login successfully");
+    }
+
+}
