@@ -6,11 +6,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\AcademicYear\Semester;
 use App\Models\Accounts\{Role, User};
-use App\Models\SemesterUser;
 
 class UserRole extends Model
 {
     use HasFactory;
+    protected $table="users_roles";
 
     protected $fillable = ['user_id', 'role_id'];
 

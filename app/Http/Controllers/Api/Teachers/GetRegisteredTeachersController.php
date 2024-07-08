@@ -9,7 +9,7 @@ use App\Models\Accounts\Role;
 use App\Models\SemesterUser;
 use Illuminate\Http\Request;
 
-class GetUnregisteredTeachersController extends Controller
+class GetRegisteredTeachersController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -22,10 +22,10 @@ class GetUnregisteredTeachersController extends Controller
             ->pluck('user_role_id');
 
         $unassignedTeachers = UserRole::where('role_id', $teacher->id)
-            ->whereNotIn('id', $assignedTeacherIds)
-            ->with('user.profile:first_name,father_name,last_name,user_id')  // تحميل العلاقة 'user'
+            ->whereIn('id', $assignedTeacherIds)
+            ->with('user.profile:first_name,father_name,last_name,user_id')
             ->get();
 
-        return $this->okResponse( $unassignedTeachers,'teacher not registered in semester retrived successfully');
+        return $this->okResponse( $unassignedTeachers,'teacher  registered in semester retrived successfully');
     }
 }

@@ -2,14 +2,13 @@
 
 namespace App\Models\Accounts;
 
-use App\Enums\StudyLevel;
-use App\Enums\University;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Profile extends Model
 {
     use HasFactory;
+
 
     protected $fillable = [
         'first_name',
@@ -36,15 +35,5 @@ class Profile extends Model
         return $this->belongsToMany(Role::class, 'users');
     }
 
-    public function getFullNameAttribute()
-    {
-        return "{$this->first_name} {$this->father_name} {$this->last_name}";
-    }
-    protected function casts(): array
-    {
-        return [
-            'university' => University::class,
-            'study_level' => StudyLevel::class
-        ];
-    }
+
 }

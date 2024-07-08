@@ -5,7 +5,8 @@ use App\Http\Controllers\Api\Auth\LoginController;
 use App\Http\Controllers\Api\Auth\LogoutController;
 use App\Http\Controllers\Api\StudyYears\CreateSemesterController;
 use App\Http\Controllers\Api\StudyYears\CreateStudyYearController;
-use App\Http\Controllers\Api\StudyYears\DeleteSemesterController, App\Http\Controllers\Api\Classes\DeleteClassController;
+use App\Http\Controllers\Api\StudyYears\DeleteSemesterController;
+ use App\Http\Controllers\Api\Classes\DeleteClassController;
 use App\Http\Controllers\Api\StudyYears\DeleteStudyYearController;
 use App\Http\Controllers\Api\StudyYears\{ShowStudyYearController, ShowSemesterController, GetSemesterController};
 use App\Http\Controllers\Api\StudyYears\{UpdateSemesterController, UpdateStudyYearController};
@@ -33,6 +34,8 @@ use App\Http\Controllers\Api\classrooms\createClassroomController;
 use App\Http\Controllers\Api\classrooms\updateclassroomcontroller;
 use App\Http\Controllers\APi\Subjects\AssignmentTeacherSubjectsController;
 use App\Http\Controllers\APi\subjects\GetTeacherSubjectsController;
+use App\Http\Controllers\Api\Teachers\GetRegisteredTeachersController;
+use App\Http\Controllers\Api\Teachers\GetUnregisteredTeachersController;
 use App\Http\Controllers\Api\Users\AssignSemesterUsersController;
 
 Route::post('login', LoginController::class);
@@ -57,7 +60,9 @@ Route::middleware(['auth:sanctum', 'checkPermession'])->group(function () {
         Route::post('/{semester}', UpdateSemesterController::class)->name('update-semester');
         Route::delete('/{semester}', DeleteSemesterController::class)->name('delete-semester');
         Route::get('/{semester}', ShowSemesterController::class)->name('show-semester');
-        Route::post('/{semester}/assign-semester-teacher',AssignSemesterUsersController::class)->name('assign-semester-teacher');
+        Route::post('/{semester}/assign-semester-teacher', AssignSemesterUsersController::class)->name('assign-semester-teacher');
+        Route::get('/{semester}/unregister-semester-teacher', GetUnregisteredTeachersController::class)->name('unregister-semester-teacher');
+        Route::get('/{semester}/register-semester-teacher', GetRegisteredTeachersController::class)->name('register-semester-teacher');
     });
 
     Route::prefix('/users')->group(function () {
