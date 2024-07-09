@@ -3,9 +3,6 @@
 namespace App\Http\Requests\Users;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Enums\StudyLevel;
-use App\Enums\University;
-use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 
 class CreateUserRequest extends FormRequest
@@ -39,8 +36,8 @@ class CreateUserRequest extends FormRequest
             'profile.father_name' => 'required|min:4|max:255',
             'profile.mother_name' => 'required|min:4|max:255',
             'profile.last_name' => 'required|min:4|max:255',
-            'profile.study_level' => ['required', Rule::enum(StudyLevel::class)],
-            'profile.university' => ['required', Rule::enum(University::class)],
+            'profile.study_level' => 'required',
+            'profile.university' => 'required',
             'profile.national_number' => 'unique:profiles,national_number|required|digits:11',
             'profile.family_book_number'=>'required|integer',
             'roleIds.*' => 'integer|exists:roles,id',

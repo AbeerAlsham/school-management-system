@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\Subjects;
 
 use App\Http\Controllers\Controller;
 use App\Models\AcademicYear\Semester;
-use App\Models\Classes\StudyClass;
+use App\Models\Classes\{StudyClass,Classroom};
 use Illuminate\Http\Request;
 use App\Models\ClassSubject;
 
@@ -14,21 +14,18 @@ class GetUnAssignmentSubjectController extends Controller
      * Handle the incoming request.
      */
     //الحصول على المواد التي لم يتعين عليها اساتذة ضمن شعبة معينة
-    public function __invoke(Request $request, StudyClass $studyClass, Semester $semester)
+    public function __invoke(Request $request, Semester $semester,StudyClass $Class,Classroom $classroom)
     {
-        $classSubjects = ClassSubject::where('class_id', $studyClass->id)
-            ->whereDoesntHave('assignments', function ($query) use ($semester) {
-                $query->where('semester_id', $semester->id)
-                    ->whereNotNull('classroom_id');
+        $classSubjects = ClassSubject::where('class_id', $Class->id)
+        ->whereDoesntHave('assignmentTeachers', function ($query) use ($semester, $classroom) {
+            $query->whereHas('semesterUser', function ($query) use ($semester) {
+                $query->where('semester_id', $semester->id);
             })
-            ->with('sections', function ($query) use ($semester) {
-                $query->whereDoesntHave('assignments', function ($query) use ($semester) {
-                    $query->where('semester_id', $semester->id)
-                        ->whereNotNull('classroom_id');
-                });
-            })
-            ->get();
+            ->where('classroom_id', $classroom->id);
+        })
+        ->get();
+        return $this->okResponse($classSubjects,'the subject retrived successfully');
 
-        return response()->json($classSubjects);
+
     }
 }

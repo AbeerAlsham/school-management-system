@@ -34,6 +34,7 @@ use App\Http\Controllers\Api\classrooms\createClassroomController;
 use App\Http\Controllers\Api\classrooms\updateclassroomcontroller;
 use App\Http\Controllers\APi\Subjects\AssignmentTeacherSubjectsController;
 use App\Http\Controllers\APi\subjects\GetTeacherSubjectsController;
+use App\Http\Controllers\Api\Subjects\GetUnAssignmentSubjectController;
 use App\Http\Controllers\Api\Teachers\GetRegisteredTeachersController;
 use App\Http\Controllers\Api\Teachers\GetUnregisteredTeachersController;
 use App\Http\Controllers\Api\Users\AssignSemesterUsersController;
@@ -63,6 +64,7 @@ Route::middleware(['auth:sanctum', 'checkPermession'])->group(function () {
         Route::post('/{semester}/assign-semester-teacher', AssignSemesterUsersController::class)->name('assign-semester-teacher');
         Route::get('/{semester}/unregister-semester-teacher', GetUnregisteredTeachersController::class)->name('unregister-semester-teacher');
         Route::get('/{semester}/register-semester-teacher', GetRegisteredTeachersController::class)->name('register-semester-teacher');
+        Route::get('/{semester}/study-class/{class}/classrooms/{classroom}/subject-not-assign-classroom',GetUnAssignmentSubjectController::class)->name('get-subject-not-assign-classroom');
     });
 
     Route::prefix('/users')->group(function () {

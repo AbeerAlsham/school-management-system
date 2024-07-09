@@ -16,7 +16,7 @@
 
         "index-subject", "create-subject", "delete-subject",
         "assign-teacher-subjects", "get-teacher-subjects", "assign-semester-teacher",
-        "unregister-semester-teacher", "register-semester-teacher"
+        "unregister-semester-teacher", "register-semester-teacher", "get-subject-not-assign-classroom"
     ],
 
     "roles": [{
@@ -39,7 +39,7 @@
                 "update-classroom", "delete-classroom",
                 "index-subject", "create-subject", "delete-subject",
                 "assign-teacher-subjects", "get-teacher-subjects", "assign-semester-teacher", "unregister-semester-teacher",
-                "register-semester-teacher"
+                "register-semester-teacher", "get-subject-not-assign-classroom"
             ]
         },
         {
