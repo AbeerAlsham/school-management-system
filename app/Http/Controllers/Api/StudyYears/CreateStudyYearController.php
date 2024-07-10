@@ -7,8 +7,6 @@ use App\Models\AcademicYear\Semester;
 use App\Models\AcademicYear\StudyYear;
 use App\Http\Requests\StudyYears\CreateYearRequest;
 
-use function PHPUnit\Framework\containsOnly;
-
 class CreateStudyYearController extends Controller
 {
     /**

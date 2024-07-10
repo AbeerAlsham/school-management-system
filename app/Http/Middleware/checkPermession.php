@@ -23,10 +23,9 @@ class checkPermession
         $permissionName = Route::currentRouteName();
         foreach ($roles as $role) {
             if ($role->hasPermession($permissionName)) {
-
                 return $next($request);
             }
-            return $this->forbiddenResponse('You are not authorized to apply this action');
         }
+        return $this->forbiddenResponse('You are not authorized to apply this action');
     }
 }

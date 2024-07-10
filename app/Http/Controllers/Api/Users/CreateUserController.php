@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\Users;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\CreateUserRequest;
-use App\Models\Accounts\{User, Profile};
+use App\Models\Accounts\User;
 use Illuminate\Support\Facades\Hash;
 
 class CreateUserController extends Controller

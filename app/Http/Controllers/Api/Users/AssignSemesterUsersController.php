@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Api\Users;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\AssignSemesterUsersRequest;
 use App\Models\AcademicYear\Semester;
-use Illuminate\Http\Request;
 
 class AssignSemesterUsersController extends Controller
 {
