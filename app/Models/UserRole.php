@@ -2,17 +2,16 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\AcademicYear\Semester;
 use App\Models\Accounts\{Role, User};
 
 class UserRole extends Model
 {
-    use HasFactory;
     protected $table="users_roles";
 
     protected $fillable = ['user_id', 'role_id'];
+    protected $hidden=['created_at','updated_at'];
 
     public function semesters()
     {

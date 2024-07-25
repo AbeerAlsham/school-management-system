@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('semesters', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->date('startDate');
-            $table->date('endDate');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->unsignedBigInteger('year_id');
             $table->foreign('year_id')->references('id')
-            ->on('study_Years')
-            ->onUpdate('CASCADE')
-            ->onDelete('CASCADE');
+                ->on('study_Years')
+                ->onUpdate('CASCADE')
+                ->onDelete('CASCADE');
             $table->timestamps();
         });
     }

@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\AcademicYear\Semester;
+use App\Models\Accounts\User;
 
 class SemesterUser extends Model
 {
@@ -17,4 +18,13 @@ class SemesterUser extends Model
     {
         return $this->belongsTo(UserRole::class, 'user_role_id');
     }
+
+    public function assignmentTeachers(){
+        return $this->hasMany(AssignmentTeacher::class);
+    }
+
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
 }

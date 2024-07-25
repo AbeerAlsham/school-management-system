@@ -23,7 +23,7 @@ class CreateUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'username' => 'required|unique:users,username|min:4|max:255',
+            // 'username' => 'required|unique:users,username|min:4|max:255',
             'password' => [
                 'required',
                 Password::min(8)
@@ -38,9 +38,11 @@ class CreateUserRequest extends FormRequest
             'profile.last_name' => 'required|min:4|max:255',
             'profile.study_level' => 'required',
             'profile.university' => 'required',
+            'profile.specialist'=>'string|required',
             'profile.national_number' => 'unique:profiles,national_number|required|digits:11',
             'profile.family_book_number'=>'required|integer',
             'roleIds.*' => 'integer|exists:roles,id',
+            'phone_numbers.*.phone_number'=>'digits:10|starts_with:09'
 
         ];
     }

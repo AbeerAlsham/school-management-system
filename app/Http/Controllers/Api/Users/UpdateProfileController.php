@@ -14,12 +14,11 @@ class UpdateProfileController extends Controller
      */
     public function __invoke(UpdateProfileRequest $request, Profile $profile)
     {
-        dd('mmmm');
         if (Auth::user()->id !== $profile->user_id) {
             return $this->forbiddenResponse('You are not authorized to apply this action');
         }
 
-        $profile->update($request->all);
+        $profile->update($request->all());
         return $this->okResponse($profile, 'profile updated successfully');
     }
 }

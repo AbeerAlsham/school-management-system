@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('study_years', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->date('startDate');
-            $table->date('endDate');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->timestamps();
         });
     }

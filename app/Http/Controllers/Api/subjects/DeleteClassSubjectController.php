@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\subjects;
+namespace App\Http\Controllers\Api\Subjects;
 
 use App\Http\Controllers\Controller;
 use App\Models\Classes\StudyClass;
@@ -14,7 +14,7 @@ class DeleteClassSubjectController extends Controller
      */
     public function __invoke(Request $request, StudyClass $class, Subject $subject)
     {
-        $class->Subjects()->dettach($subject->id);
+        $class->Subjects()->detach($subject->id);
         return $this->noContentResponse();
     }
 }

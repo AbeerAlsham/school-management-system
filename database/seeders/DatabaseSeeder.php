@@ -12,11 +12,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        $user = User::create([
-            'username' => "manager",
-            'password' => Hash::make(123456),
-        ]);
-        $user->roles()->attach(2);
+        // $user = User::create([
+        //     'username' => "manager",
+        //     'password' => Hash::make(123456),
+        // ]);
+        // $user->roles()->attach(2);
 
         $user = User::create([
             'username' => "teacherabeer",

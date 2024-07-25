@@ -9,14 +9,16 @@ use App\Models\Accounts\Role;
 use App\Models\SemesterUser;
 use Illuminate\Http\Request;
 
-class GetUnregisteredTeachersController extends Controller
+class GetUnregisteredUsersController extends Controller
 {
     /**
      * Handle the incoming request.
      */
+
+     //عرض الموجهين/المعلمين/الإداريين  غير المسحلين ضمن فصل دراسي معين
     public function __invoke(Request $request, Semester $semester)
     {
-        $teacher = Role::where('name', 'teacher')->first();
+        $teacher = Role::where('name', $request->role)->first();
 
         $assignedTeacherIds = SemesterUser::where('semester_id', $semester->id)
             ->pluck('user_role_id');

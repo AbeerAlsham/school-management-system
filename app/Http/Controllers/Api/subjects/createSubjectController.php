@@ -1,11 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Api\subjects;
+namespace App\Http\Controllers\Api\Subjects;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Subjects\CreateSubjectRequest;
 use App\Models\Subjects\{Subject, Section};
-use Illuminate\Http\Request;
 
 class createSubjectController extends Controller
 {

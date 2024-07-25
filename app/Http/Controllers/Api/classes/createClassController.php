@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\classes;
+namespace App\Http\Controllers\Api\Classes;
 use App\Http\Controllers\Controller;
 use App\Models\Classes\StudyClass;
 use App\Http\Requests\StudyClass\CreateClassRequest;

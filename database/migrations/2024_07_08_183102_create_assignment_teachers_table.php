@@ -14,7 +14,9 @@ return new class extends Migration
         Schema::create('assignment_teachers', function (Blueprint $table) {
             $table->id();
             $table->foreignId('semester_user_id')->constrained('semester_users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('class_subject_id')->constrained('class_subject')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('subject_id')->constrained('subjects')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('section_id')->nullable()->constrained('sections')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('class_id')->constrained('study_classes')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('classroom_id')->constrained('classrooms')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });

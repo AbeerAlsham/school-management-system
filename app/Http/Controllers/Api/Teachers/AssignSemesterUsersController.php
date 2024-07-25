@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api\Teachers;
 
+use App\Http\Controllers\Controller;
 use App\Models\AcademicYear\Semester;
 use Illuminate\Http\Request;
 
@@ -15,4 +16,5 @@ class AssignSemesterUsersController extends Controller
         $semester->userRoles()->attach($request->user_role_ids);
         return $this->okResponse('the teaches assigned to semester successfully');
     }
+
 }

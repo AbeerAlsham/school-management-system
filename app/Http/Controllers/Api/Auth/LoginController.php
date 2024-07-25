@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Models\Accounts\User;
-use App\Http\Requests\Auth\LoginRequest;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class LoginController extends Controller
@@ -12,7 +12,7 @@ class LoginController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(LoginRequest $request)
+    public function __invoke(Request $request)
     {
         $user = User::where('username', $request->username)->first();
         if (!$user || !Hash::check($request->password, $user->password)) {

@@ -18,6 +18,7 @@ return new class extends Migration
                 ->onUpdate('CASCADE');
             $table->foreignId('year_id')->constrained('study_years')->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
+            $table->integer('capacity')->default(30);
             $table->timestamps();
         });
     }

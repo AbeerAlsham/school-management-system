@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('enrollments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('student_id')->constrained('students')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('grade_enrolled_id')->constrained('study_classes')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('class_id')->constrained('study_classes')->onDelete('cascade')->onUpdate('cascade');
             $table->date('enrollment_date');
             $table->string('document_number');
             $table->date('document_date');

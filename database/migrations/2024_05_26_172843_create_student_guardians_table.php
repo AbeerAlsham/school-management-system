@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('guardians', function (Blueprint $table) {
+        Schema::create('student_guardians', function (Blueprint $table) {
             $table->id();
             $table->foreignId('student_id')->constrained('students')->onDelete('CASCADE')
             ->onUpdate('CASCADE');
             $table->foreignId('guardian_id')->constrained('users')->onDelete('CASCADE')
             ->onUpdate('CASCADE');
-            $table->string('Kinship');
+            $table->string('Kinship');//صلة القرابة
             $table->timestamps();
         });
     }

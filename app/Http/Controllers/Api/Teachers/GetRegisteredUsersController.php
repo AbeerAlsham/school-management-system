@@ -9,23 +9,23 @@ use App\Models\Accounts\Role;
 use App\Models\SemesterUser;
 use Illuminate\Http\Request;
 
-class GetRegisteredTeachersController extends Controller
+class GetRegisteredUsersController extends Controller
 {
     /**
      * Handle the incoming request.
      */
     public function __invoke(Request $request, Semester $semester)
     {
-        $teacher = Role::where('name', 'teacher')->first();
-
-        $assignedTeacherIds = SemesterUser::where('semester_id', $semester->id)
+        $role = Role::where('name', $request->role)->first();
+        
+        $assignedUserIds = SemesterUser::where('semester_id', $semester->id)
             ->pluck('user_role_id');
 
-        $unassignedTeachers = UserRole::where('role_id', $teacher->id)
-            ->whereIn('id', $assignedTeacherIds)
+        $unassignedUsers = UserRole::where('role_id', $role->id)
+            ->whereIn('id', $assignedUserIds)
             ->with('user.profile:first_name,father_name,last_name,user_id')
             ->get();
 
-        return $this->okResponse( $unassignedTeachers,'teacher  registered in semester retrived successfully');
+        return $this->okResponse( $unassignedUsers,'teacher  registered in semester retrived successfully');
     }
 }

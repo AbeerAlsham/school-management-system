@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('residential_address', function (Blueprint $table) {
             $table->id();
             $table->string('address');
-            $table->string('type');
+            $table->string('type');//إقامة او مؤقت
             $table->boolean('isLiveParent');
             $table->foreignId('student_id')->constrained('students')->onDelete('CASCADE')
                 ->onUpdate('CASCADE');

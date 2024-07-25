@@ -14,12 +14,12 @@ class CreateStudyYearController extends Controller
      */
     public function __invoke(CreateYearRequest $request)
     {
-        $academicYear = StudyYear::create($request->only(['name', 'startDate', 'endDate']));
+        $academicYear = StudyYear::create($request->all());
 
-        $semesters = array_map(function ($semester) {
-            return new Semester($semester);
-        }, $request->semesters);
-        $academicYear->semesters()->saveMany($semesters);
-        return $this->createdResponse(['StudyYear' => $academicYear->load('semesters')], 'StudyYear added successfully');
+        // $semesters = array_map(function ($semester) {
+        //     return new Semester($semester);
+        // }, $request->semesters);
+        // $academicYear->semesters()->saveMany($semesters);
+        return $this->createdResponse(['StudyYear' => $academicYear], 'StudyYear added successfully');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\classes;
+namespace App\Http\Controllers\Api\Classes;
 
 use App\Http\Controllers\Controller;
 use App\Models\Classes\StudyClass;
@@ -13,6 +13,6 @@ class IndexClassesController extends Controller
      */
     public function __invoke(Request $request)
     {
-       return $this->okResponse(StudyClass::all(), 'classes retrived');
+       return $this->okResponse(StudyClass::all(), 'classes retrieved');
     }
 }

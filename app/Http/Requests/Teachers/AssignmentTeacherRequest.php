@@ -22,9 +22,11 @@ class AssignmentTeacherRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'class_subject_id' => 'exists:class_subject,id|required',
             'semester_user_id' => 'exists:semester_users,id|required',
-            'classroom_id' => 'required|exists:classrooms,id'
+            'class_id' => 'exists:study_classes,id|required',
+            'classroom_id' => 'required|exists:classrooms,id',
+            'subject_id'=>'required|exists:subjects,id',
+            'section_id'=>'nullable|exists:sections,id'
         ];
     }
 }

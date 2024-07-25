@@ -12,11 +12,11 @@ class Semester extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id', 'name', 'startDate', 'endDate', 'year_id'];
+    protected $fillable = ['id', 'name', 'start_date', 'end_date', 'year_id'];
 
     public function studyYear()
     {
-        return $this->belongsTo(StudyYear::class);
+        return $this->belongsTo(StudyYear::class,'year_id');
     }
 
     public function userRoles()
@@ -34,5 +34,13 @@ class Semester extends Model
     //     return $this->belongsToMany(User::class, 'assignment_teachers', 'semester_id','teacher_id')
     //         ->withPivot('section_id', 'subject_id', 'classroom_id');
     // }
+
+    public function semesterUsers(){
+        return $this->hasMany(SemesterUser::class);
+    }
+    protected $hidden = [
+        'created_at',
+        'updated_at'
+    ];
 
 }

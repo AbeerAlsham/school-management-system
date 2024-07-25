@@ -22,8 +22,8 @@ class CreateClassroomRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'string|min:5',
-            'class_id'=>'integer|exists:study_classes,id'
+            'name' => ['string'],
+            'capacity' => 'integer'
         ];
     }
 }

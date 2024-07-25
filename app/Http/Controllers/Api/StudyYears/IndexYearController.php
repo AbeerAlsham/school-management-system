@@ -13,6 +13,6 @@ class IndexYearController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return $this->okResponse(StudyYear::all(), 'academic_year retrived successfully');
+        return $this->okResponse(['Academic Years'=>StudyYear::all()], 'academic_year retrived successfully');
     }
 }

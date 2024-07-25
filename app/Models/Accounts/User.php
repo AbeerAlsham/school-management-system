@@ -8,8 +8,8 @@ use Illuminate\Notifications\Notifiable;
 use App\Models\Classes\Classroom;
 use App\Models\AcademicYear\Semester;
 use App\Models\Subjects\Subject;
+use App\Models\UserRole;
 use Laravel\Sanctum\HasApiTokens;
-
 class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasApiTokens;
@@ -20,6 +20,7 @@ class User extends Authenticatable
     ];
 
     protected $hidden = [
+        'pivot',
         'password',
         'remember_token',
         'created_at',
@@ -58,6 +59,11 @@ class User extends Authenticatable
         return $this->belongsToMany(Subject::class, 'teacher_subjects');
     }
 
+    public function guardian()
+    {
+        return $this->hasOne(Guardian::class, 'user_id');
+    }
+
     protected function casts(): array
     {
         return [
@@ -65,4 +71,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function contactNumbers()
+    {
+        return $this->hasMany(ContactNumber::class,'user_id');
+    }
+
+    public function userRole(){
+        return $this->hasMany(UserRole::class);
+    }
+
 }

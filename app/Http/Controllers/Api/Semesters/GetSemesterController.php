@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Api\StudyYears;
+namespace App\Http\Controllers\Api\Semesters;
 
 use App\Http\Controllers\Controller;
 use App\Models\AcademicYear\StudyYear;

@@ -11,7 +11,7 @@ class enrollment extends Model
 {
     use HasFactory;
 
-    protected $fillable=['student_id','document_date','document_number','enrollment_date','grade_enrolled_id'];
+    protected $fillable=['student_id','document_date','document_number','enrollment_date','class_id'];
 
 
     public function student(){
@@ -19,6 +19,7 @@ class enrollment extends Model
     }
 
     public function gradeEnrollment(){
-        return $this->belongsTo(StudyClass::class,'grade_enrolled_id');
+        return $this->belongsTo(StudyClass::class,'class_id');
     }
+    
 }

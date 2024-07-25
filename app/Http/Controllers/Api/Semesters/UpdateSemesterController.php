@@ -1,13 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\Api\StudyYears;
+namespace App\Http\Controllers\Api\Semesters;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StudyYears\updateSemesterRequest;
 use App\Models\AcademicYear\Semester;
 
 class UpdateSemesterController extends Controller
-{
+{   
     /**
      * Handle the incoming request.
      */

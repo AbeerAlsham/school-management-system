@@ -31,8 +31,9 @@ class UpdateProfileRequest extends FormRequest
             'last_name' => 'min:4|max:255',
             'national_number' => 'unique|integer|digits:11',
             'family_book_number'=>'integer',
-            'study_level' => [Rule::enum(StudyLevel::class)],
-            'university' => [Rule::enum(University::class)],
+            'specialist'=>'string|required',
+            'study_level' =>'min:4|max:255|string' ,
+            'university' =>'min:4|max:255|string',
         ];
     }
 }

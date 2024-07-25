@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\StudyYears;
 
+use App\Rules\SemesterDateRule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class updateSemesterRequest extends FormRequest
@@ -19,12 +20,22 @@ class updateSemesterRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
+
     public function rules(): array
     {
-        return [
-            'name'=>'string|min:8|max:255',
-            'startDate'=>'date',
-            'endDate'=>'date|after:startDate',
+        $rules = [
+            'name' => 'string|min:8|max:255',
         ];
+
+        if ($this->has('start_date') && !$this->has('end_date')) {
+            $rules['start_date'] = ['date', new SemesterDateRule($this->route('semester')->year_id)];
+        } elseif ($this->has('end_date') && !$this->has('start_date')) {
+            $rules['end_date'] = ['date', 'after:start_date', new SemesterDateRule($this->route('semester')->year_id)];
+        } elseif ($this->has('start_date') && $this->has('end_date')) {
+            $rules['start_date'] = ['date', new SemesterDateRule($this->route('semester')->year_id)];
+            $rules['end_date'] = ['date', 'after:start_date', new SemesterDateRule($this->route('semester')->year_id)];
+        }
+
+        return $rules;
     }
 }

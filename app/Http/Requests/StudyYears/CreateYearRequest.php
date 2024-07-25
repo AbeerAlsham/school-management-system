@@ -23,13 +23,9 @@ class CreateYearRequest extends FormRequest
     {
 
         return [
-            'name'=>'required|string|min:8|max:255',
-            'startDate'=>'required|date',
-            'endDate'=>'required|date|after:startDate',
-
-            'semesters.*.name'=>'required|string|min:8|max:255',
-            'semesters.*.startDate'=>'required|date',
-            'semesters.*.endDate'=>'required|date|after:startDate',
+            'name'=>'required|string|min:8|max:255|unique:study_years,name',
+            'start_date'=>'required|date',
+            'end_date'=>'required|date|after:startDate',
 
         ];
     }

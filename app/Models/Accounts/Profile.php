@@ -13,6 +13,7 @@ class Profile extends Model
         'mother_name',
         'study_level',
         'university',
+        'specialist',
         'last_name',
         'national_number',
         'family_book_number'

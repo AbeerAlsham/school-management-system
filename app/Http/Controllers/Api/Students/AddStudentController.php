@@ -19,9 +19,11 @@ class AddStudentController extends Controller
             'first_name', 'last_name', 'birthAddress', 'birthdate', 'registration_place', 'registration_number', 'religion', 'nationality',
             'Chronic diseases', 'national_number'
         ])));
+        $student->Guardian()->attach($request->gurdian->id, ['kinship' => $request->guardian->kinship]);
+        $student->enrollement()->create($request->enrollment);
         $student->address()->create($request->address);
-        $student->father()->firstOrCreate($request->father);
-        $student->mother()->firstOrCreate($request->mother);
+        $student->father()->create($request->father);
+        $student->mother()->create($request->mother);
         $siblings  = array_map(function ($sibling) {
             return new Sibling($sibling);
         }, $request->siblings);

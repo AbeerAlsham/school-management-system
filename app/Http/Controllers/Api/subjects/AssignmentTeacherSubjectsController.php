@@ -12,8 +12,8 @@ class AssignmentTeacherSubjectsController extends Controller
     {
 
         if ($this->checkTeacher($user)) {
-         $user->subjects()->attach($request->subject_ids);
-            return $this->successResponse($user->subjects,'the subject assignment successfully');
+            $user->subjects()->attach($request->subject_ids);
+            return $this->successResponse($user->subjects, 'the subject assignment successfully');
         } else {
             return $this->unprocessableResponse('the user have not teacher role');
         }

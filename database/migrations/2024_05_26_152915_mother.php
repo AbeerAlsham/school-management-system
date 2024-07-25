@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('study_level');
             $table->string('work');
+            $table->foreignId('student_id')->constrained('students')->onDelete('CASCADE')
+                ->onUpdate('CASCADE');
         });
     }
 

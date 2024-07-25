@@ -3,13 +3,12 @@
 namespace App\Models\Students;
 
 use App\Models\LastSchoolInfo;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Accounts\User;
+use App\Models\enrollment;
 
 class Student extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
         'image', 'public_registry_number',
         'first_name', 'last_name', 'birthAddress', 'birthdate', 'registration_place', 'registration_number', 'religion', 'nationality',
@@ -18,17 +17,17 @@ class Student extends Model
 
     public function father()
     {
-        return $this->belongsTo(Father::class);
+        return $this->hasOne(Father::class,'student_id');
     }
 
     public function mother()
     {
-        return $this->belongsTo(Mother::class);
+        return $this->hasOne(Mother::class,'student_id');
     }
 
     public function siblings()
     {
-        return $this->hasMany(Sibling::class);
+        return $this->hasMany(Sibling::class,'student_id');
     }
 
     public function address()
@@ -40,5 +39,13 @@ class Student extends Model
     {
         return $this->hasOne(LastSchoolInfo::class, 'student_id');
     }
-    
+
+    public function Guardians()
+    {
+        return $this->belongsToMany(User::class)->withPivot('Kinship');
+    }
+
+    public function enrollement(){
+        return $this->hasOne(enrollment::class,'student_id');
+    }
 }
