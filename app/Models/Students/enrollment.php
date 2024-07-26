@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Students;
 
 use App\Models\Classes\StudyClass;
 use App\Models\Students\Student;
@@ -21,5 +21,5 @@ class enrollment extends Model
     public function gradeEnrollment(){
         return $this->belongsTo(StudyClass::class,'class_id');
     }
-    
+
 }

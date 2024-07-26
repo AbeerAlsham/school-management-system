@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('work');
             $table->foreignId('student_id')->constrained('students')->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
+            $table->timestamps();
         });
     }
 

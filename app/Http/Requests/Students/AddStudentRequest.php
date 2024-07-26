@@ -3,8 +3,8 @@
 namespace App\Http\Requests\Students;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Enums\StudyLevel;
-use Illuminate\Validation\Rule;
+// use App\Enums\StudyLevel;
+// use Illuminate\Validation\Rule;
 
 class AddStudentRequest extends FormRequest
 {
@@ -24,8 +24,8 @@ class AddStudentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'image' => 'nullable',
-            'public_registry_number' => 'required|unique',
+            'photo' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'public_registry_number' => 'required|unique:students,public_registry_number',
             'first_name' => 'required|min:2|max:255|string',
             'last_name' => 'required|min:2|max:255|string',
             'birth_address' => 'required|min:4|max:255|string',
@@ -34,25 +34,33 @@ class AddStudentRequest extends FormRequest
             'registration_number' => 'required|integer',
             'religion' => 'required|min:4|max:255|string',
             'nationality' => 'required|min:4|max:255|string',
-            'chronic_diseases' => 'nullable|string',
-            'national_number' => 'unique|required|integer',
+            'chronic_diseases' => 'string',
+            'national_number' => 'unique:students,national_number|required|digits:11|starts_with:0',
 
             'address.address' => 'required|min:4|max:255|string',
             'address.type' => 'required|string',
-            'address.isLiveParent'=>'required|boolean',
+            'address.isLiveParent'=>'required',
 
             'father.name' => 'required|min:4|max:255|string',
             'father.parent_name' => 'required|min:4|max:255|string',
-            'father.study_level' => 'required', Rule::enum(StudyLevel::class),
+            'father.study_level' => 'required',
             'father.work' => 'required|min:4|max:255|string',
 
             'mother.name' => 'required|min:4|max:255|string',
             'mother.last_name' => 'required|min:4|max:255|string',
-            'mother.study_level' => 'required', Rule::enum(StudyLevel::class),
+            'mother.study_level' => 'required',
             'mother.work' => 'required|min:4|max:255|string',
 
             'siblings.*.name' => 'required|min:4|max:255|string',
-            'siblings.*.study_level' => 'required', Rule::enum(StudyLevel::class),
+            'siblings.*.study_level' => 'required',
+
+            'guardian.id'=>'exists:guardians,id|required',
+            'guardian.kinship'=>'required|string',
+
+            'enrollement.class_id'=>'exists:study_classes,id|required',
+            'enrollement.document_date'=>'required|date',
+            'enrollement.document_number'=>'required|integer',
+            'enrollement.enrollment_date'=>'required|date',
         ];
     }
 }

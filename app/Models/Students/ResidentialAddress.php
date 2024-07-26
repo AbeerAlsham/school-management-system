@@ -4,10 +4,10 @@ namespace App\Models\Students;
 
 use Illuminate\Database\Eloquent\Model;
 
-class ResidentialAaddress extends Model
+class ResidentialAddress extends Model
 {
-
-    protected $fillable = ['address', 'type', 'isliveParent', 'student_id'];
+    protected $table = "residential_address";
+    protected $fillable = ['address', 'type', 'isLiveParent', 'student_id'];
 
     public function student()
     {

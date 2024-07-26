@@ -15,9 +15,11 @@
         "update-classroom", "delete-classroom",
 
         "index-subject", "create-subject", "delete-subject",
-        "assign-teacher-subjects", "get-teacher-subjects", "assign-semester-teacher", "get-subject-teachers", "assign-teacher", "unregister-semester-teacher", "register-semester-teacher", "get-subject-not-assign-classroom",
+        "assign-teacher-subjects", "get-teacher-subjects", "assign-semester-teacher", "get-subject-teachers", "assign-teacher",
+        "unregister-semester-teacher", "register-semester-teacher", "get-subject-not-assign-classroom",
         "index-supervisor-years", "index-teacher-years", "index-semester-teacher-subjects", "index-classroom-unassign_subjects",
-        "get-supervisor-classes", "get-teacher-classes", "get-unassign-supervisor-classes", "get-unassign-teacher-classes"
+        "get-supervisor-classes", "get-teacher-classes", "get-unassign-supervisor-classes", "get-unassign-teacher-classes",
+        "add-student"
     ],
 
     "roles": [{
@@ -58,7 +60,7 @@
         {
             "name": "secretary",
             "permissions": ["show-user", "change-password", "update-user", "update-profile",
-                "index-academic-year", "show-academic-year", "index-year-semester", "get-year-class-classrooms", "show-semester"
+                "index-academic-year", "show-academic-year", "index-year-semester", "get-year-class-classrooms", "show-semester", "add-student"
             ]
         }
     ]

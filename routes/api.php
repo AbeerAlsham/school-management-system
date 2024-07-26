@@ -89,6 +89,14 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
                     Route::delete('/{user}/roles/{role}', 'removeRoleController')->name('remove-role-user');
                 });
             });
+
+            Route::group(['namespace' => 'Students'], function () {
+                Route::prefix('/students')->group(
+                    function () {
+                        Route::post('/', 'AddStudentController')->name('add-student')->middleware('transaction');
+                    }
+                );
+            });
         }
     );
 });

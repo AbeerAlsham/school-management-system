@@ -25,7 +25,6 @@ class TransactionMiddleware
 
             return $response;
         } catch (\Exception $e) {
-            dd('mm');
             DB::rollback();
             throw $e;
         } finally {
