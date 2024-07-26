@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('father_name');
             $table->string('last_name');
             $table->string('mother_name');
-            $table->integer('family_book_number');
-            $table->integer('national_number')->unique();
+            $table->string('family_book_number');
+            $table->string('national_number')->unique();
             $table->string('university');
             $table->string('specialist');
             $table->string('study_level');
