@@ -7,9 +7,11 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Classes\Classroom;
 use App\Models\AcademicYear\Semester;
+use App\Models\Students\Student;
 use App\Models\Subjects\Subject;
 use App\Models\UserRole;
 use Laravel\Sanctum\HasApiTokens;
+
 class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasApiTokens;
@@ -74,11 +76,16 @@ class User extends Authenticatable
 
     public function contactNumbers()
     {
-        return $this->hasMany(ContactNumber::class,'user_id');
+        return $this->hasMany(ContactNumber::class, 'user_id');
     }
 
-    public function userRole(){
+    public function userRole()
+    {
         return $this->hasMany(UserRole::class);
     }
-
+    //for guardian
+    public function students()
+    {
+         return $this->belongsToMany(Student::class, 'student_guardians', 'guardian_id','student_id')->withPivot('Kinship');
+    }
 }
