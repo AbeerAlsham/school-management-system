@@ -6,12 +6,13 @@ use App\Models\AcademicYear\StudyYear;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\AssignmentSupervisor;
 use App\Models\AssignmentTeacher;
+use App\Models\studentClassroom;
 
 class Classroom extends Model
 {
     protected $fillable = ['name', 'class_id', 'year_id'];
 
-    protected $hidden=['created_at','updated_at'];
+    protected $hidden = ['created_at', 'updated_at'];
 
     public function studyClass()
     {
@@ -31,5 +32,10 @@ class Classroom extends Model
     public function assignmentSupervisors()
     {
         return $this->hasMany(AssignmentSupervisor::class);
+    }
+    
+    public function studentClassroom()
+    {
+        return $this->hasMany(studentClassroom::class);
     }
 }

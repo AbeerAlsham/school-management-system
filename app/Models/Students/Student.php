@@ -5,6 +5,7 @@ namespace App\Models\Students;
 use App\Models\LastSchoolInfo;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Accounts\User;
+use App\Models\studentClass;
 use App\Models\Students\enrollment;
 
 class Student extends Model
@@ -48,6 +49,11 @@ class Student extends Model
     public function enrollement()
     {
         return $this->hasOne(enrollment::class, 'student_id');
+    }
+
+    public function studentClasses()
+    {
+        return $this->hasMany(studentClass::class);
     }
 
     public function setPhotoAttribute($file)
