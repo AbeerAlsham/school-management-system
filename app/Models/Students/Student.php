@@ -2,7 +2,6 @@
 
 namespace App\Models\Students;
 
-use App\Models\Accounts\Guardian;
 use App\Models\LastSchoolInfo;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Accounts\User;
@@ -11,9 +10,9 @@ use App\Models\Students\enrollment;
 class Student extends Model
 {
     protected $fillable = [
-        'photo', 'public_registry_number',
-        'first_name', 'last_name', 'birth_address', 'birthdate', 'registration_place', 'registration_number', 'religion', 'nationality',
-        'chronic_diseases', 'national_number'
+        'photo', 'public_registry_number', 'first_name', 'last_name',
+        'birth_address', 'birthdate', 'registration_place', 'registration_number',
+        'religion', 'nationality', 'chronic_diseases', 'national_number'
     ];
 
     public function father()

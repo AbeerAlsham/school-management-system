@@ -18,11 +18,12 @@ class AddStudentController extends Controller
             'photo', 'public_registry_number',
             'first_name', 'last_name', 'birth_address', 'birthdate',
             'registration_place', 'registration_number', 'religion',
-            'nationality','chronic_diseases', 'national_number'
+            'nationality', 'chronic_diseases', 'national_number'
         ])));
         $student->address()->create($request->address);
         $student->Guardian()->attach($request->guardian['id'], ['kinship' => $request->guardian['kinship']]);
         $student->enrollement()->create($request->enrollement);
+        $student->lastSchool()->create($request->lastSchool);
         $student->father()->create($request->father);
         $student->mother()->create($request->mother);
         $siblings  = array_map(function ($sibling) {
@@ -30,6 +31,6 @@ class AddStudentController extends Controller
         }, $request->siblings);
         $student->siblings()->saveMany($siblings);
 
-        return $this->createdResponse($student,'تم إضافة الطالب بنجاح ');
+        return $this->createdResponse($student, 'تم إضافة الطالب بنجاح ');
     }
 }

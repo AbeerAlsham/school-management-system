@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('school_name');
             $table->string('school_address');
             $table->string('previous_result');
-            $table->json('failed_grades');
+            $table->string('failed_grades');
             $table->foreignId('student_id')->constrained('students')->onDelete('CASCADE')
             ->onUpdate('CASCADE');
             $table->timestamps();

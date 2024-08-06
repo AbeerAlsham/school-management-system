@@ -39,28 +39,33 @@ class AddStudentRequest extends FormRequest
 
             'address.address' => 'required|min:4|max:255|string',
             'address.type' => 'required|string',
-            'address.isLiveParent'=>'required',
+            'address.isLiveParent' => 'required',
 
-            'father.name' => 'required|min:4|max:255|string',
+            'father.name' => 'required|min:3|max:255|string',
             'father.parent_name' => 'required|min:4|max:255|string',
             'father.study_level' => 'required',
             'father.work' => 'required|min:4|max:255|string',
 
-            'mother.name' => 'required|min:4|max:255|string',
+            'mother.name' => 'required|min:3|max:255|string',
             'mother.last_name' => 'required|min:4|max:255|string',
             'mother.study_level' => 'required',
             'mother.work' => 'required|min:4|max:255|string',
 
-            'siblings.*.name' => 'required|min:4|max:255|string',
+            'siblings.*.name' => 'required|min:3|max:255|string',
             'siblings.*.study_level' => 'required',
 
-            'guardian.id'=>'exists:guardians,id|required',
-            'guardian.kinship'=>'required|string',
+            'guardian.id' => 'exists:users,id|required',
+            'guardian.kinship' => 'required|string',
 
-            'enrollement.class_id'=>'exists:study_classes,id|required',
-            'enrollement.document_date'=>'required|date',
-            'enrollement.document_number'=>'required|integer',
-            'enrollement.enrollment_date'=>'required|date',
+            'enrollement.class_id' => 'exists:study_classes,id|required',
+            'enrollement.document_date' => 'required|date',
+            'enrollement.document_number' => 'required|integer',
+            'enrollement.enrollment_date' => 'required|date',
+
+            'lastSchool.school_name' => 'required',
+            'lastSchool.school_address' => 'required',
+            'lastSchool.previous_result' => 'required',
+            'lastSchool.failed_grades' => 'nullable'
         ];
     }
 }
