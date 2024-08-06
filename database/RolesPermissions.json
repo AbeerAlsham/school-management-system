@@ -19,17 +19,12 @@
         "unregister-semester-teacher", "register-semester-teacher", "get-subject-not-assign-classroom",
         "index-supervisor-years", "index-teacher-years", "index-semester-teacher-subjects", "index-classroom-unassign_subjects",
         "get-supervisor-classes", "get-teacher-classes", "get-unassign-supervisor-classes", "get-unassign-teacher-classes",
-        "add-student"
+
+        "add-guardian", "update-guardian", "index-guardian", "show-guardian",
+        "add-student", "index-student", "show-student", "get-guardian-students"
     ],
 
     "roles": [{
-            "name": "teacher",
-            "permissions": ["show-user", "change-password", "update-user", "update-profile", "get-teacher-subjects",
-                "index-academic-year", "show-academic-year", "index-year-semester", "get-year-class-classrooms", "show-semester",
-                "get-teacher-subjects", "index-teacher-years", "index-semester-teacher-subjects", "get-teacher-classes"
-            ]
-        },
-        {
             "name": "manager",
             "permissions": ["index-academic-year", "create-academic-year", "update-academic-year", "show-academic-year",
                 "show-semester", "update-semester", "delete-semester",
@@ -47,7 +42,16 @@
                 "get-teacher-subjects", "assign-semester-teacher", "unregister-semester-teacher", "get-subject-teachers",
                 "register-semester-teacher", "get-subject-not-assign-classroom", "get-supervisor-classes", "get-teacher-classes",
                 "index-classroom-unassign_subjects", "get-unassign-supervisor-classes", "get-unassign-teacher-classes",
-                "index-supervisor-years", "index-teacher-years", "add-class-subject", "index-semester-teacher-subjects"
+                "index-supervisor-years", "index-teacher-years", "add-class-subject", "index-semester-teacher-subjects",
+                "index-guardian",
+                "index-student", "show-student", "get-guardian-students"
+            ]
+        },
+        {
+            "name": "teacher",
+            "permissions": ["show-user", "change-password", "update-user", "update-profile", "get-teacher-subjects",
+                "index-academic-year", "show-academic-year", "index-year-semester", "get-year-class-classrooms", "show-semester",
+                "get-teacher-subjects", "index-teacher-years", "index-semester-teacher-subjects", "get-teacher-classes"
             ]
         },
         {
@@ -60,7 +64,14 @@
         {
             "name": "secretary",
             "permissions": ["show-user", "change-password", "update-user", "update-profile",
-                "index-academic-year", "show-academic-year", "index-year-semester", "get-year-class-classrooms", "show-semester", "add-student"
+                "index-academic-year", "show-academic-year", "index-year-semester", "get-year-class-classrooms", "show-semester", "add-student",
+                "index-student", "show-student", "get-guardian-students",
+                "add-guardian", "update-guardian", "index-guardian"
+            ]
+        }, {
+            "name": "guardian",
+            "permissions": [
+                "get-guardian-students", "show-guardian"
             ]
         }
     ]

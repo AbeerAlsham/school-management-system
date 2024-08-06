@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('guardians', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->string('name');
+            $table->string('first_name');
             $table->string('father_name');
             $table->string('last_name');
-            $table->unique(['name','father_name','last_name']);
+            $table->unique(['first_name','father_name','last_name']);
             $table->timestamps();
         });
     }

@@ -94,9 +94,27 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
                 Route::prefix('/students')->group(
                     function () {
                         Route::post('/', 'AddStudentController')->name('add-student')->middleware('transaction');
+                        Route::get('/', 'IndexStudentController')->name('index-student');
+                        Route::get('/{student}', 'ShowStudentController')->name('show-student');
                     }
                 );
+                Route::get('guardians/{user}/students', 'GetGuardinStudentsController')->name('get-guardian-students');
             });
+
+            Route::group(
+                ['namespace' => 'Guardians'],
+                function () {
+                    Route::prefix('/guardians')->group(
+                        function () {
+                            Route::post('/', 'AddGuardianController')->name('add-guardian')->middleware('transaction');
+                            Route::post('/{guardian}', 'EditGuardianController')->name('update-guardian');
+                            Route::get('/', 'IndexGuardianController')->name('index-guardian');
+                        }
+                    );
+
+                    Route::get('users/{user}/guardians', 'ShowGuardianController')->name('show-guardian')->middleware('checkOwner');
+                }
+            );
         }
     );
 });
