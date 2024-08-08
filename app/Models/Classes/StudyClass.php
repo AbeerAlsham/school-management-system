@@ -5,7 +5,8 @@ namespace App\Models\Classes;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\AssignmentSupervisor;
 use App\Models\AssignmentTeacher;
-use App\Models\studentClass;
+// use App\Models\studentClass;
+use App\Models\Students\Student;
 use App\Models\Subjects\subject;
 
 class StudyClass extends Model
@@ -34,8 +35,13 @@ class StudyClass extends Model
     {
         return $this->hasMany(AssignmentTeacher::class, 'class_id');
     }
-    public function studentClasses()
+
+    // public function studentClasses()
+    // {
+    //     return $this->hasMany(studentClass::class);
+    // }
+    public function students()
     {
-        return $this->hasMany(studentClass::class);
+        return $this->belongsToMany(Student::class, 'student_classes')->withPivot('study_year_id','status');
     }
 }

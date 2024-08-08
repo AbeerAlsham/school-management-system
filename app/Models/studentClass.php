@@ -11,7 +11,7 @@ class studentClass extends Model
 {
     protected $fillable = ['student_id', 'study_class_id', 'study_year_id', 'status'];
 
-    public function students()
+    public function student()
     {
         return $this->belongsTo(Student::class);
     }
@@ -25,7 +25,7 @@ class studentClass extends Model
     {
         return $this->belongsTo(StudyYear::class);
     }
-    
+
     public function studentClassroom()
     {
         return $this->hasOne(studentClassroom::class);

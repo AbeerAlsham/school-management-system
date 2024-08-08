@@ -2,9 +2,11 @@
 
 namespace App\Models\Students;
 
+use App\Models\AcademicYear\StudyYear;
 use App\Models\LastSchoolInfo;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Accounts\User;
+use App\Models\Classes\StudyClass;
 use App\Models\studentClass;
 use App\Models\Students\enrollment;
 
@@ -51,11 +53,21 @@ class Student extends Model
         return $this->hasOne(enrollment::class, 'student_id');
     }
 
-    public function studentClasses()
+    // public function studentClasses()
+    // {
+    //     return $this->hasMany(studentClass::class);
+    // }
+
+    public function AcademicYear()
     {
-        return $this->hasMany(studentClass::class);
+        return $this->belongsMany(StudyYear::class, 'student_classes');
     }
 
+    public function classes()
+    {
+        return $this->belongsToMany(StudyClass::class, 'student_classes');
+    }
+    
     public function setPhotoAttribute($file)
     {
         $filePath = 'students/';

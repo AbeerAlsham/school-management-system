@@ -21,7 +21,10 @@
         "get-supervisor-classes", "get-teacher-classes", "get-unassign-supervisor-classes", "get-unassign-teacher-classes",
 
         "add-guardian", "update-guardian", "index-guardian", "show-guardian",
-        "add-student", "index-student", "show-student", "get-guardian-students"
+        "add-student", "index-student", "show-student", "get-guardian-students",
+
+        "assign-class-students", "assign-classroom-students", "get-classroom-students",
+        "get-class-students", "get-unassign-class-students", "get-unassign-classroom-students"
     ],
 
     "roles": [{
@@ -66,7 +69,10 @@
             "permissions": ["show-user", "change-password", "update-user", "update-profile",
                 "index-academic-year", "show-academic-year", "index-year-semester", "get-year-class-classrooms", "show-semester", "add-student",
                 "index-student", "show-student", "get-guardian-students",
-                "add-guardian", "update-guardian", "index-guardian"
+                "add-guardian", "update-guardian", "index-guardian",
+
+                "assign-class-students", "assign-classroom-students", "get-classroom-students",
+                "get-class-students", "get-unassign-class-students", "get-unassign-classroom-students"
             ]
         }, {
             "name": "guardian",

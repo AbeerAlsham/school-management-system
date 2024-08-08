@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\AssignmentSupervisor;
 use App\Models\AssignmentTeacher;
 use App\Models\studentClassroom;
+use App\Models\Students\Student;
 
 class Classroom extends Model
 {
@@ -33,9 +34,10 @@ class Classroom extends Model
     {
         return $this->hasMany(AssignmentSupervisor::class);
     }
-    
-    public function studentClassroom()
+
+    public function studentClassrooms()
     {
         return $this->hasMany(studentClassroom::class);
     }
+
 }
