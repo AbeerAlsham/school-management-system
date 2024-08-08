@@ -7,12 +7,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\models\Classes\StudyClass;
 use App\Models\AssignmentTeacher;
+use App\Models\Mark;
 
 class Subject extends Model
 {
-    use HasFactory;
-
-    protected $fillable = ['name'];
+    protected $fillable = ['name','min_mark','max_mark'];
 
     public function classes()
     {
@@ -38,6 +37,10 @@ class Subject extends Model
     {
         return $this->hasMany(AssignmentTeacher::class);
     }
-    
+
+    public function marks(){
+        return $this->hasMany(Mark::class);
+    }
+
     protected $hidden = ['pivot', 'updated_at', 'created_at'];
 }

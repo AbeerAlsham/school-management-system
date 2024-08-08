@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->foreignId('subject_id')->constrained('subjects')->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
+            $table->double('max_mark'); //العلامة الكلية لقسم المادة ؟؟
             $table->timestamps();
         });
     }

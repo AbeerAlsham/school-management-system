@@ -7,6 +7,7 @@ use App\Models\LastSchoolInfo;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Accounts\User;
 use App\Models\Classes\StudyClass;
+use App\Models\Mark;
 use App\Models\studentClass;
 use App\Models\Students\enrollment;
 
@@ -58,6 +59,10 @@ class Student extends Model
     //     return $this->hasMany(studentClass::class);
     // }
 
+    // public function marks(){
+    //     return $this->hasMany(Mark::class);
+    // }
+
     public function AcademicYear()
     {
         return $this->belongsMany(StudyYear::class, 'student_classes');
@@ -67,7 +72,7 @@ class Student extends Model
     {
         return $this->belongsToMany(StudyClass::class, 'student_classes');
     }
-    
+
     public function setPhotoAttribute($file)
     {
         $filePath = 'students/';

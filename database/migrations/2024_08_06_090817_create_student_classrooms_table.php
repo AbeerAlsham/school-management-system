@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('classroom_id')->constrained('classrooms')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('student_class_id')->constrained('student_classes')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('serial_number');//مسجل /منقول/مخرج
+            $table->integer('serial_number');//الرقم التسلسلي للطالب ضمن الشعبة 
             $table->timestamps();
         });
     }

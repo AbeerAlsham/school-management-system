@@ -11,11 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('subjects', function (Blueprint $table) {
+        Schema::create('mark_types', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->double('min_mark');//العلامة الدنيا
-            $table->double('max_mark');//  العلامة القصوى
+            $table->string('name');//مثل امتحان  مذاكرة سبر نشاط 
+            $table->double('percentage');// النسبة المثوية التي تمثلها نوع العلامة مثل الامتحان يمثل 50 %
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('subjects');
+        Schema::dropIfExists('mark_types');
     }
 };

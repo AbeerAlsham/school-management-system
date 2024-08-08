@@ -3,14 +3,13 @@
 namespace App\Models\Subjects;
 
 use App\Models\ClassSubject;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Mark;
 use Illuminate\Database\Eloquent\Model;
 
 class Section extends Model
 {
-    use HasFactory;
 
-    protected $fillable = ['name','subject_id'];
+    protected $fillable = ['name','subject_id','max_mark'];
     protected $hidden = ['updated_at','created_at'];
 
     public function subject()
@@ -22,5 +21,8 @@ class Section extends Model
         return $this->hasMany(ClassSubject::class);
     }
 
-   
+    public function marks(){
+        return $this->hasMany(Mark::class);
+    }
+
 }

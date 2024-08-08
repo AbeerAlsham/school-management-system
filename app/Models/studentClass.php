@@ -30,4 +30,8 @@ class studentClass extends Model
     {
         return $this->hasOne(studentClassroom::class);
     }
+
+    public function marks(){
+        return $this->hasMany(Mark::class);
+    }
 }
