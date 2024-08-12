@@ -113,11 +113,19 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
                 Route::get('guardians/{user}/students', 'GetGuardinStudentsController')->name('get-guardian-students');
             });
 
-            Route::group(
-                ['namespace' => 'Guardians'],
-                function () {
-                    Route::prefix('/guardians')->group(
-                        function () {
+            Route::group(['namespace' => 'Marks'], function () {
+                Route::prefix('/marks')->group( function () {
+                        Route::post('/', 'addMarkController')->name('add-mark');
+                    });
+                Route::prefix('semesters/{semester}/subjects/{subject}')->group(function () {
+                        Route::get('/student-classes/{studentClass}/marks/show-student-mark', 'showStudentMarkDetailsController')
+                            ->name('show-student-mark');
+                        Route::get('/classrooms/{classroom}/marks/get-students-marks', 'GetStudentsMarkDetailsController')
+                            ->name('get-students-marks');
+                    });
+            });
+            Route::group( ['namespace' => 'Guardians'],function () {
+                    Route::prefix('/guardians')->group(function () {
                             Route::post('/', 'AddGuardianController')->name('add-guardian')->middleware('transaction');
                             Route::post('/{guardian}', 'EditGuardianController')->name('update-guardian');
                             Route::get('/', 'IndexGuardianController')->name('index-guardian');

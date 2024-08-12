@@ -11,6 +11,8 @@ class studentClass extends Model
 {
     protected $fillable = ['student_id', 'study_class_id', 'study_year_id', 'status'];
 
+    protected $hidden=['created_at','updated_at'];
+
     public function student()
     {
         return $this->belongsTo(Student::class);

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('subject_id')->constrained('subjects')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('section_id')->constrained('sections')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('mark_type_id')->constrained('mark_types')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('test_name');//مثل مذاكرة أولى  سبر 2 
             $table->double('earned_mark');
             $table->double('total_mark');
             $table->timestamps();

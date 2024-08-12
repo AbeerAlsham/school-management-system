@@ -19,6 +19,7 @@ class Student extends Model
         'religion', 'nationality', 'chronic_diseases', 'national_number'
     ];
 
+    protected $hidden=['created_at','updated_at'];
     public function father()
     {
         return $this->hasOne(Father::class, 'student_id');

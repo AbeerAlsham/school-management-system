@@ -24,7 +24,8 @@
         "add-student", "index-student", "show-student", "get-guardian-students",
 
         "assign-class-students", "assign-classroom-students", "get-classroom-students",
-        "get-class-students", "get-unassign-class-students", "get-unassign-classroom-students"
+        "get-class-students", "get-unassign-class-students", "get-unassign-classroom-students",
+        "add-mark", "show-student-mark", "get-students-marks"
     ],
 
     "roles": [{
@@ -47,14 +48,16 @@
                 "index-classroom-unassign_subjects", "get-unassign-supervisor-classes", "get-unassign-teacher-classes",
                 "index-supervisor-years", "index-teacher-years", "add-class-subject", "index-semester-teacher-subjects",
                 "index-guardian",
-                "index-student", "show-student", "get-guardian-students"
+                "index-student", "show-student", "get-guardian-students",
+                "add-mark", "show-student-mark", "get-students-marks"
             ]
         },
         {
             "name": "teacher",
             "permissions": ["show-user", "change-password", "update-user", "update-profile", "get-teacher-subjects",
                 "index-academic-year", "show-academic-year", "index-year-semester", "get-year-class-classrooms", "show-semester",
-                "get-teacher-subjects", "index-teacher-years", "index-semester-teacher-subjects", "get-teacher-classes"
+                "get-teacher-subjects", "index-teacher-years", "index-semester-teacher-subjects", "get-teacher-classes",
+                "add-mark", "show-student-mark", "get-students-marks"
             ]
         },
         {

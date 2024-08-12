@@ -3,7 +3,6 @@
 namespace App\Models;
 
 use App\Models\AcademicYear\Semester;
-use App\Models\Students\Student;
 use App\Models\Subjects\Section;
 use App\Models\Subjects\Subject;
 use Illuminate\Database\Eloquent\Model;
@@ -11,8 +10,8 @@ use Illuminate\Database\Eloquent\Model;
 class Mark extends Model
 {
     protected $fillable = [
-        'semester_id', 'student_id', 'subject_id', 'section_id',
-        'mark_type_id', 'earned_mark', 'total_mark'
+        'semester_id', 'student_class_id', 'subject_id', 'section_id',
+        'test_name','mark_type_id', 'earned_mark', 'total_mark'
     ];
 
     protected $hidden = ['created_at', 'updated_at'];

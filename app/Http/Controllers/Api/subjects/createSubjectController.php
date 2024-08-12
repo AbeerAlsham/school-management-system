@@ -13,7 +13,7 @@ class createSubjectController extends Controller
      */
     public function __invoke(CreateSubjectRequest $request)
     {
-        $subject = Subject::create($request->only('name'));
+        $subject = Subject::create($request->only('name','min_mark','max_mark'));
         if ($request->sections) {
             $sections = array_map(function ($section) {
                 return new Section($section);
