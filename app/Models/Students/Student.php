@@ -6,6 +6,7 @@ use App\Models\AcademicYear\StudyYear;
 use App\Models\LastSchoolInfo;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Accounts\User;
+use App\Models\Attendance;
 use App\Models\Classes\StudyClass;
 use App\Models\Mark;
 use App\Models\studentClass;
@@ -20,6 +21,7 @@ class Student extends Model
     ];
 
     protected $hidden=['created_at','updated_at'];
+    
     public function father()
     {
         return $this->hasOne(Father::class, 'student_id');
@@ -72,6 +74,10 @@ class Student extends Model
     public function classes()
     {
         return $this->belongsToMany(StudyClass::class, 'student_classes');
+    }
+
+    public function attendance(){
+        return $this->hasMany(Attendance::class);
     }
 
     public function setPhotoAttribute($file)

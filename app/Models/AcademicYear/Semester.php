@@ -2,17 +2,14 @@
 
 namespace App\Models\AcademicYear;
 
-use App\Models\Accounts\User;
+use App\Models\Attendance;
 use App\Models\Mark;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\UserRole;
 use App\Models\SemesterUser;
 
 class Semester extends Model
 {
-    use HasFactory;
-
     protected $fillable = ['id', 'name', 'start_date', 'end_date', 'year_id'];
 
     protected $hidden = [ 'created_at', 'updated_at'];
@@ -30,10 +27,13 @@ class Semester extends Model
     public function semesterUsers(){
         return $this->hasMany(SemesterUser::class);
     }
-    
+
     public function marks(){
         return $this->hasMany(Mark::class);
     }
 
+    public function attendance(){
+        return $this->hasMany(Attendance::class);
+    }
 
 }
