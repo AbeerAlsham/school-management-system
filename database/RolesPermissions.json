@@ -25,7 +25,10 @@
 
         "assign-class-students", "assign-classroom-students", "get-classroom-students",
         "get-class-students", "get-unassign-class-students", "get-unassign-classroom-students",
-        "add-mark", "show-student-mark", "get-students-marks"
+        "add-mark", "show-student-mark", "get-students-marks",
+
+        "add-attendance", "update-attendance", "show-attendance", "get-attendance-students",
+        "count-semester-attendance", "count-year-attendance"
     ],
 
     "roles": [{
@@ -49,7 +52,10 @@
                 "index-supervisor-years", "index-teacher-years", "add-class-subject", "index-semester-teacher-subjects",
                 "index-guardian",
                 "index-student", "show-student", "get-guardian-students",
-                "add-mark", "show-student-mark", "get-students-marks"
+                "add-mark", "show-student-mark", "get-students-marks",
+
+                "update-attendance", "show-attendance", "get-attendance-students",
+                "count-semester-attendance", "count-year-attendance"
             ]
         },
         {
@@ -64,7 +70,10 @@
             "name": "supervisor",
             "permissions": ["show-user", "change-password", "update-user", "update-profile",
                 "index-academic-year", "show-academic-year", "index-year-semester", "get-year-class-classrooms", "show-semester",
-                "get-supervisor-classes", "index-supervisor-years"
+                "get-supervisor-classes", "index-supervisor-years",
+
+                "add-attendance", "update-attendance", "show-attendance", "get-attendance-students",
+                "count-semester-attendance", "count-year-attendance"
             ]
         },
         {

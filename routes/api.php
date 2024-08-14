@@ -114,18 +114,21 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
             });
 
             Route::group(['namespace' => 'Marks'], function () {
-                Route::prefix('/marks')->group( function () {
-                        Route::post('/', 'addMarkController')->name('add-mark');
-                    });
+                Route::prefix('/marks')->group(function () {
+                    Route::post('/', 'addMarkController')->name('add-mark');
+                });
                 Route::prefix('semesters/{semester}/subjects/{subject}')->group(function () {
-                        Route::get('/student-classes/{studentClass}/marks/show-student-mark', 'showStudentMarkDetailsController')
-                            ->name('show-student-mark');
-                        Route::get('/classrooms/{classroom}/marks/get-students-marks', 'GetStudentsMarkDetailsController')
-                            ->name('get-students-marks');
-                    });
+                    Route::get('/student-classes/{studentClass}/marks/show-student-mark', 'showStudentMarkDetailsController')
+                        ->name('show-student-mark');
+                    Route::get('/classrooms/{classroom}/marks/get-students-marks', 'GetStudentsMarkDetailsController')
+                        ->name('get-students-marks');
+                });
             });
-            Route::group( ['namespace' => 'Guardians'],function () {
-                    Route::prefix('/guardians')->group(function () {
+            Route::group(
+                ['namespace' => 'Guardians'],
+                function () {
+                    Route::prefix('/guardians')->group(
+                        function () {
                             Route::post('/', 'AddGuardianController')->name('add-guardian')->middleware('transaction');
                             Route::post('/{guardian}', 'EditGuardianController')->name('update-guardian');
                             Route::get('/', 'IndexGuardianController')->name('index-guardian');
@@ -135,6 +138,16 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
                     Route::get('users/{user}/guardians', 'ShowGuardianController')->name('show-guardian')->middleware('checkOwner');
                 }
             );
+
+            Route::group(['namespace' => 'Attendances'], function () {
+                Route::post('/attendances', 'AddAttendanceController')->name('add-attendance');
+                Route::put('/attendances/{attendance}', 'UpdateAttendanceController')->name('update-attendance');
+                Route::get('/attendances/{attendance}', 'ShowAttendanceController')->name('show-attendance');
+                Route::get('semesters/{semester}/attendances','GetAttendanceStudentsController')->name('get-attendance-students');
+                Route::get('semesters/{semester}/students/{student}/attendances','AttendanceDaysCountBySemesterController')->name('count-semester-attendance');
+                Route::get('study-years/{year}/students/{student}/attendances','AttendanceDaysCountByYearController')->name('count-year-attendance');
+
+            });
         }
     );
 });

@@ -4,7 +4,7 @@ namespace App\Traits;
 
 trait CalculateFinalMark
 {
-    function calculateMarkDetails($marks, $subject, $section)
+    public function calculateMarkDetails($marks, $subject, $section)
     {
         // جلب جميع أنواع العلامات المتوقعة
         $allMarkTypes = \App\Models\MarkType::all()->pluck('name');
@@ -50,7 +50,7 @@ trait CalculateFinalMark
 
             // حفظ تفاصيل النوع
             $details[$type] = [
-               // 'type_name' => $type,
+                // 'type_name' => $type,
                 'earned_mark_percentage' => round($earnedMarkPercentage),
                 'total_mark_percentage' => $totalMarkPercentage
             ];
