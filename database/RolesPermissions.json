@@ -63,14 +63,14 @@
             "permissions": ["show-user", "change-password", "update-user", "update-profile", "get-teacher-subjects",
                 "index-academic-year", "show-academic-year", "index-year-semester", "get-year-class-classrooms", "show-semester",
                 "get-teacher-subjects", "index-teacher-years", "index-semester-teacher-subjects", "get-teacher-classes",
-                "add-mark", "show-student-mark", "get-students-marks"
+                "add-mark", "show-student-mark", "get-students-marks", "get-classroom-students"
             ]
         },
         {
             "name": "supervisor",
             "permissions": ["show-user", "change-password", "update-user", "update-profile",
                 "index-academic-year", "show-academic-year", "index-year-semester", "get-year-class-classrooms", "show-semester",
-                "get-supervisor-classes", "index-supervisor-years",
+                "get-supervisor-classes", "index-supervisor-years", "get-classroom-students",
 
                 "add-attendance", "update-attendance", "show-attendance", "get-attendance-students",
                 "count-semester-attendance", "count-year-attendance"
