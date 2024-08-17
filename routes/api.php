@@ -123,6 +123,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
                     Route::get('/classrooms/{classroom}/marks/get-students-marks', 'GetStudentsMarkDetailsController')
                         ->name('get-students-marks');
                 });
+                Route::get('study-years/{studyYear}/student-classes/{studentClass}/marks/show-academic-report', 'ShowReportCardController@getAttendance')
+                    ->name('show-academic-report-card');
             });
             Route::group(
                 ['namespace' => 'Guardians'],
@@ -143,10 +145,9 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
                 Route::post('/attendances', 'AddAttendanceController')->name('add-attendance');
                 Route::put('/attendances/{attendance}', 'UpdateAttendanceController')->name('update-attendance');
                 Route::get('/attendances/{attendance}', 'ShowAttendanceController')->name('show-attendance');
-                Route::get('semesters/{semester}/attendances','GetAttendanceStudentsController')->name('get-attendance-students');
-                Route::get('semesters/{semester}/students/{student}/attendances','AttendanceDaysCountBySemesterController')->name('count-semester-attendance');
-                Route::get('study-years/{year}/students/{student}/attendances','AttendanceDaysCountByYearController')->name('count-year-attendance');
-
+                Route::get('semesters/{semester}/attendances', 'GetAttendanceStudentsController')->name('get-attendance-students');
+                Route::get('semesters/{semester}/students/{student}/attendances', 'AttendanceDaysCountBySemesterController')->name('count-semester-attendance');
+                Route::get('study-years/{year}/students/{student}/attendances', 'AttendanceDaysCountByYearController')->name('count-year-attendance');
             });
         }
     );

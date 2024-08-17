@@ -79,7 +79,7 @@
         {
             "name": "secretary",
             "permissions": ["show-user", "change-password", "update-user", "update-profile",
-                "index-academic-year", "show-academic-year", "index-year-semester", "get-year-class-classrooms", "show-semester", "add-student",
+                "index-academic-year", "show-academic-year", "index-year-semester", "get-year-class-classrooms", "show-semester", "index-class", "add-student",
                 "index-student", "show-student", "get-guardian-students",
                 "add-guardian", "update-guardian", "index-guardian",
 

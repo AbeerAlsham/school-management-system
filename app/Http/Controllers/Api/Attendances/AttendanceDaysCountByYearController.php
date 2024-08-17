@@ -17,7 +17,7 @@ class AttendanceDaysCountByYearController extends Controller
     public function __invoke(Request $request, StudyYear $year, Student $student)
     {
         $results = [];
-        foreach ($year->semesters() as $semester) {
+        foreach ($year->semesters as $semester) {
             $results[$semester->name] = [
                 $this->calculateAttendanceCount($semester, $student)
             ];

@@ -21,6 +21,7 @@ class checkPermession
         $user = auth('sanctum')->user();
         $roles = $user->roles;
         $permissionName = Route::currentRouteName();
+
         foreach ($roles as $role) {
             if ($role->hasPermession($permissionName)) {
                 return $next($request);
