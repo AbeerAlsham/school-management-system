@@ -63,7 +63,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
                 Route::post('/classes/{class}/subjects/{subject}', 'addSubjectToClassController')->name('add-class-subject');
                 Route::delete('/classes/{class}/subjects/{subject}', 'DeleteClassSubjectController')->name('delete-class-subject');
                 Route::get('/classes/{class}/subjects', 'GetClassSubjectController')->name('get-class-subjects');
-                Route::get('/semesterUsers/{semesterUser}/classrooms/{classroom}/subjects', 'GetTeacherSubjectsSemesterController')->name('index-semester-teacher-subjects'); //new
+                Route::get('/semesters/{semester}/users/{user}/classrooms/{classroom}/subjects', 'GetTeacherSubjectsSemesterController')->name('index-semester-teacher-subjects'); //new
                 Route::get('semesters/{semester}/classes/{class}/classrooms/{classroom}/subjects', 'GetUnAssignmentSubjectController')->name('index-classroom-unassign_subjects'); //new
             });
 

@@ -2,6 +2,7 @@
 
 namespace App\Models\Subjects;
 
+use App\Models\AssignmentTeacher;
 use App\Models\ClassSubject;
 use App\Models\Mark;
 use Illuminate\Database\Eloquent\Model;
@@ -25,4 +26,8 @@ class Section extends Model
         return $this->hasMany(Mark::class);
     }
 
+    public function assignmentTeachers()
+    {
+        return $this->hasMany(AssignmentTeacher::class);
+    }
 }
