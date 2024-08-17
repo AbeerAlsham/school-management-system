@@ -18,11 +18,11 @@ class addMarkController extends Controller
     public function __invoke(addMarkRequest $request)
     {
 
-        foreach ($request->marks as $mark) {
-            if (!$this->isValidAccess($mark)) {
-                return $this->forbiddenResponse('Access denied');
-            }
-        }
+        // foreach ($request->marks as $mark) {
+        //     if (!$this->isValidAccess($mark)) {
+        //         return $this->forbiddenResponse('Access denied');
+        //     }
+        // }
 
         foreach ($request->marks as $mark) {
             Mark::create($mark);
@@ -34,25 +34,25 @@ class addMarkController extends Controller
     //التحقق من كون المستخدم هو معلم و مسجل ضمن الفصل الدراسي لمادة معينة
     public function isValidAccess($data)
     {
-        $user = User::find(auth()->user()->id);
+        // $user = User::find(auth()->user()->id);
 
-        $role = Role::where('name', 'teacher')->first();
+        // $role = Role::where('name', 'teacher')->first();
 
-        $userRole = $user->userRole()->where('role_id', $role->id)->first();
-        if (!$userRole) {
-            return false;
-        }
+        // $userRole = $user->userRole()->where('role_id', $role->id)->first();
+        // if (!$userRole) {
+        //     return false;
+        // }
 
-        $userSemester = SemesterUser::where('user_role_id', $userRole->id)->where('semester_id', $data['semester_id'])->first();
+        // $userSemester = SemesterUser::where('user_role_id', $userRole->id)->where('semester_id', $data['semester_id'])->first();
 
-        if (!$userSemester) {
-            return false;
-        }
+        // if (!$userSemester) {
+        //     return false;
+        // }
 
-        $isValidTeacher = AssignmentTeacher::where('subject_id', $data['subject_id'])
-            ->where('semester_user_id', $userSemester->id)
-            ->exists();
+        // $isValidTeacher = AssignmentTeacher::where('subject_id', $data['subject_id'])
+        //     ->where('semester_user_id', $userSemester->id)
+        //     ->exists();
 
-        return $isValidTeacher || $user->roles->contains('name', 'manager');
+        // return $isValidTeacher || $user->roles->contains('name', 'manager');
     }
 }

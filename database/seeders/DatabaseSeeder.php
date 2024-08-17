@@ -97,11 +97,10 @@ class DatabaseSeeder extends Seeder
         $subject->sections()->create(['name' => 'الفيزياء و الكيمياء','max_mark' => 200]);
         $subject->sections()->create(['name' => 'العلوم', 'max_mark' => 200]);
 
-
-        MarkType::create(['name' => 'شفهي', 'percentage' => 0.01]);
-        MarkType::create(['name' => 'وظائف + أوراق عمل', 'percentage' => 0.01]);
-        MarkType::create(['name' => 'نشاطات و مبادرات', 'percentage' => 0.02]);
-        MarkType::create(['name' => 'المذاكرة', 'percentage' => 0.02]);
-        MarkType::create(['name' => 'امتحان الفصل', 'percentage' => 0.01]);
+        MarkType::create(['name' => 'شفهي', 'percentage' => 0.1]);
+        MarkType::create(['name' => 'وظائف + أوراق عمل', 'percentage' => 0.1]);
+        MarkType::create(['name' => 'نشاطات و مبادرات', 'percentage' => 0.2]);
+        MarkType::create(['name' => 'المذاكرة', 'percentage' => 0.2]);
+        MarkType::create(['name' => 'امتحان الفصل', 'percentage' => 0.4]);
     }
 }

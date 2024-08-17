@@ -123,7 +123,7 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
                     Route::get('/classrooms/{classroom}/marks/get-students-marks', 'GetStudentsMarkDetailsController')
                         ->name('get-students-marks');
                 });
-                Route::get('study-years/{studyYear}/student-classes/{studentClass}/marks/show-academic-report', 'ShowReportCardController@getAttendance')
+                Route::get('study-years/{studyYear}/student-classes/{studentClass}/marks/show-academic-report', 'ShowReportCardController')
                     ->name('show-academic-report-card');
             });
             Route::group(

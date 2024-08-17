@@ -2,18 +2,20 @@
 
 namespace App\Traits;
 
+use NumberToWords\NumberToWords;
+
 trait CalculateFinalMark
 {
     public function calculateMarkDetails($marks, $subject, $section)
     {
         // جلب جميع أنواع العلامات المتوقعة
         $allMarkTypes = \App\Models\MarkType::all()->pluck('name');
-
         // تعريف مصفوفة لحفظ تفاصيل العلامات
         $details = [];
-
+        $totalsubjectEarned = 0;
         // مع ملاحظة انه يجب ارسال السجلات مجمعة حسب نوع العلامة
         foreach ($allMarkTypes as $type) {
+
             $totalEarnedMark = 0;
             $totalTypeMark = 0;
             $markCount = 0; // عدد السجلات
@@ -34,6 +36,7 @@ trait CalculateFinalMark
                 if ($markCount > 0) {
                     if ($subject) {
                         $earnedMarkPercentage = ($totalEarnedMark / $markCount) * $typePercentage * $subject->max_mark;
+                        $totalsubjectEarned += $earnedMarkPercentage;
                         $totalMarkPercentage = $typePercentage * $subject->max_mark;
                     }
                     if ($section) {
@@ -56,6 +59,27 @@ trait CalculateFinalMark
             ];
         }
 
-        return $details;
+        $status = ''; // إعلان $status قبل if statement
+
+        if (!$section) {
+            if ($totalsubjectEarned > $subject->min_mark) {
+                $status = 'ناجح';
+            } else {
+                $status = 'راسب';
+            }
+        }
+
+
+        // create the number to words "manager" class
+        $numberToWords = new NumberToWords();
+
+        // build a new number transformer using the RFC 3066 language identifier
+        $numberTransformer = $numberToWords->getNumberTransformer('ar');
+
+        return [$details, 'total_mark' => [
+            'mark_number' => round($totalsubjectEarned),
+            'mark_word' => $numberTransformer->toWords($totalsubjectEarned),
+            'status' => $status
+        ]];
     }
 }
