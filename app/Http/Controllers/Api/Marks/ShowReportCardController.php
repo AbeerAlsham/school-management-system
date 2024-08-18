@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers\Api\Marks;
 
 use App\Http\Controllers\Controller;
@@ -11,88 +12,86 @@ use App\Models\Subjects\Subject;
 use App\Traits\CalculateFinalMark;
 use App\Traits\CalculateAttendance;
 
-// class ShowReportCardController extends Controller
-// {
-    // use CalculateFinalMark, CalculateAttendance;
+class ShowReportCardController extends Controller
+{
+    use CalculateFinalMark, CalculateAttendance;
 
-    // /**
-    //  * عرض الجلاء المدرسي للطالب
-    //  */
-    // public function __invoke(Request $request, StudyYear $studyYear, studentClass $studentClass)
-    // {
-    //     $student = $this->getStudent($studentClass);
-    //     $class = $this->getClass($studentClass);
-    //     $classroom = $this->getClassroom($studentClass);
-    //     $marks = $this->getMarksBySemester($studentClass);
-    //     // $attendance = $this->getAttendance($studyYear, $student);
+    /**
+     * عرض الجلاء المدرسي للطالب
+     */
+    public function __invoke(Request $request, StudyYear $studyYear, studentClass $studentClass)
+    {
+        $student = $this->getStudent($studentClass);
+        $class = $this->getClass($studentClass);
+        $classroom = $this->getClassroom($studentClass);
+        $marks = $this->getMarksBySemester($studentClass);
+        $attendance = $this->getAttendance($studyYear, $student);
 
-    //     return $this->okResponse(
-    //         [
-    //             'student' => $student,
-    //             'class' => $class,
-    //             'classroom' => $classroom,
-    //             'marks' => $marks,
-    //             // 'attendance' => $attendance
-    //         ]
+        return $this->okResponse(
+            [
+                'student' => $student,
+                'class' => $class,
+                'classroom' => $classroom,
+                'marks' => $marks,
+                'attendance' => $attendance
+            ]
 
-    //     );
-    // }
+        );
+    }
 
-    // public function getAttendance( StudyYear $studyYear, Student $student)
-    // {
-    //     $attendances = [];
-    //     foreach ($studyYear->semesters as $semester) {
-    //         $attendances[$semester->name] = [
-    //             $this->calculateAttendanceCount($semester, $student)
-    //         ];
-    //     }
-    //     return $attendances;
-    // }
+    public function getAttendance(StudyYear $studyYear, Student $student)
+    {
+        $attendances = [];
+        foreach ($studyYear->semesters as $semester) {
+            $attendances[$semester->name] = [
+                $this->calculateAttendanceCount($semester, $student)
+            ];
+        }
+        return $attendances;
+    }
 
-    // public function getStudent( $studentClass)
-    // {
-    //     return $studentClass->student()->with(['mother:id,name,student_id', 'father:id,name,student_id'])->select(['id','first_name','last_name'])->first();
-    // }
+    public function getStudent($studentClass)
+    {
+        return $studentClass->student()->with(['mother:id,name,student_id', 'father:id,name,student_id'])->select(['id', 'first_name', 'last_name'])->first();
+    }
 
-    // public function getClass( $studentClass)
-    // {
+    public function getClass($studentClass)
+    {
 
-    //     return $studentClass->studyClass;
-    // }
+        return $studentClass->studyClass;
+    }
 
-    // public function getClassroom($studentClass)
-    // {
-    //     return $studentClass->studentClassroom()->with('classroom')->first();
-    // }
+    public function getClassroom($studentClass)
+    {
+        return $studentClass->studentClassroom()->with('classroom')->first();
+    }
 
-    //     public function getMarksBySemester($studentClass)
-    //     {
-    //         $marks = Mark::where('student_class_id', $studentClass->id)
-    //             ->with(['markType:id,name', 'subject:id,name', 'semester:id,name'])
-    //             ->select('id', 'test_name', 'earned_mark', 'total_mark', 'mark_type_id', 'semester_id', 'subject_id')
-    //             ->get()
-    //             ->groupBy(['semester.name', 'subject.name', 'markType.name']);
+    public function getMarksBySemester($studentClass)
+    {
+        $marks = Mark::where('student_class_id', $studentClass->id)
+            ->with(['markType', 'subject:id,name', 'semester:id,name'])
+            ->select('id', 'test_name', 'earned_mark', 'total_mark', 'mark_type_id', 'semester_id', 'subject_id')
+            ->orderBy('semester_id')->get()
+            ->groupBy(['semester.name', 'subject.name', 'markType.name']);
 
-    //         $results = [];
+        $results = [];
 
-    //         foreach ($marks as $semesterName => $subjects) {
-    //             $results[$semesterName] = [];
+        foreach ($marks as $semesterName => $subjects) {
 
-    //             foreach ($subjects as $subjectName => $markTypes) {
-    //                 $results[$semesterName][$subjectName] = [];
+            foreach ($subjects as $subjectName => $markTypes) {
 
-    //                 // الحصول على معرف المادة من جدول subjects باستخدام اسم المادة $subjectName
-    //                 $subject = Subject::where('name', $subjectName)->first();
-    //                 if ($subject) {
-    //                     foreach ($markTypes as $markTypeName => $marks) {
-    //                         $result = $this->calculateMarkDetails($marks, $subject, $markTypeName);
-    //                         $results[$semesterName][$subjectName][$markTypeName] = $result;
-    //                     }
-    //                 }
-    //             }
-    //         }
+                // الحصول على معرف المادة من جدول subjects باستخدام اسم المادة $subjectName
+                $subject = Subject::where('name', $subjectName)->first();
+                if ($subject) {
 
-    //         return $results;
-    //     }
-    // }
+                    $result = $this->calculateMarkDetails($markTypes, $subject, null);
 
+                    $results[$semesterName][$subjectName] = $result;
+                }
+            }
+        }
+
+
+        return $results;
+    }
+}
