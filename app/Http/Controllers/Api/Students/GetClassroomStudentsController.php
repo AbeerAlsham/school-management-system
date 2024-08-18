@@ -17,7 +17,7 @@ class GetClassroomStudentsController extends Controller
     {
         $studentClassrooms= $Classroom->studentClassrooms()->with('studentClass.student')
         ->where('classroom_id',$Classroom->id)->get();
-        $student= StudentClassroomResource::collection($studentClassrooms);
-        return $this->okResponse($student);
+        // $student= StudentClassroomResource::collection($studentClassrooms);
+        return $this->okResponse($studentClassrooms);
     }
 }

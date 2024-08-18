@@ -25,6 +25,6 @@ class UnassignedStudentsInClassroomController extends Controller
             ->whereDoesntHave('studentClassroom')
             ->get();
 
-        return $this->okResponse(StudentClassResource::collection($studentClass), 'studentClass have added successfully');
+        return $this->okResponse( $studentClass, 'studentClass have added successfully');
     }
 }
