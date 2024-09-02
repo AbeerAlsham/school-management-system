@@ -5,6 +5,7 @@
         "delete-academic-year", "index-year-semester", "create-year-semester", "get-year-class-classrooms", "create-classroom",
 
         "update-semester", "delete-semester", "show-semester",
+        "index-holiday", "show-holiday", "add-holiday", "update-holiday", "delete-holiday",
 
         "index-user", "create-user", "update-user", "update-profile", "show-user",
         "delete-user", "change-password", "add-role-user", "remove-role-user",
@@ -36,7 +37,7 @@
             "permissions": ["index-academic-year", "create-academic-year", "update-academic-year", "show-academic-year",
                 "show-semester", "update-semester", "delete-semester",
                 "delete-academic-year", "index-year-semester", "create-year-semester", "get-year-class-classrooms", "create-classroom",
-
+                "index-holiday", "show-holiday", "add-holiday", "update-holiday", "delete-holiday",
                 "index-user", "create-user", "show-user", "update-user",
                 "update-profile", "delete-user", "change-password", "add-role-user", "remove-role-user",
                 "index-subject ", "create-subject", "delete-subject",

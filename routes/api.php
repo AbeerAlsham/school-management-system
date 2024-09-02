@@ -52,6 +52,14 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
                 Route::get('teachers/{user}/study-years', 'GetTeacherYearsController')->name('index-teacher-years')->middleware('checkOwner'); //new
             });
 
+            Route::group(['namespace' => 'Holidays'], function () {
+                Route::get('/study-years/{studyYear}/holidays', 'IndexHolidayController')->name('index-holiday');
+                Route::get('holidays/{holiday}', 'ShowHolidayController')->name('show-holiday');
+                Route::post('/study-years/{studyYear}/holidays', 'CreateHolidayController')->name('add-holiday');
+                Route::put('/holidays/{holiday}', 'UpdateHolidayController')->name('update-holiday');
+                Route::delete('holidays/{holiday}', 'DeleteHolidayController')->name('delete-holiday');
+            });
+
             Route::group(['namespace' => 'Subjects'], function () {
                 Route::get('/subjects', 'IndexSubjectsController')->name('index-subject');
                 Route::post('/subjects', 'createSubjectController')->name('create-subject');
