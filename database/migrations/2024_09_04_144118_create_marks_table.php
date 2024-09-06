@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mark_types', function (Blueprint $table) {
+        Schema::create('marks', function (Blueprint $table) {
             $table->id();
-            $table->string('name');//مثل امتحان  مذاكرة سبر نشاط 
-            $table->double('percentage');// النسبة المثوية التي تمثلها نوع العلامة مثل الامتحان يمثل 50 %
+            $table->foreignId('student_class_id')->constrained('student_classes')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('exam_id')->constrained('exams')->onDelete('cascade')->onUpdate('cascade');
+            $table->double('earned_mark');
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('mark_types');
+        Schema::dropIfExists('marks');
     }
 };

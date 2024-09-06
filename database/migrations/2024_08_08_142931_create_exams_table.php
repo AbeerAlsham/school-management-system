@@ -11,15 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('marks', function (Blueprint $table) {
+        Schema::create('Exams', function (Blueprint $table) {
             $table->id();
             $table->foreignId('semester_id')->constrained('semesters')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('student_class_id')->constrained('student_classes')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('subject_id')->constrained('subjects')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('section_id')->nullable()->constrained('sections')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('mark_type_id')->constrained('mark_types')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('exam_type_id')->constrained('exam_types')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('teacher_id')->constrained('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('classroom_id')->constrained('classrooms')->onDelete('cascade')->onUpdate('cascade');
             $table->string('test_name'); //مثل مذاكرة أولى  سبر 2
-            $table->double('earned_mark');
             $table->double('total_mark');
             $table->timestamps();
         });

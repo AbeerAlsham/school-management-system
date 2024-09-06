@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class MarkType extends Model
+class ExamType extends Model
 {
     protected $fillable = ['name', 'percentage'];
 

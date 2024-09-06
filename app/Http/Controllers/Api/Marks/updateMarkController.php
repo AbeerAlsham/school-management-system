@@ -13,7 +13,9 @@ class updateMarkController extends Controller
      */
     public function __invoke(UpdateMarkRequest $request, Mark $mark)
     {
-        $mark=$mark->update($request->all());
-        return $this->okResponse($mark,'the mark for student updated successfully');
+        if (!$request->can_update)
+            return $this->unprocessableResponse('You cannot update the mark within 24 hours of its creation unless you are an admin.');
+        $mark = $mark->update($request->all());
+        return $this->okResponse($mark, 'the mark for student updated successfully');
     }
 }

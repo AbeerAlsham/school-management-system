@@ -2,42 +2,19 @@
 
 namespace App\Models;
 
-use App\Models\AcademicYear\Semester;
-use App\Models\Subjects\Section;
-use App\Models\Subjects\Subject;
 use Illuminate\Database\Eloquent\Model;
 
-class Mark extends Model
+class mark extends Model
 {
-    protected $fillable = [
-        'semester_id', 'student_class_id', 'subject_id', 'section_id',
-        'test_name','mark_type_id', 'earned_mark', 'total_mark'
-    ];
+    protected $fillable = ['exam_id', 'student_class_id', 'earned_mark'];
 
-    protected $hidden = ['created_at', 'updated_at'];
+    public function exam()
+    {
+        return $this->belongsTo(Exam::class);
+    }
 
     public function studentClass()
     {
         return $this->belongsTo(studentClass::class);
-    }
-
-    public function subject()
-    {
-        return $this->belongsTo(Subject::class);
-    }
-
-    public function semester()
-    {
-        return $this->belongsTo(Semester::class);
-    }
-
-    public function section()
-    {
-        return $this->belongsTo(Section::class);
-    }
-
-    public function markType()
-    {
-        return $this->belongsTo(MarkType::class);
     }
 }

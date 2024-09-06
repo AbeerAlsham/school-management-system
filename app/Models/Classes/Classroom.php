@@ -6,6 +6,7 @@ use App\Models\AcademicYear\StudyYear;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\AssignmentSupervisor;
 use App\Models\AssignmentTeacher;
+use App\Models\Exam;
 use App\Models\studentClassroom;
 use App\Models\Students\Student;
 
@@ -38,6 +39,10 @@ class Classroom extends Model
     public function studentClassrooms()
     {
         return $this->hasMany(studentClassroom::class);
+    }
+
+    public function exams(){
+        return $this->hasMany(Exam::class,'classroom_id');
     }
 
 }

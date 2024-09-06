@@ -26,10 +26,12 @@
 
         "assign-class-students", "assign-classroom-students", "get-classroom-students",
         "get-class-students", "get-unassign-class-students", "get-unassign-classroom-students",
-        "add-mark", "show-student-mark", "get-students-marks",
+        "add-mark", "update-mark", "delete-mark", "show-student-mark", "get-students-marks",
 
         "add-attendance", "update-attendance", "show-attendance", "get-attendance-students",
-        "count-semester-attendance", "count-year-attendance"
+        "count-semester-attendance", "count-year-attendance",
+
+        "create-exam", "update-exam", "delete-exam", "show-exam", "show-subject-exams", "show-teacher-exams"
     ],
 
     "roles": [{
@@ -53,10 +55,11 @@
                 "index-supervisor-years", "index-teacher-years", "add-class-subject", "index-semester-teacher-subjects",
                 "index-guardian",
                 "index-student", "show-student", "get-guardian-students",
-                "add-mark", "show-student-mark", "get-students-marks",
+                "add-mark", "update-mark", "delete-mark", "show-student-mark", "get-students-marks",
 
                 "update-attendance", "show-attendance", "get-attendance-students",
-                "count-semester-attendance", "count-year-attendance"
+                "count-semester-attendance", "count-year-attendance",
+                "show-exam", "show-subject-exams"
             ]
         },
         {
@@ -64,7 +67,9 @@
             "permissions": ["show-user", "change-password", "update-user", "update-profile", "get-teacher-subjects",
                 "index-academic-year", "show-academic-year", "index-year-semester", "get-year-class-classrooms", "show-semester",
                 "get-teacher-subjects", "index-teacher-years", "index-semester-teacher-subjects", "get-teacher-classes",
-                "add-mark", "show-student-mark", "get-students-marks", "get-classroom-students"
+                "add-mark", "update-mark", "delete-mark", "show-student-mark", "get-students-marks", "get-classroom-students",
+
+                "create-exam", "update-exam", "delete-exam", "show-exam", "show-teacher-exams"
             ]
         },
         {

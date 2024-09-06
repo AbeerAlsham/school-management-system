@@ -35,7 +35,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $exceptions->renderable(function (NotFoundHttpException $e) {
             return response()->json([
-                'message' => 'Record not found.'
+                'message' => 'Route not found.'
             ], 404);
         });
 

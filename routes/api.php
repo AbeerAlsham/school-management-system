@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
     Route::group(['namespace' => 'Auth'], function () {
+        Route::patch('/fcm-token', 'AddFCMController')->name('fcmToken');
         Route::post('login', 'LoginController');
         Route::post('logout', 'LogoutController')->middleware('auth:sanctum');
     });
@@ -122,9 +123,11 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
             });
 
             Route::group(['namespace' => 'Marks'], function () {
-                Route::prefix('/marks')->group(function () {
-                    Route::post('/', 'addMarkController')->name('add-mark');
-                });
+
+                Route::post('exams/{exam}/marks', 'addMarkController')->name('add-mark');
+                Route::put('marks/{mark}','updateMarkController')->name('update-mark');
+                Route::delete('marks/{mark}','deleteMarkController')->name('delete-mark');
+
                 Route::prefix('semesters/{semester}/subjects/{subject}')->group(function () {
                     Route::get('/student-classes/{studentClass}/marks/show-student-mark', 'showStudentMarkDetailsController')
                         ->name('show-student-mark');
@@ -153,9 +156,18 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
                 Route::post('/attendances', 'AddAttendanceController')->name('add-attendance');
                 Route::put('/attendances/{attendance}', 'UpdateAttendanceController')->name('update-attendance');
                 Route::get('/attendances/{attendance}', 'ShowAttendanceController')->name('show-attendance');
-                Route::get('semesters/{semester}/attendances', 'GetAttendanceStudentsController')->name('get-attendance-students');
+                Route::get('/classrooms/{classroom}/attendances', 'GetAttendanceStudentsController')->name('get-attendance-students');
                 Route::get('semesters/{semester}/students/{student}/attendances', 'AttendanceDaysCountBySemesterController')->name('count-semester-attendance');
                 Route::get('study-years/{year}/students/{student}/attendances', 'AttendanceDaysCountByYearController')->name('count-year-attendance');
+            });
+
+            Route::group(['namespace' => 'Exams'], function () {
+                Route::post('/exams', 'CreateExamController')->name('create-exam');
+                Route::put('/exams/{exam}', 'UpdateExamController')->name('update-exam');
+                Route::delete('/exams/{exam}', 'DeleteExamController')->name('delete-exam');
+                Route::get('/exams/{exam}', 'ShowExamController')->name('show-exam');
+                Route::get('/exams/show-subject-exams', 'ShowSubjectExamController')->name('show-subject-exams');
+                Route::get('/exams/show-teacher-exams', 'ShowTeacherExamController')->name('show-teacher-exams');
             });
         }
     );

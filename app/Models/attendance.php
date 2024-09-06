@@ -22,4 +22,15 @@ class Attendance extends Model
     {
         return $this->belongsTo(Student::class);
     }
+
+
+    public function calculateDaysCountAbsent(Student $student)
+    {
+        $last15Attendances = $student->attendances()
+            ->orderBy('date', 'desc')
+            ->take(15)
+            ->get();
+
+        return $last15Attendances->whereIn('status', ['غائب'])->count() === 15;
+    }
 }

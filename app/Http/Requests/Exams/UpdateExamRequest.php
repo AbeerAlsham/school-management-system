@@ -1,12 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Marks;
+namespace App\Http\Requests\Exams;
 
-use App\Models\Exam;
-use App\Rules\ValidMarkRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class addMarkRequest extends FormRequest
+class UpdateExamRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +22,9 @@ class addMarkRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'marks.*.student_class_id' => 'exists:student_classes,id',
-            'marks.*.earned_mark' => ['required', 'numeric','lte:'.$this->route('exam')->total_mark]
+            'test_name' => 'string|min:5|max:15',
+            'exam_type_id' => 'exists:exam_types,id',
+            'total_mark' => 'numeric|between:10,600',
         ];
     }
 }

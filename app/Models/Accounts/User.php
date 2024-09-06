@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Models\Classes\Classroom;
 use App\Models\AcademicYear\Semester;
+use App\Models\Exam;
 use App\Models\Students\Student;
 use App\Models\Subjects\Subject;
 use App\Models\UserRole;
@@ -19,12 +20,14 @@ class User extends Authenticatable
     protected $fillable = [
         'username',
         'password',
+        'fcm_token'
     ];
 
     protected $hidden = [
         'pivot',
         'password',
         'remember_token',
+        'fcm_token',
         'created_at',
         'updated_at'
     ];
@@ -86,6 +89,16 @@ class User extends Authenticatable
     //for guardian
     public function students()
     {
-         return $this->belongsToMany(Student::class, 'student_guardians', 'guardian_id','student_id')->withPivot('Kinship');
+        return $this->belongsToMany(Student::class, 'student_guardians', 'guardian_id', 'student_id')->withPivot('Kinship');
+    }
+
+    public function exams()
+    {
+        return $this->hasMany(Exam::class, 'teacher_id');
+    }
+    
+    public function routeNotificationForFcm()
+    {
+        return $this->fcm_token;
     }
 }
