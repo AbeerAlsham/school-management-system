@@ -52,4 +52,8 @@ class Exam extends Model
     {
         return $this->belongsTo(Classroom::class);
     }
+
+    public function marks(){
+        return $this->belongsTo(mark::class);
+    }
 }

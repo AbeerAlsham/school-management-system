@@ -15,24 +15,23 @@ class addMarkController extends Controller
     /**
      * اضافة علاماة لعدة طلاب
      */
-    public function __invoke(addMarkRequest $request,Exam $exam)
+    public function __invoke(addMarkRequest $request, Exam $exam)
     {
-
         foreach ($request->marks as $mark) {
-            if (!$this->isValidAccess($mark)) {
+            if (!$this->isValidAccess($mark,$exam)) {
                 return $this->forbiddenResponse('Access denied');
             }
         }
-
+        $marks=[];
         foreach ($request->marks as $mark) {
-            $exam->Mark::create($mark);
+            $marks[]=$exam->marks()->create($mark);
         }
 
-        return $this->createdResponse('The marks assigned to students successfully');
+        return $this->createdResponse($marks,'The marks assigned to students successfully');
     }
 
     //التحقق من كون المستخدم هو معلم و مسجل ضمن الفصل الدراسي لمادة معينة
-    public function isValidAccess($data)
+    public function isValidAccess($data,$exam)
     {
         $user = User::find(request()->user()->id);
 
@@ -43,7 +42,7 @@ class addMarkController extends Controller
             return false;
         }
 
-        $userSemester = SemesterUser::where('user_role_id', $userRole->id)->where('semester_id', $data['semester_id'])->first();
+        $userSemester = SemesterUser::where('user_role_id', $userRole->id)->where('semester_id',$exam->semester_id)->first();
 
         if (!$userSemester) {
             return false;

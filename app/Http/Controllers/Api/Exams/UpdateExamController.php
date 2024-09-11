@@ -15,7 +15,6 @@ class UpdateExamController extends Controller
     public function __invoke(UpdateExamRequest $request,Exam $exam)
     {
         $exam->update($request->all());
-return $exam;
         return $this->okResponse( $exam,'the exam updated successfully');
     }
 }

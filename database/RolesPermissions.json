@@ -42,7 +42,7 @@
                 "index-holiday", "show-holiday", "add-holiday", "update-holiday", "delete-holiday",
                 "index-user", "create-user", "show-user", "update-user",
                 "update-profile", "delete-user", "change-password", "add-role-user", "remove-role-user",
-                "index-subject ", "create-subject", "delete-subject",
+                "index-subject ", "create-subject", "delete-subjectg",
                 "assign-teacher-subjects", "get-teacher-subjects",
                 "index-class", "create-class", "delete-class", "update-class",
                 "add-class-subject", "delete-class-subject", "get-class-subjects",
