@@ -26,9 +26,7 @@
 
         "assign-class-students", "assign-classroom-students", "get-classroom-students",
         "get-class-students", "get-unassign-class-students", "get-unassign-classroom-students",
-        "add-mark", "update-mark", "delete-mark", "show-student-mark", "get-students-marks",
-
-        "add-attendance", "update-attendance", "show-attendance", "get-attendance-students",
+        "add-mark", "update-mark", "delete-mark", "show-student-mark", "get-students-marks", "show-classroom-marks", "add-attendance", "update-attendance", "show-attendance", "get-attendance-students",
         "count-semester-attendance", "count-year-attendance",
 
         "create-exam", "update-exam", "delete-exam", "show-exam", "show-subject-exams", "show-teacher-exams"
@@ -56,8 +54,7 @@
                 "index-guardian",
                 "index-student", "show-student", "get-guardian-students",
                 "add-mark", "update-mark", "delete-mark", "show-student-mark", "get-students-marks",
-
-                "update-attendance", "show-attendance", "get-attendance-students",
+                "show-classroom-marks", "update-attendance", "show-attendance", "get-attendance-students",
                 "count-semester-attendance", "count-year-attendance",
                 "show-exam", "show-subject-exams"
             ]
@@ -68,7 +65,7 @@
                 "index-academic-year", "show-academic-year", "index-year-semester", "get-year-class-classrooms", "show-semester",
                 "get-teacher-subjects", "index-teacher-years", "index-semester-teacher-subjects", "get-teacher-classes",
                 "add-mark", "update-mark", "delete-mark", "show-student-mark", "get-students-marks", "get-classroom-students",
-
+                "show-classroom-marks",
                 "create-exam", "update-exam", "delete-exam", "show-exam", "show-teacher-exams"
             ]
         },
