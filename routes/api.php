@@ -130,8 +130,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
                 Route::get('exams/{exam}/marks/show-classroom-marks', 'GetClassroomExamMarksController')
                     ->name('show-classroom-marks');
                 Route::prefix('semesters/{semester}/susbjects/{subject}')->group(function () {
-                    // Route::get('/student-classes/{studentClass}/marks/show-student-mark', 'showStudentMarkDetailsController')
-                    //     ->name('show-student-mark');
+                    Route::get('/student-classes/{studentClass}/marks/show-subject-mark-detail','ShowSubjectMarkDetailsController')
+                        ->name('show-student-mark');
                     // Route::get('/classrooms/{classroom}/marks/get-students-marks', 'GetStudentsMarkDetailsController')
                     //     ->name('get-students-marks');
                 });

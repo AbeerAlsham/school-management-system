@@ -9,7 +9,7 @@ trait CalculateFinalMark
     public function calculateMarkDetails($marks, $subject, $section)
     {
         // جلب جميع أنواع العلامات المتوقعة
-        $allMarkTypes = \App\Models\MarkType::all()->pluck('name');
+        $allMarkTypes = \App\Models\ExamType::all()->pluck('name');
         // تعريف مصفوفة لحفظ تفاصيل العلامات
         $details = [];
         $totalsubjectEarned = 0;
@@ -47,7 +47,7 @@ trait CalculateFinalMark
             } else {
                 // في حال عدم وجود سجلات لنوع العلامة
                 $earnedMarkPercentage = 0;
-                $typePercentage = \App\Models\MarkType::where('name', $type)->first()->percentage;
+                $typePercentage = \App\Models\ExamType::where('name', $type)->first()->percentage;
                 $totalMarkPercentage = $subject ? $typePercentage * $subject->max_mark : $typePercentage * $section->max_mark;
             }
 
