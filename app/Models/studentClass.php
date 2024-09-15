@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Enums\StudentStatus;
 use App\Models\AcademicYear\StudyYear;
 use App\Models\Classes\StudyClass;
 use App\Models\Students\Student;
@@ -36,4 +37,9 @@ class studentClass extends Model
     public function marks(){
         return $this->hasMany(Mark::class);
     }
+
+    protected $casts = [
+        'status' => StudentStatus::class,
+    ];
+
 }

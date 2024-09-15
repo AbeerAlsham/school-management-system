@@ -54,6 +54,6 @@ class Exam extends Model
     }
 
     public function marks(){
-        return $this->belongsTo(mark::class);
+        return $this->hasMany(mark::class);
     }
 }

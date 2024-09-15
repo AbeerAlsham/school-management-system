@@ -3,38 +3,31 @@
 namespace App\Http\Controllers\Api\Marks;
 
 use App\Http\Controllers\Controller;
+use App\Models\AcademicYear\Semester;
 use Illuminate\Http\Request;
 use App\Models\AcademicYear\StudyYear;
 use App\Models\studentClass;
 use App\Models\Students\Student;
-use App\Services\MarkReportFinalService;
 use App\Traits\CalculateFinalMark;
 use App\Traits\CalculateAttendance;
 use App\Traits\CalculateMark;
 
-class ShowReportCardController extends Controller
+
+class ShowSemesterReportCardController extends Controller
 {
     use CalculateFinalMark, CalculateAttendance, CalculateMark;
 
     /**
      * عرض الجلاء المدرسي للطالب
      */
-
-     protected $markService;
-
-    public function __construct(MarkReportFinalService  $markService)
-    {
-        $this->markService = $markService;
-    }
-
-    public function __invoke(Request $request, StudyYear $studyYear, studentClass $studentClass)
+    public function __invoke(Request $request, Semester $semester, studentClass $studentClass)
     {
 
-        if ($studyYear->end_date > now())
+        if ($semester->end_date > now())
             return $this->errorResponse('do not export card before the study year');
 
         $directoryPath = storage_path('app/marks');
-        $filePath = $directoryPath . '/' . $studyYear->name . '_' . $studentClass->student->national_number . '.json';
+        $filePath = $directoryPath . '/' . $semester->name . '_' . $studentClass->student->national_number . '.json';
 
         // تحقق من وجود المجلد، وإذا لم يكن موجودًا، قم بإنشائه
         if (!file_exists($directoryPath)) {
@@ -48,8 +41,8 @@ class ShowReportCardController extends Controller
                 'student' => $student = $this->getStudent($studentClass),
                 'class' => $this->getClass($studentClass),
                 'classroom' => $this->getClassroom($studentClass),
-                'marks' => $this->getMarksBySemester($studentClass, $studyYear),
-                'attendance' => $this->getAttendance($studyYear, $student)
+                'marks' => $this->getMarksBySemester($studentClass, $semester),
+                'attendance' => $this->getAttendance($semester, $student)
             ];
 
             file_put_contents($filePath, json_encode($results));
@@ -58,16 +51,13 @@ class ShowReportCardController extends Controller
         return $this->okResponse($results);
     }
 
-    public function getAttendance(StudyYear $studyYear, Student $student)
+    public function getAttendance(Semester $semester, Student $student)
     {
-
         $attendances = [];
-        foreach ($studyYear->semesters as $semester) {
-            $attendances[$semester->name] = [
-                $this->calculateAttendanceCount($semester, $student)
-            ];
-        }
-        return $attendances;
+
+        return  $attendances[$semester->name] = [
+            $this->calculateAttendanceCount($semester, $student)
+        ];
     }
 
     public function getStudent($studentClass)
@@ -86,8 +76,22 @@ class ShowReportCardController extends Controller
         return $studentClass->studentClassroom()->with('classroom')->first();
     }
 
-    public function getMarksBySemester(StudentClass $studentClass, StudyYear $studyYear)
+
+    public function getMarksBySemester($studentClass, $semester)
     {
-        return $this->markService->getMarksBySemester($studentClass, $studyYear);
+    //     $result = [];
+
+    //     foreach ($studentClass->studyClass->subjects as $subject) {
+
+    //         $data = $this->loadMarks($studentClass, $semester, $subject);
+    //         // حساب تفاصيل العلامات
+    //         $markDetails = $this->calculateMarkDetails($data, $subject, null);
+
+    //         $result[$subject->name] = [
+    //             'semester' =>  $markDetails['details'],
+    //             'total_mark' => $this->viewResult($markDetails['total_mark'], $subject)
+    //         ];
+    //     }
+        // return $result;
     }
 }

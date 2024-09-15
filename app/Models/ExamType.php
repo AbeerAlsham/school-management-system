@@ -10,8 +10,8 @@ class ExamType extends Model
 
     protected $hidden = ['created_at', 'updated_at'];
 
-    public function mark()
+    public function exam()
     {
-        return $this->hasMany(Mark::class);
+        return $this->hasMany(Exam::class,'exam_type_id');
     }
 }

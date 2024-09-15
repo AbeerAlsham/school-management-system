@@ -2,11 +2,14 @@
 
 namespace Database\Seeders;
 
+use App\Models\AcademicYear\Semester;
 use App\Models\AcademicYear\StudyYear;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Accounts\User;
 use App\Models\Classes\StudyClass;
+use App\Models\Exam;
 use App\Models\ExamType;
+use App\Models\mark;
 use App\Models\Subjects\Subject;
 use Illuminate\Database\Seeder;
 
@@ -89,12 +92,12 @@ class DatabaseSeeder extends Seeder
         Subject::create(['name' => 'التربية المهنية', 'min_mark' => 80, 'max_mark' => 200]);
         Subject::create(['name' => 'السلوك', 'min_mark' => 80, 'max_mark' => 200]);
 
-        $subject = Subject::create(['name' => 'الرياضيات' ,'min_mark' => 240, 'max_mark' => 600]);
-        $subject->sections()->create(['name' => 'الجبر','max_mark'=>300]);
-        $subject->sections()->create(['name' => 'الهندسة','max_mark'=>300]);
+        $subject = Subject::create(['name' => 'الرياضيات', 'min_mark' => 240, 'max_mark' => 600]);
+        $subject->sections()->create(['name' => 'الجبر', 'max_mark' => 300]);
+        $subject->sections()->create(['name' => 'الهندسة', 'max_mark' => 300]);
 
-        $subject =Subject::create(['name' => 'العلوم العامة','min_mark' => 160 , 'max_mark' => 400]);
-        $subject->sections()->create(['name' => 'الفيزياء و الكيمياء','max_mark' => 200]);
+        $subject = Subject::create(['name' => 'العلوم العامة', 'min_mark' => 160, 'max_mark' => 400]);
+        $subject->sections()->create(['name' => 'الفيزياء و الكيمياء', 'max_mark' => 200]);
         $subject->sections()->create(['name' => 'العلوم', 'max_mark' => 200]);
 
         ExamType::create(['name' => 'شفهي', 'percentage' => 0.1]);
@@ -102,5 +105,39 @@ class DatabaseSeeder extends Seeder
         ExamType::create(['name' => 'نشاطات و مبادرات', 'percentage' => 0.2]);
         ExamType::create(['name' => 'المذاكرة', 'percentage' => 0.2]);
         ExamType::create(['name' => 'امتحان الفصل', 'percentage' => 0.4]);
+
+        // الحصول على بعض البيانات الموجودة
+        $semesters = Semester::all();
+        $subjects = Subject::all();
+        $examTypes = ExamType::all();
+        // Assuming you have a role column
+
+        // إدخال بيانات امتحانات
+        foreach ($semesters as $semester) {
+            foreach ($subjects as $subject) {
+                foreach ($examTypes as $examType) {
+                    Exam::create([
+                        'semester_id' => $semester->id,
+                        'subject_id' => $subject->id, // اختيار قسم عشوائي
+                        'exam_type_id' => $examType->id,
+                        'teacher_id' => 2,
+                        'classroom_id' => 1,
+                        'test_name' => 'مذاكرة ' . rand(1, 3), // مثال على اسم الاختبار
+                        'total_mark' => rand(50, 100), // علامة إجمالية عشوائية
+                    ]);
+                }
+            }
+        }
+
+        // إدخال بيانات العلامات
+        $exams = Exam::all();
+
+        foreach ($exams as $exam) {
+            mark::create([
+                'student_class_id' => 3,
+                'exam_id' => $exam->id,
+                'earned_mark' => rand(0, $exam->total_mark), // علامة مكتسبة عشوائية
+            ]);
+        }
     }
 }

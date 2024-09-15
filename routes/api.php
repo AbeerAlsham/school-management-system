@@ -129,12 +129,12 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
                 Route::delete('marks/{mark}', 'deleteMarkController')->name('delete-mark');
                 Route::get('exams/{exam}/marks/show-classroom-marks', 'GetClassroomExamMarksController')
                     ->name('show-classroom-marks');
-                Route::prefix('semesters/{semester}/susbjects/{subject}')->group(function () {
-                    Route::get('/student-classes/{studentClass}/marks/show-subject-mark-detail','ShowSubjectMarkDetailsController')
-                        ->name('show-student-mark');
-                    // Route::get('/classrooms/{classroom}/marks/get-students-marks', 'GetStudentsMarkDetailsController')
-                    //     ->name('get-students-marks');
-                });
+
+                Route::get('/marks/show-subject-mark-detail', 'ShowSubjectMarkDetailsController')
+                    ->name('show-student-mark');
+                // Route::get('/classrooms/{classroom}/marks/get-studentss-marks', 'GetStudentsMarkDetailsController')
+                //     ->name('get-students-marks');
+
                 Route::get('study-years/{studyYear}/student-classes/{studentClass}/marks/show-academic-report', 'ShowReportCardController')
                     ->name('show-academic-report-card');
             });
