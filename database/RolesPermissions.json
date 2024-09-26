@@ -29,7 +29,7 @@
         "add-mark", "update-mark", "delete-mark", "show-student-mark", "get-students-marks",
         "show-classroom-marks", "show-academic-report-card",
         "add-attendance", "update-attendance", "show-attendance", "get-attendance-students",
-        "count-semester-attendance", "count-year-attendance",
+        "count-semester-attendance", "count-year-attendance", "show-semester-report-card",
 
         "create-exam", "update-exam", "delete-exam", "show-exam", "show-subject-exams", "show-teacher-exams"
     ],
@@ -59,7 +59,7 @@
                 "show-classroom-marks", "update-attendance", "show-attendance", "get-attendance-students",
                 "show-academic-report-card",
                 "count-semester-attendance", "count-year-attendance",
-                "show-exam", "show-subject-exams"
+                "show-exam", "show-subject-exams", "show-semester-report-card"
             ]
         },
         {

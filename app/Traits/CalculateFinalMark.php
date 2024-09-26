@@ -1,17 +1,15 @@
 <?php
 
 namespace App\Traits;
-
-use NumberToWords\NumberToWords;
-
+use App\Traits\CalculateMark;
 trait CalculateFinalMark
 {
+    use CalculateMark;
     public function calculateMarkDetails($data, $subject, $section)
     {
-
-        $details = [];
+        $sumWorkMarks= 0;
         $totalsubjectEarned = 0;
-
+        $totalWorkMarks = [];
         foreach ($data as $exam_type) {
             $totalEarnedMark = 0;
             $markCount = 0; // عدد السجلات
@@ -43,16 +41,26 @@ trait CalculateFinalMark
                 $totalMarkPercentage = $subject ? $typePercentage * $subject->max_mark : $typePercentage * $section->max_mark;
             }
 
-            // حفظ تفاصيل النوع
-            $details[$exam_type->name] = [
-                'earned_mark_percentage' => round($earnedMarkPercentage),
-                'total_mark_percentage' => $totalMarkPercentage
-            ];
+            // إذا كان هذا هو نوع الامتحان، احفظ علامة الامتحان بشكل منفصل
+            if ($exam_type->name === 'امتحان الفصل') {
+                $totalExamMarks= [
+                    'earned_mark_percentage' => round($earnedMarkPercentage),
+                    'total_mark_percentage' => $totalMarkPercentage
+                ];
+            } else {
+                $sumWorkMarks+=round($earnedMarkPercentage);
+                // أضف "درجة اعمال الطالب" كمفتاح
+                $totalWorkMarks[$exam_type->name] = [
+                    'earned_mark_percentage' => round($earnedMarkPercentage),
+                    'total_mark_percentage' => $totalMarkPercentage
+                ];
+            }
         }
-
         return [
-            'details' => $details,
-            'total_mark' =>round( $totalsubjectEarned)
+            'total_work_marks'=>$totalWorkMarks,
+            'exam_mark'=>$totalExamMarks,
+            'sum_work_marks'=>$sumWorkMarks,
+            'total_mark' => $this->viewResult(round($totalsubjectEarned),$subject)
         ];
     }
 }

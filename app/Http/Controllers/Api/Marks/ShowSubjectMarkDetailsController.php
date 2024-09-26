@@ -3,11 +3,7 @@
 namespace App\Http\Controllers\Api\Marks;
 
 use App\Http\Controllers\Controller;
-use App\Models\AcademicYear\Semester;
-use App\Models\Exam;
 use App\Models\ExamType;
-use App\Models\Mark;
-use App\Models\studentClass;
 use App\Models\Subjects\Section;
 use App\Models\Subjects\Subject;
 use Illuminate\Http\Request;

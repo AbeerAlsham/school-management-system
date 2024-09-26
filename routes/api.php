@@ -137,6 +137,8 @@ Route::group(['namespace' => 'App\Http\Controllers\Api'], function () {
 
                 Route::get('study-years/{studyYear}/student-classes/{studentClass}/marks/show-academic-report', 'ShowReportCardController')
                     ->name('show-academic-report-card');
+                Route::get('semesters/{semester}/student-classes/{studentClass}/marks/show-semester-report', 'ShowSemesterReportCardController')
+                    ->name('show-semester-report-card');
             });
             Route::group(
                 ['namespace' => 'Guardians'],

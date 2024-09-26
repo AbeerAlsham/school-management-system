@@ -20,7 +20,7 @@ class ShowReportCardController extends Controller
      * عرض الجلاء المدرسي للطالب
      */
 
-     protected $markService;
+    protected $markService;
 
     public function __construct(MarkReportFinalService  $markService)
     {
@@ -45,11 +45,9 @@ class ShowReportCardController extends Controller
             $results = json_decode(file_get_contents($filePath), true);
         } else {
             $results = [
-                'student' => $student = $this->getStudent($studentClass),
-                'class' => $this->getClass($studentClass),
-                'classroom' => $this->getClassroom($studentClass),
+                'student_details' => $student_details= $this->getStudent($studentClass),
                 'marks' => $this->getMarksBySemester($studentClass, $studyYear),
-                'attendance' => $this->getAttendance($studyYear, $student)
+               'attendance' => $this->getAttendance($studyYear, $student_details['student'])
             ];
 
             file_put_contents($filePath, json_encode($results));
@@ -72,18 +70,17 @@ class ShowReportCardController extends Controller
 
     public function getStudent($studentClass)
     {
-        return $studentClass->student()->with(['mother:id,name,student_id', 'father:id,name,student_id'])->select(['id', 'first_name', 'last_name'])->first();
-    }
-
-    public function getClass($studentClass)
-    {
-
-        return $studentClass->studyClass;
-    }
-
-    public function getClassroom($studentClass)
-    {
-        return $studentClass->studentClassroom()->with('classroom')->first();
+        return $studentClass
+            ->with([
+                'student' => function ($query) {
+                    $query->with([
+                        'mother:id,name,student_id',
+                        'father:id,name,student_id',
+                    ])->select(['id', 'first_name', 'last_name']);
+                },
+                'studyClass',
+                'studentClassroom.classroom',
+            ])->first();
     }
 
     public function getMarksBySemester(StudentClass $studentClass, StudyYear $studyYear)
