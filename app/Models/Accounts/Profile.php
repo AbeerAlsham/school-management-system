@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Profile extends Model
 {
-
     protected $fillable = [
         'first_name',
         'father_name',
@@ -32,6 +31,4 @@ class Profile extends Model
     {
         return $this->belongsToMany(Role::class, 'users');
     }
-
-
 }

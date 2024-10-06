@@ -23,7 +23,7 @@ class CreateUserController extends Controller
 
         $phone_numbers = array_map(function ($phone_number) {
             return new ContactNumber($phone_number);
-        }, $request->phone_numbers);
+        }, $request->phone_numbers);+-
         $user->contactNumbers()->saveMany($phone_numbers);
 
         $user->roles()->attach($request->role_ids);

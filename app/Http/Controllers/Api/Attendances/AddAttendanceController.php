@@ -10,8 +10,12 @@ class AddAttendanceController extends Controller
 {
     public function __invoke(AddAttendanceRequest $request)
     {
-        $attendance = Attendance::insert($request->attendances);
-        
-        return $this->createdResponse($attendance,'the students have assigned attendances successfully');
+        $attendances=[];
+        foreach ($request->attendances as $attendance){
+            $attendance= Attendance::create($attendance);
+            $attendance->makeHidden(['student']); // إخفاء علاقة الطالب
+            $attendances[] = $attendance;}
+
+        return $this->createdResponse($attendances, 'the students have assigned attendances successfully');
     }
 }

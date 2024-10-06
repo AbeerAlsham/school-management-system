@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('student_class_id')->constrained('student_classes')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('exam_id')->constrained('exams')->onDelete('cascade')->onUpdate('cascade');
             $table->double('earned_mark');
+            $table->boolean('is_accepted')->default(0);
             $table->timestamps();
         });
     }

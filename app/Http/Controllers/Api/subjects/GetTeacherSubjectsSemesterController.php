@@ -18,7 +18,7 @@ class GetTeacherSubjectsSemesterController extends Controller
      */
     public function __invoke(Request $request, Semester $semester, User $user, Classroom $classroom)
     {
-        $user = User::find(auth()->user()->id);
+        $user = User::find(auth()->user->id);
 
         $role = Role::where('name', 'teacher')->first();
 

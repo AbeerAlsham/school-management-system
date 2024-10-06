@@ -21,7 +21,7 @@ class Student extends Model
     ];
 
     protected $hidden=['created_at','updated_at'];
-    
+
     public function father()
     {
         return $this->hasOne(Father::class, 'student_id');
@@ -76,7 +76,7 @@ class Student extends Model
         return $this->belongsToMany(StudyClass::class, 'student_classes');
     }
 
-    public function attendance(){
+    public function attendances(){
         return $this->hasMany(Attendance::class);
     }
 

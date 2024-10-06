@@ -16,14 +16,6 @@ class GetTeacherClassesController extends Controller
      */
     public function __invoke(Request $request, Semester $semester, User $user)
     {
-        // $classesAndClassroom = StudyClass::whereHas('assignmentTeachers', function ($query) use ($semesteruser) {
-        //     $query->where('semester_user_id', $semesteruser->id);
-        // })->with(['classrooms' => function ($query) use ($semesteruser) {
-        //     $query->whereHas('assignmentTeachers', function ($query) use ($semesteruser) {
-        //         $query->where('semester_user_id', $semesteruser->id);
-        //     });
-        // }])
-        //     ->get();
         $classesAndClassroom = StudyClass::whereHas('assignmentTeachers', function ($query) use ($semester, $user) {
             $query->whereHas('semesterUser', function ($q) use ($semester, $user) {
                 $q->where('semester_id', $semester->id)

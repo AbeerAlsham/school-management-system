@@ -16,7 +16,7 @@ class IndexGuardianController extends Controller
     {
         $guardians = User::with(['guardian', 'contactNumbers'])
             ->whereHas('roles', function ($query) {
-                $query->where('name', 'guardian');
+                $query->where('name','ولي أمر');
             })
             ->get();
         return $this->okResponse($guardians, 'تم الاستعلام عن أولياء الأمور بنجاح ');

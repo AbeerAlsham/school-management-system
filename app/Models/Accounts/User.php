@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Models\Classes\Classroom;
 use App\Models\AcademicYear\Semester;
 use App\Models\Exam;
+use App\Models\Notification;
 use App\Models\Students\Student;
 use App\Models\Subjects\Subject;
 use App\Models\UserRole;
@@ -20,14 +21,12 @@ class User extends Authenticatable
     protected $fillable = [
         'username',
         'password',
-        'fcm_token'
     ];
 
     protected $hidden = [
         'pivot',
         'password',
         'remember_token',
-        'fcm_token',
         'created_at',
         'updated_at'
     ];
@@ -96,9 +95,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Exam::class, 'teacher_id');
     }
-    
-    public function routeNotificationForFcm()
+
+    public function deviceTokens()
     {
-        return $this->fcm_token;
+        return $this->hasMany(UserDeviceToken::class, 'user_id');
     }
+
 }

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use App\Models\AcademicYear\Semester;
-use App\Models\Accounts\User;
+
 
 class SemesterUser extends Model
 {
@@ -23,6 +23,9 @@ class SemesterUser extends Model
         return $this->hasMany(AssignmentTeacher::class);
     }
 
+    public function notifications(){
+        return $this->hasMany(Notification::class,'semester_user_id');
+    }
     protected $hidden = [
         'created_at',
         'updated_at'

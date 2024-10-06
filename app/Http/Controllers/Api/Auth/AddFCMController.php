@@ -3,18 +3,21 @@
 namespace App\Http\Controllers\Api\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Auth\AddDeviceTokenRequest;
+use App\Models\Accounts\UserDeviceToken;
 
 class AddFCMController extends Controller
 {
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request)
+    public function __invoke(AddDeviceTokenRequest $request)
     {
-        $user = $request->user();
-        $user->fcm_token = $request->fcm_token;
-        $user->save();
-        return $this->okResponse('the fcm_token assigned to user successfully');
+        $token = UserDeviceToken::create([
+            'device_token' => $request->device_token,
+            'user_id' => $request->user()->id
+        ]);
+
+        return $this->okResponse($token, 'the device_token assigned to user successfully');
     }
 }

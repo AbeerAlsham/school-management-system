@@ -11,13 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mothers', function (Blueprint $table) {
+        Schema::table('user_device_tokens', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('last_name');
-            $table->string('study_level');
-            $table->string('work');
-            $table->foreignId('student_id')->constrained('students')->onDelete('CASCADE')
+            $table->string('device_token')->unique();
+            $table->foreignId('user_id')->constrained('users')->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
             $table->timestamps();
         });
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('user_device_tokens');
     }
 };

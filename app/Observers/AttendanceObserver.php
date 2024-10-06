@@ -2,58 +2,43 @@
 
 namespace App\Observers;
 
-use App\Models\Accounts\User;
 use App\Models\Attendance;
-use App\Notifications\absentStudentNotification;
-use App\Notifications\StudentDroppingOutNotification;
+use App\Models\UserRole;
+use App\Services\NotificationService;
+use App\Jobs\SendNotificationAttendanceJob;
 
 class AttendanceObserver
 {
-    /**
-     * Handle the Attendance "created" event.
-     */
+    protected $notificationService;
+
+    public function __construct()
+    {
+        $this->notificationService = new NotificationService();
+    }
+
+    // إرسال الإشعارات عند تسجيل الحضور والغياب
     public function created(Attendance $attendance): void
     {
-        if ($attendance->status === 'غائب')
-            $attendance->student()->Guardian()->notify(new absentStudentNotification($attendance->student));
+        $student = $attendance->student;
+        $guardianUserIds = UserRole::getStudentGuardian($student);
 
-        if ($attendance->calculateDaysCountAbsent($attendance->student))
-            $admin = User::whereHas('roles', function ($q) {
-                $q->where('name', 'manager');
-            })->first();
+        if ($attendance->status === 'غائب') {
+            foreach ($guardianUserIds as $guardianId) {
+                SendNotificationAttendanceJob::dispatch($guardianId, null, $attendance, 'absence');
+            }
+        }
 
-        $admin->notify(new StudentDroppingOutNotification($attendance->student));
-    }
+        if ($attendance->calculateDaysCountAbsent($student)) {
+            $adminIds = UserRole::getTeacher($attendance->semester_id, 'مدير');
+            $student->studentClass->status == 'متسرب';
 
-    /**
-     * Handle the Attendance "updated" event.
-     */
-    public function updated(Attendance $attendance): void
-    {
-        //
-    }
+            foreach ($guardianUserIds as $guardianId) {
+                SendNotificationAttendanceJob::dispatch($guardianId, 'أستاذي الكريم  نود إعلامكم أن الطالب ', $attendance, 'dropout');
+            }
 
-    /**
-     * Handle the Attendance "deleted" event.
-     */
-    public function deleted(Attendance $attendance): void
-    {
-        //
-    }
-
-    /**
-     * Handle the Attendance "restored" event.
-     */
-    public function restored(Attendance $attendance): void
-    {
-        //
-    }
-
-    /**
-     * Handle the Attendance "force deleted" event.
-     */
-    public function forceDeleted(Attendance $attendance): void
-    {
-        //
+            foreach ($adminIds as $adminId) {
+                SendNotificationAttendanceJob::dispatch($adminId, 'السيد/ة ولي أمر الطالب نود إعلامكم أن ابنكم ', $attendance, 'dropout');
+            }
+        }
     }
 }

@@ -24,7 +24,7 @@ class ShowGuardianController extends Controller
 
     public function checkAccess(User $user): bool
     {
-        if ((auth()->user()->id === $user->id) || auth()->user()->roles->contains('name', 'manager'))
+        if ((auth()->user->id === $user->id) || auth()->user->roles->contains('name', 'manager'))
             return true;
         return false;
     }

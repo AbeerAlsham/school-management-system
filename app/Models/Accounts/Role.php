@@ -2,7 +2,6 @@
 
 namespace App\Models\Accounts;
 
-use App\Models\Accounts\Permession;
 use App\Models\Accounts\Profile;
 use App\Models\Accounts\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

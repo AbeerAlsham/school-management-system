@@ -26,7 +26,7 @@
 
         "assign-class-students", "assign-classroom-students", "get-classroom-students",
         "get-class-students", "get-unassign-class-students", "get-unassign-classroom-students",
-        "add-mark", "update-mark", "delete-mark", "show-student-mark", "get-students-marks",
+        "add-mark", "update-mark", "delete-mark", "accept-mark", "show-student-mark", "get-students-marks",
         "show-classroom-marks", "show-academic-report-card",
         "add-attendance", "update-attendance", "show-attendance", "get-attendance-students",
         "count-semester-attendance", "count-year-attendance", "show-semester-report-card",
@@ -35,7 +35,7 @@
     ],
 
     "roles": [{
-            "name": "manager",
+            "name": "مدير",
             "permissions": ["index-academic-year", "create-academic-year", "update-academic-year", "show-academic-year",
                 "show-semester", "update-semester", "delete-semester",
                 "delete-academic-year", "index-year-semester", "create-year-semester", "get-year-class-classrooms", "create-classroom",
@@ -55,7 +55,7 @@
                 "index-supervisor-years", "index-teacher-years", "add-class-subject", "index-semester-teacher-subjects",
                 "index-guardian",
                 "index-student", "show-student", "get-guardian-students",
-                "add-mark", "update-mark", "delete-mark", "show-student-mark", "get-students-marks",
+                "add-mark", "update-mark", "delete-mark", "accept-mark", "show-student-mark", "get-students-marks",
                 "show-classroom-marks", "update-attendance", "show-attendance", "get-attendance-students",
                 "show-academic-report-card",
                 "count-semester-attendance", "count-year-attendance",
@@ -63,7 +63,7 @@
             ]
         },
         {
-            "name": "teacher",
+            "name": "معلّم",
             "permissions": ["show-user", "change-password", "update-user", "update-profile", "get-teacher-subjects",
                 "index-academic-year", "show-academic-year", "index-year-semester", "get-year-class-classrooms", "show-semester",
                 "get-teacher-subjects", "index-teacher-years", "index-semester-teacher-subjects", "get-teacher-classes",
@@ -73,7 +73,7 @@
             ]
         },
         {
-            "name": "supervisor",
+            "name": "مشرف",
             "permissions": ["show-user", "change-password", "update-user", "update-profile",
                 "index-academic-year", "show-academic-year", "index-year-semester", "get-year-class-classrooms", "show-semester",
                 "get-supervisor-classes", "index-supervisor-years", "get-classroom-students",
@@ -83,7 +83,7 @@
             ]
         },
         {
-            "name": "secretary",
+            "name": "أمين سر",
             "permissions": ["show-user", "change-password", "update-user", "update-profile",
                 "index-academic-year", "show-academic-year", "index-year-semester", "get-year-class-classrooms", "show-semester", "index-class", "add-student",
                 "index-student", "show-student", "get-guardian-students",
@@ -93,7 +93,7 @@
                 "get-class-students", "get-unassign-class-students", "get-unassign-classroom-students"
             ]
         }, {
-            "name": "guardian",
+            "name": "ولي أمر",
             "permissions": [
                 "get-guardian-students", "show-guardian"
             ]

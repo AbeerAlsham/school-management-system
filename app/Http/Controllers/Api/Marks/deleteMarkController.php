@@ -19,7 +19,7 @@ class deleteMarkController extends Controller
     }
 
     public function isAccess($mark){
-        $isAdmin = request()->user()->roles()->where('name', 'manager')->exists();
+        $isAdmin = request()->user()->roles()->where('name', 'مدير')->exists();
         $teacher_id = Exam::find($mark->exam_id)->teacher_id;
         $isAuth= request()->user()->id === $teacher_id ;
 

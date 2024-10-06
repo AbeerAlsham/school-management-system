@@ -19,7 +19,10 @@ class LoginController extends Controller
             return $this->unprocessableResponse('password or username not correct');
         }
         $token = $user->createToken('schoolSixth')->plainTextToken;
-        return $this->okResponse(['user' => $user, 'roles' => $user->roles,'token'=>$token], " user login successfully");
-    }
 
+        $user->deviceTokens()->create([
+            'device_token' => $request->device_token,
+        ]);
+        return $this->okResponse(['user' => $user, 'roles' => $user->roles, 'token' => $token], " user login successfully");
+    }
 }
