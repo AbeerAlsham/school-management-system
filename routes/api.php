@@ -14,7 +14,7 @@ Route::group(
         Route::middleware('auth:sanctum')->group(
             function () {
                 Route::group(['namespace' => 'Roles'], function () {
-                    Route::get('roles/{role}/users/{user}/get-user-role-id', 'UserRoleIdForMeContoller');
+
                 });
                 Route::group(
                     ['namespace' => 'Notifications'],
@@ -38,7 +38,7 @@ Route::group(
                     });
                     Route::prefix('/semesters-users/{semesterUser}/')->group(function () {
                         Route::get('/index-supervisor-class', 'GetSupervisorClassesController')->name('get-supervisor-classes'); //new
-                        Route::get('subjects/{subject}/index-teacher-class', 'GetTeacherClassesController')->name('get-teacher-classes'); //new
+                        Route::get('classes/index-teacher-class', 'GetTeacherClassesController')->name('get-teacher-classes'); //new
                     });
                     Route::get('semesters/{semester}/supervisor/classes', 'GetUnRegisteredSupervisorsClassesController')->name('get-unassign-supervisor-classes'); //new
                     Route::get('semesters/{semester}/teacher/classes', 'GetUnRegisteredTeachersClassesController')->name('get-unassign-teacher-classes'); //new
