@@ -20,9 +20,12 @@ class LoginController extends Controller
         }
         $token = $user->createToken('schoolSixth')->plainTextToken;
 
-        $user->deviceTokens()->create([
+        $user->deviceTokens()->firstOrCreate([
             'device_token' => $request->device_token,
         ]);
-        return $this->okResponse(['user' => $user, 'roles' => $user->roles, 'token' => $token], " user login successfully");
+        return $this->okResponse([
+            'user' => $user->load('userRole','userRole.role'),
+            'token' => $token
+        ], " user login successfully");
     }
 }
