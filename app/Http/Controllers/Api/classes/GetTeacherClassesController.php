@@ -38,7 +38,7 @@ class GetTeacherClassesController extends Controller
                         ->where('semester_user_id', $semesterUser->id);
                 });
             }])->get();
-        // else $classesAndClassroom = [];
+        else $classesAndClassroom = [];
         return $this->okResponse($classesAndClassroom, 'classes and classroom retrived succsessfully');
     }
 }
