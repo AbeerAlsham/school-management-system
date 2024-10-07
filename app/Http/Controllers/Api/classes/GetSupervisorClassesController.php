@@ -3,31 +3,19 @@
 namespace App\Http\Controllers\Api\Classes;
 
 use App\Http\Controllers\Controller;
-use App\Models\AcademicYear\Semester;
 use Illuminate\Http\Request;
-use App\Models\Accounts\User;
 use App\Models\SemesterUser;
 use App\Models\Classes\StudyClass;
-
+//الحصو لعى الصفوفو الشعب ل موجه معين
 class GetSupervisorClassesController extends Controller
 {
-    public function __invoke(Request $request, Semester $semester, User $user)
+    public function __invoke(Request $request, SemesterUser $semesterUser)
     {
-        $classesAndClassroom = StudyClass::whereHas('assignmentSupervisors', function ($query) use ($semester, $user) {
-            $query->whereHas('semesterUser', function ($q) use ($semester, $user) {
-                $q->where('semester_id', $semester->id)
-                    ->whereHas('userRoles', function ($qr) use ($user) {
-                        $qr->where('user_id', $user->id);
-                    });
-            });
-        })->with(['classrooms' => function ($query) use ($semester, $user) {
-            $query->whereHas('assignmentSupervisors', function ($query) use ($semester, $user) {
-                $query->whereHas('semesterUser', function ($q) use ($semester, $user) {
-                    $q->where('semester_id', $semester->id)
-                        ->whereHas('userRoles', function ($qr) use ($user) {
-                            $qr->where('user_id', $user->id);
-                        });
-                });
+        $classesAndClassroom = StudyClass::whereHas('assignmentSupervisors', function ($query) use ($semesterUser,) {
+            $query->where('semester_user_id', $semesterUser->id);
+        })->with(['classrooms' => function ($query) use ($semesterUser) {
+            $query->whereHas('assignmentSupervisors', function ($query) use ($semesterUser) {
+                $query->where('semester_user_id', $semesterUser->id);
             });
         }])->get();
 

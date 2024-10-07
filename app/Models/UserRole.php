@@ -15,7 +15,7 @@ class UserRole extends Model
 
     public function semesters()
     {
-        return $this->belongsToMany(Semester::class, 'semester_users');
+        return $this->belongsToMany(Semester::class, 'semester_users')->withPivot(['id']);
     }
 
     public function user()

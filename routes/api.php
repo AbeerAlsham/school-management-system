@@ -8,7 +8,6 @@ Route::group(
         Route::group(['namespace' => 'Auth'], function () {
             Route::post('login', 'LoginController');
             Route::middleware('auth:sanctum')->group(function () {
-                Route::patch('/fcm-token', 'AddFCMController');
                 Route::post('logout', 'LogoutController');
             });
         });
@@ -37,9 +36,9 @@ Route::group(
                         Route::Delete('/{class}', 'DeleteClassController')->name('delete-class');
                         Route::post('/{class}', 'updateClasscontroller')->name('update-class');
                     });
-                    Route::prefix('/semesters/{semester}/users/{user}/classes')->middleware(['checkOwner'])->group(function () {
+                    Route::prefix('/semesters-users/{semesterUser}/')->group(function () {
                         Route::get('/index-supervisor-class', 'GetSupervisorClassesController')->name('get-supervisor-classes'); //new
-                        Route::get('/index-teacher-class', 'GetTeacherClassesController')->name('get-teacher-classes'); //new
+                        Route::get('subjects/{subject}/index-teacher-class', 'GetTeacherClassesController')->name('get-teacher-classes'); //new
                     });
                     Route::get('semesters/{semester}/supervisor/classes', 'GetUnRegisteredSupervisorsClassesController')->name('get-unassign-supervisor-classes'); //new
                     Route::get('semesters/{semester}/teacher/classes', 'GetUnRegisteredTeachersClassesController')->name('get-unassign-teacher-classes'); //new
@@ -68,8 +67,8 @@ Route::group(
                         Route::get('/{studyYear}', 'ShowStudyYearController')->name('show-academic-year');
                         Route::delete('/{studyYear}',  'DeleteStudyYearController')->name('delete-academic-year');
                     });
-                    Route::get('supervisors/{user}/study-years', 'GetSupervisorYearsController')->name('index-supervisor-years'); //new
-                    Route::get('teachers/{user}/study-years', 'GetTeacherYearsController')->name('index-teacher-years')->middleware('checkOwner'); //new
+                    // Route::get('supervisors/{user}/study-years', 'GetSupervisorYearsController')->name('index-supervisor-years'); //new
+                    Route::get('users-roles/{userRole}/get-teacher-study-years', 'GetTeacherYearsController')->name('index-teacher-years'); //new
                 });
 
                 Route::group(['namespace' => 'Holidays'], function () {
@@ -91,7 +90,7 @@ Route::group(
                     Route::post('/classes/{class}/subjects/{subject}', 'addSubjectToClassController')->name('add-class-subject');
                     Route::delete('/classes/{class}/subjects/{subject}', 'DeleteClassSubjectController')->name('delete-class-subject');
                     Route::get('/classes/{class}/subjects', 'GetClassSubjectController')->name('get-class-subjects');
-                    Route::get('/semesters/{semester}/users/{user}/classrooms/{classroom}/subjects', 'GetTeacherSubjectsSemesterController')->name('index-semester-teacher-subjects'); //new
+                    Route::get('/semesters-users/{semesterUser}/subjects', 'GetTeacherSubjectsSemesterController')->name('index-semester-teacher-subjects'); //new
                     Route::get('semesters/{semester}/classes/{class}/classrooms/{classroom}/subjects', 'GetUnAssignmentSubjectController')->name('index-classroom-unassign_subjects'); //new
                 });
 

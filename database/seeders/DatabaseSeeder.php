@@ -46,13 +46,13 @@ class DatabaseSeeder extends Seeder
         $user->roles()->attach(4);
 
         //اضافة عام دراسي
-        $StudyYear1 = StudyYear::create(['name' => '2022-2023', 'start_date' => '2023-10-09', 'end_date' => '2024-05-06']);
-        $StudyYear1->semesters()->create(['name' => 'الفصل الأول', 'start_date' => '2023-10-09', 'end_date' => '2024-01-01']);
-        $StudyYear1->semesters()->create(['name' => 'الفصل الثاني', 'start_date' => '2023-01-05', 'end_date' => '2024-05-06']);
+        $StudyYear1 = StudyYear::create(['name' => '2022-2023', 'start_date' => '2023-10-09', 'end_date' => '2024-05-06', 'is_current' => 0]);
+        $StudyYear1->semesters()->create(['name' => 'الفصل الأول', 'start_date' => '2023-10-09', 'end_date' => '2024-01-01', 'is_current' => 0, 'is_opened' => 0]);
+        $StudyYear1->semesters()->create(['name' => 'الفصل الثاني', 'start_date' => '2023-01-05', 'end_date' => '2024-05-06', 'is_current' => 0, 'is_opened' => 0]);
 
-        $StudyYear2 = StudyYear::create(['name' => '2023-2024', 'start_date' => '2023-01-09', 'end_date' => '2024-06-06']);
-        $StudyYear2->semesters()->create(['name' => 'الفصل الأول', 'start_date' => '2023-01-09', 'end_date' => '2024-01-01']);
-        $StudyYear2->semesters()->create(['name' => 'الفصل الثاني', 'start_date' => '2023-01-15', 'end_date' => '2024-06-06']);
+        $StudyYear2 = StudyYear::create(['name' => '2023-2024', 'start_date' => '2023-01-09', 'end_date' => '2024-06-06', 'is_current' => 1]);
+        $StudyYear2->semesters()->create(['name' => 'الفصل الأول', 'start_date' => '2023-01-09', 'end_date' => '2024-01-01', 'is_current' => 0, 'is_opened' => 1]);
+        $StudyYear2->semesters()->create(['name' => 'الفصل الثاني', 'start_date' => '2023-01-15', 'end_date' => '2024-06-06', 'is_current' => 1, 'is_opened' => 1]);
 
         $class = StudyClass::create([
             'name' => "السابع",
@@ -102,6 +102,5 @@ class DatabaseSeeder extends Seeder
         ExamType::create(['name' => 'نشاطات و مبادرات', 'percentage' => 0.2]);
         ExamType::create(['name' => 'المذاكرة', 'percentage' => 0.2]);
         ExamType::create(['name' => 'امتحان الفصل', 'percentage' => 0.4]);
-
     }
 }

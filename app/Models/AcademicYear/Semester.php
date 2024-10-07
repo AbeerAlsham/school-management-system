@@ -10,7 +10,7 @@ use App\Models\SemesterUser;
 
 class Semester extends Model
 {
-    protected $fillable = ['id', 'name', 'start_date', 'end_date', 'year_id'];
+    protected $fillable = ['id', 'name', 'start_date', 'end_date', 'year_id','is_current','is_opened'];
 
     protected $hidden = [ 'created_at', 'updated_at'];
 

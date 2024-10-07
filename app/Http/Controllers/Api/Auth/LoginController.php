@@ -24,7 +24,7 @@ class LoginController extends Controller
             'device_token' => $request->device_token,
         ]);
         return $this->okResponse([
-            'user' => $user->load('userRole','userRole.role'),
+            'user' => $user->load('roles'),
             'token' => $token
         ], " user login successfully");
     }

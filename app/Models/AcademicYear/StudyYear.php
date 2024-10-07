@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class StudyYear extends Model
 {
-    protected $fillable = ['id', 'name', 'start_date', 'end_date'];
+    protected $fillable = ['id', 'name', 'start_date', 'end_date','is_current'];
 
     protected $hidden = [
         'created_at',
@@ -26,7 +26,7 @@ class StudyYear extends Model
     {
         return $this->hasMany(Holiday::class, 'year_id');
     }
-    
+
     public function classroom()
     {
         return $this->hasMany(Classroom::class, 'year_id');
