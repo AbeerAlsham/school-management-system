@@ -15,9 +15,8 @@ class CreateExamController extends Controller
      */
     public function __invoke(CreateExamRequest $request)
     {
-        if ($this->isNOtValid($request['semester_id'], $request['exam_type_id']))
+        if (!$this->isNOtValid($request['semester_id'], $request['exam_type_id']))
             return $this->forbiddenResponse("لا يمكنك إضافة اختبار جديد بسبب انتهاء الفصل الدراسي");
-        $request['teacher_id'] = $request->user()->id;
         $exam = Exam::create($request->all());
 
         return $this->createdResponse($exam, 'the exam created successfully');

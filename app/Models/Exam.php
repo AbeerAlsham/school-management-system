@@ -15,7 +15,7 @@ class Exam extends Model
         'semester_id',
         'subject_id',
         'section_id',
-        'teacher_id',
+        'semester_user_id',
         'classroom_id',
         'test_name',
         'exam_type_id',
@@ -43,9 +43,9 @@ class Exam extends Model
     {
         return $this->belongsTo(ExamType::class);
     }
-    public function teacher()
+    public function semesterUser()
     {
-        return $this->belongsTo(User::class, 'teacher_id');
+        return $this->belongsTo(SemesterUser::class, 'semester_user_id');
     }
 
     public function classroom()
