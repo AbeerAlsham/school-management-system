@@ -12,7 +12,7 @@ class studentClass extends Model
 {
     protected $fillable = ['student_id', 'study_class_id', 'study_year_id', 'status'];
 
-    protected $hidden=['created_at','updated_at'];
+    protected $hidden = ['created_at', 'updated_at'];
 
     public function student()
     {
@@ -34,12 +34,16 @@ class studentClass extends Model
         return $this->hasOne(studentClassroom::class);
     }
 
-    public function marks(){
+    public function marks()
+    {
         return $this->hasMany(Mark::class);
     }
 
+    public function notes()
+    {
+        return $this->hasMany(Note::class, 'student_class_id');
+    }
     protected $casts = [
         'status' => StudentStatus::class,
     ];
-
 }
