@@ -13,9 +13,7 @@ Route::group(
         });
         Route::middleware('auth:sanctum')->group(
             function () {
-                Route::group(['namespace' => 'Roles'], function () {
-
-                });
+                Route::group(['namespace' => 'Roles'], function () {});
                 Route::group(
                     ['namespace' => 'Notifications'],
                     function () {
@@ -184,12 +182,21 @@ Route::group(
                 });
 
                 Route::group(['namespace' => 'Exams'], function () {
+                    Route::get('/exams/show-subject-exams', 'ShowSubjectExamController')->name('show-subject-exams');
+                    Route::get('/exams/show-teacher-exams', 'ShowTeacherExamController')->name('show-teacher-exams');
                     Route::post('/exams', 'CreateExamController')->name('create-exam');
                     Route::put('/exams/{exam}', 'UpdateExamController')->name('update-exam');
                     Route::delete('/exams/{exam}', 'DeleteExamController')->name('delete-exam');
                     Route::get('/exams/{exam}', 'ShowExamController')->name('show-exam');
-                    Route::get('/exams/show-subject-exams', 'ShowSubjectExamController')->name('show-subject-exams');
-                    Route::get('/exams/show-teacher-exams', 'ShowTeacherExamController')->name('show-teacher-exams');
+
+                });
+
+                Route::group(['namespace' => 'Notes'], function () {
+                    Route::get('students-classes/{studentClass}/notes', 'GetAllNoteController')->name('index-note');
+                    Route::get('students-classes/{studentClass}/semesters-users/{semesterUser}/notes', 'GetAllNoteController')->name('index-teacher-note');
+                    Route::post('/notes', 'AddNoteController')->name('add-note');
+                    Route::put('notes/{note}', 'UpdateNoteController')->name('update-note');
+                    Route::delete('notes/{note}', 'DeleteNoteController')->name('delete-note');
                 });
             }
         );

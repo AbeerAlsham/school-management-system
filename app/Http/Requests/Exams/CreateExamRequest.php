@@ -26,6 +26,7 @@ class CreateExamRequest extends FormRequest
             'subject_id'=>'required|exists:subjects,id',
             'section_id'=>'somtimes|exists:sections,id',
             'classroom_id'=>'required|exists:classrooms,id',
+            'semester_user_id'=>'required|exists:semester_users,id',
             'test_name'=>'required|string|min:5|max:15',
             'exam_type_id'=>'required|exists:exam_types,id',
             'total_mark'=>'required|numeric|between:10,600'
