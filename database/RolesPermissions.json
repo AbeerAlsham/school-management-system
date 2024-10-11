@@ -11,7 +11,7 @@
         "delete-user", "change-password", "add-role-user", "remove-role-user",
 
         "index-class", "create-class", "delete-class", "update-class",
-        "add-class-subject", "delete-class-subject", "get-class-subjects",
+        "add-class-subject", "delete-class-subject", "get-class-subjects", "get-student-result",
 
         "update-classroom", "delete-classroom",
 
@@ -46,7 +46,7 @@
                 "index-subject ", "create-subject", "delete-subjectg",
                 "assign-teacher-subjects", "get-teacher-subjects",
                 "index-class", "create-class", "delete-class", "update-class",
-                "add-class-subject", "delete-class-subject", "get-class-subjects",
+                "add-class-subject", "delete-class-subject", "get-class-subjects", "get-student-result",
                 "update-classroom", "delete-classroom",
                 "index-subject", "create-subject", "delete-subject",
                 "assign-teacher-subjects", "assign-teacher",

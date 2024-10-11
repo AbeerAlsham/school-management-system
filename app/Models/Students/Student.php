@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Accounts\User;
 use App\Models\Attendance;
 use App\Models\Classes\StudyClass;
-use App\Models\Mark;
 use App\Models\studentClass;
 use App\Models\Students\enrollment;
 
@@ -57,14 +56,10 @@ class Student extends Model
         return $this->hasOne(enrollment::class, 'student_id');
     }
 
-    // public function studentClasses()
-    // {
-    //     return $this->hasMany(studentClass::class);
-    // }
-
-    // public function marks(){
-    //     return $this->hasMany(Mark::class);
-    // }
+    public function studentClasses()
+    {
+        return $this->hasMany(studentClass::class);
+    }
 
     public function AcademicYear()
     {

@@ -24,7 +24,7 @@ class studentClass extends Model
         return $this->belongsTo(StudyClass::class);
     }
 
-    public function studyYears()
+    public function studyYear()
     {
         return $this->belongsTo(StudyYear::class);
     }
@@ -43,7 +43,7 @@ class studentClass extends Model
     {
         return $this->hasMany(Note::class, 'student_class_id');
     }
-    protected $casts = [
-        'status' => StudentStatus::class,
-    ];
+    // protected $casts = [
+    //     'status' => StudentStatus::class,
+    // ];
 }

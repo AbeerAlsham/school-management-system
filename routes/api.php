@@ -34,6 +34,7 @@ Route::group(
                         Route::Delete('/{class}', 'DeleteClassController')->name('delete-class');
                         Route::post('/{class}', 'updateClasscontroller')->name('update-class');
                     });
+                    Route::get('students/{student}/classes/get-students-results','GetStudentStudyResult')->name('get-student-result');
                     Route::prefix('/semesters-users/{semesterUser}/')->group(function () {
                         Route::get('/index-supervisor-class', 'GetSupervisorClassesController')->name('get-supervisor-classes'); //new
                         Route::get('classes/index-teacher-class', 'GetTeacherClassesController')->name('get-teacher-classes'); //new
