@@ -8,18 +8,28 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Accounts\User;
 use App\Models\Attendance;
 use App\Models\Classes\StudyClass;
+use App\Models\LeavingSchool;
 use App\Models\studentClass;
 use App\Models\Students\enrollment;
 
 class Student extends Model
 {
     protected $fillable = [
-        'photo', 'public_registry_number', 'first_name', 'last_name',
-        'birth_address', 'birthdate', 'registration_place', 'registration_number',
-        'religion', 'nationality', 'chronic_diseases', 'national_number'
+        'photo',
+        'public_registry_number',
+        'first_name',
+        'last_name',
+        'birth_address',
+        'birthdate',
+        'registration_place',
+        'registration_number',
+        'religion',
+        'nationality',
+        'chronic_diseases',
+        'national_number'
     ];
 
-    protected $hidden=['created_at','updated_at'];
+    protected $hidden = ['created_at', 'updated_at'];
 
     public function father()
     {
@@ -71,7 +81,12 @@ class Student extends Model
         return $this->belongsToMany(StudyClass::class, 'student_classes');
     }
 
-    public function attendances(){
+    public function leaveStudent()
+    {
+        return $this->hasOne(LeavingSchool::class,'student_id');
+    }
+    public function attendances()
+    {
         return $this->hasMany(Attendance::class);
     }
 

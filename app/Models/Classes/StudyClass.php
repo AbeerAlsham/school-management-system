@@ -5,6 +5,7 @@ namespace App\Models\Classes;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\AssignmentSupervisor;
 use App\Models\AssignmentTeacher;
+use App\Models\LeavingSchool;
 use App\Models\studentClass;
 use App\Models\Students\Student;
 use App\Models\Subjects\subject;
@@ -39,6 +40,10 @@ class StudyClass extends Model
     public function StudentClasses()
     {
         return $this->hasMany(studentClass::class);
+    }
+    public function LeaveStudent()
+    {
+        return $this->hasMany(LeavingSchool::class, 'study_class_id');
     }
     public function students()
     {

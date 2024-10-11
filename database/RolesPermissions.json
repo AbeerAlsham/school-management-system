@@ -25,6 +25,7 @@
         "add-student", "index-student", "show-student", "get-guardian-students",
 
         "assign-class-students", "assign-classroom-students", "get-classroom-students",
+        "add-leaving-student", "show-leaving-student", "update-leaving-student",
         "get-class-students", "get-unassign-class-students", "get-unassign-classroom-students",
         "add-mark", "update-mark", "delete-mark", "accept-mark", "show-student-mark", "get-students-marks",
         "show-classroom-marks", "show-academic-report-card",
@@ -56,6 +57,7 @@
                 "index-supervisor-years", "index-teacher-years", "add-class-subject", "index-semester-teacher-subjects",
                 "index-guardian",
                 "index-student", "show-student", "get-guardian-students",
+                "add-leaving-student", "show-leaving-student", "update-leaving-student",
                 "add-mark", "update-mark", "delete-mark", "accept-mark", "show-student-mark", "get-students-marks",
                 "show-classroom-marks", "update-attendance", "show-attendance", "get-attendance-students",
                 "show-academic-report-card",
@@ -92,7 +94,7 @@
                 "index-academic-year", "show-academic-year", "index-year-semester", "get-year-class-classrooms", "show-semester", "index-class", "add-student",
                 "index-student", "show-student", "get-guardian-students",
                 "add-guardian", "update-guardian", "index-guardian",
-
+                "add-leaving-student", "show-leaving-student", "update-leaving-student",
                 "assign-class-students", "assign-classroom-students", "get-classroom-students",
                 "get-class-students", "get-unassign-class-students", "get-unassign-classroom-students"
             ]

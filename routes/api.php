@@ -34,7 +34,7 @@ Route::group(
                         Route::Delete('/{class}', 'DeleteClassController')->name('delete-class');
                         Route::post('/{class}', 'updateClasscontroller')->name('update-class');
                     });
-                    Route::get('students/{student}/classes/get-students-results','GetStudentStudyResult')->name('get-student-result');
+                    Route::get('students/{student}/classes/get-students-results', 'GetStudentStudyResult')->name('get-student-result');
                     Route::prefix('/semesters-users/{semesterUser}/')->group(function () {
                         Route::get('/index-supervisor-class', 'GetSupervisorClassesController')->name('get-supervisor-classes'); //new
                         Route::get('classes/index-teacher-class', 'GetTeacherClassesController')->name('get-teacher-classes'); //new
@@ -139,6 +139,11 @@ Route::group(
                     Route::get('guardians/{user}/students', 'GetGuardinStudentsController')->name('get-guardian-students');
                 });
 
+                Route::group(['namespace' => 'LeavingSchool'], function () {
+                    Route::post('students/{student}/leaving-students', 'AddLeavingSchoolController')->name('add-leaving-student');
+                    Route::post('leaving-students/{leavingStudent}', 'UpdateLeavingSchoolController')->name('update-leaving-student');
+                    Route::get('students/{student}/leaving-students', 'ShowLeavingSchoolController')->name('show-leaving-student');
+                });
                 Route::group(['namespace' => 'Marks'], function () {
 
                     Route::post('exams/{exam}/marks', 'addMarkController')->name('add-mark');
@@ -189,7 +194,6 @@ Route::group(
                     Route::put('/exams/{exam}', 'UpdateExamController')->name('update-exam');
                     Route::delete('/exams/{exam}', 'DeleteExamController')->name('delete-exam');
                     Route::get('/exams/{exam}', 'ShowExamController')->name('show-exam');
-
                 });
 
                 Route::group(['namespace' => 'Notes'], function () {
