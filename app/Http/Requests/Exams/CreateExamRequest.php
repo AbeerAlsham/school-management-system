@@ -24,7 +24,7 @@ class CreateExamRequest extends FormRequest
         return [
             'semester_id' => 'required|exists:semesters,id',
             'subject_id'=>'required|exists:subjects,id',
-            'section_id'=>'somtimes|exists:sections,id',
+            'section_id'=>'nullable|exists:sections,id',
             'classroom_id'=>'required|exists:classrooms,id',
             'semester_user_id'=>'required|exists:semester_users,id',
             'test_name'=>'required|string|min:5|max:15',
