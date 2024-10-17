@@ -28,11 +28,11 @@ class CreateExamController extends Controller
         $examType = ExamType::find($exam_type_id);
         if (!$semester->is_current && !$semester->is_opened)
             return true;
-        else if (!$semester->is_current && $semester->is_opened){
+        else if (!$semester->is_current && $semester->is_opened) {
             if ($examType->name === 'امتحان الفصل')
-                return false;
-            else return true;}
-        else
+                return true;
+            else return false;
+        } else
             return true;
     }
 }

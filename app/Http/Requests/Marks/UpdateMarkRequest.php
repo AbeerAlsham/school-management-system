@@ -4,6 +4,7 @@ namespace App\Http\Requests\Marks;
 
 use App\Models\Exam;
 use App\Models\mark;
+use App\Models\SemesterUser;
 use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -42,8 +43,9 @@ class UpdateMarkRequest extends FormRequest
     protected function canUpdateMark($mark)
     {
         $isAdmin = request()->user()->roles()->where('name', 'manager')->exists();
-        $teacher_id = Exam::find($mark->exam_id)->teacher_id;
-        $isAuth = request()->user()->id === $teacher_id;
+        $teacher_id = Exam::find($mark->exam_id)->semester_user_id;
+        $semesterTeacher=SemesterUser::find($teacher_id)->userRole->user->id;
+        $isAuth = request()->user()->id ===$semesterTeacher ;
         $oneDayPassed = Carbon::parse($mark->created_at)->addDay()->isPast();
 
         if (($isAuth && !$oneDayPassed) || $isAdmin)

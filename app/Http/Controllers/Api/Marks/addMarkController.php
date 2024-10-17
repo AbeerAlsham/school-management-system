@@ -17,7 +17,7 @@ class addMarkController extends Controller
     public function __invoke(addMarkRequest $request, Exam $exam)
     {
         if (!$this->isValid($exam))
-            return $this->forbiddenResponse("لا يمكنك إضافة اختبار جديد بسبب انتهاء الفصل الدراسي");
+            return $this->forbiddenResponse("لا يمكنك إضافة علامة لطالب بسبب انتهاء الفصل الدراسي");
         //التحقق من كون لفصل مفعل من أجل اضافة العلامة
 
         $marks = [];
@@ -42,7 +42,7 @@ class addMarkController extends Controller
                 return true;
             else return false;
         else
-            return false;
+            return true;
     }
 
     public function sendNotification($exam, $marks)
