@@ -17,11 +17,14 @@ class ShowSubjectMarkDetailsController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $marks = ExamType::with(['exam' => function ($query) use ($request) {
+        $marks = ExamType::whereHas('exam', function ($query) use ($request) {
+            $query->where('semester_id', $request->semester_id)
+                ->where('subject_id', $request->subject_id)
+                ->where('section_id', $request->section_id);
+        })->with(['exam' => function ($query) use ($request) {
             $query->where('semester_id', $request->semester_id)
                 ->where('subject_id', $request->subject_id)
                 ->where('section_id', $request->section_id)
-                ->select('id', 'test_name', 'total_mark', 'exam_type_id')
                 ->with(['marks' => function ($query) use ($request) {
                     $query->where('student_class_id', $request->studentClass_id);
                 }]);
