@@ -11,6 +11,7 @@ class ShowSubjectExamController extends Controller
     /**
      * Handle the incoming request.
      */
+    //عرض امتحانات مادة معينة بحسب فصل معين (الآدمن)
     public function __invoke(Request $request)
     {
         if ($request->has('semester_id') && ($request->has('subject_id') || $request->has('section_id')) && $request->has('classroom_id')) {
@@ -24,6 +25,9 @@ class ShowSubjectExamController extends Controller
                     if ($request->has('subject_id')) {
                         $query->where('subject_id', $request->subject_id);
                     }
+                })->when($request->has('exam_type_id'), function ($query) use ($request) {
+                    // فلترة الاختبارات بحسب نوع الاختبار
+                    $query->where('exam_type_id', $request->exam_type_id);
                 })
                 ->get();
             return $this->okResponse($exams, 'the exams retrived successfully');

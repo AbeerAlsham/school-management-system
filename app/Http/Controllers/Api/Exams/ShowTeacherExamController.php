@@ -11,7 +11,7 @@ class ShowTeacherExamController extends Controller
     /**
      * Handle the incoming request.
      */
-    //تتم عن طريق ال auth
+    //عرض الاختبارات التي أنشأها معلم معين ضمن شعبة معينة لمادةمعينة
     public function __invoke(Request $request)
     {
         if ($request->has('semester_user_id') && $request->has('classroom_id')) {
@@ -26,6 +26,9 @@ class ShowTeacherExamController extends Controller
                     if ($request->has('subject_id')) {
                         $query->where('subject_id', $request->subject_id);
                     }
+                })->when($request->has('exam_type_id'), function ($query) use ($request) {
+                    // فلترة الاختبارات بحسب نوع الاختبار
+                    $query->where('exam_type_id', $request->exam_type_id);
                 })
                 ->get();
 

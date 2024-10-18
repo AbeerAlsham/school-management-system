@@ -13,6 +13,6 @@ class ShowExamController extends Controller
      */
     public function __invoke(Request $request, Exam $exam)
     {
-        return $this->okResponse([$exam->load('examType'),], 'the exam retrives successfully');
+        return $this->okResponse([$exam->load('examType')], 'the exam retrives successfully');
     }
 }
