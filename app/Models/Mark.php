@@ -8,8 +8,6 @@ class mark extends Model
 {
     protected $fillable = ['exam_id', 'student_class_id', 'earned_mark','is_accepted'];
 
-    protected $hidden = ['created_at', 'updated_at'];
-
     public function exam()
     {
         return $this->belongsTo(Exam::class);

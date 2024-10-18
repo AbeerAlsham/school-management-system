@@ -22,8 +22,6 @@ class Exam extends Model
         'total_mark'
     ];
 
-    protected $hidden = ['created_at', 'updated_at'];
-
     public function subject()
     {
         return $this->belongsTo(Subject::class);
