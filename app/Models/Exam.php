@@ -53,7 +53,21 @@ class Exam extends Model
         return $this->belongsTo(Classroom::class);
     }
 
-    public function marks(){
+    public function marks()
+    {
         return $this->hasMany(mark::class);
+    }
+
+    // change mark when change the total mark of exam
+    public function updateMarks($newTotalMark)
+    {
+        $marks = $this->marks;
+        foreach ($marks as $mark) {
+            $percentage = $mark->earned_mark / $this->total_mark;
+            $newMark = $percentage * $newTotalMark;
+            $mark->update(['earned_mark' => $newMark]);
+        }
+
+        $this->update(['total_mark' => $newTotalMark]);
     }
 }

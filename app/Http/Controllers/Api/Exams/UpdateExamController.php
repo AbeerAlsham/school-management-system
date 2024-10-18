@@ -12,9 +12,16 @@ class UpdateExamController extends Controller
     /**
      * Handle the incoming request.
      */
-    public function __invoke(UpdateExamRequest $request,Exam $exam)
+    public function __invoke(UpdateExamRequest $request, Exam $exam)
     {
+
+        // Adjust marks if total mark has changed
+        if ($request->total_mark != $exam->total_mark) {
+            $exam->updateMarks($request->total_mark);
+        }
         $exam->update($request->all());
-        return $this->okResponse( $exam,'the exam updated successfully');
+
+
+        return $this->okResponse($exam, 'the exam updated successfully');
     }
 }
