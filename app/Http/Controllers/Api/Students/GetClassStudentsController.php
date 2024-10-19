@@ -7,21 +7,33 @@ use App\Http\Resources\StudentResource;
 use App\Models\AcademicYear\StudyYear;
 use App\Models\Classes\StudyClass;
 use Illuminate\Http\Request;
+use App\Traits\Searchable;
 
 class GetClassStudentsController extends Controller
 {
+    use Searchable;
+
     /**
      * Handle the incoming request.
      */
 
-    //عرض طلاب صف معين خلال عام دراسي معين
+    // عرض طلاب صف معين خلال عام دراسي معين
     public function __invoke(Request $request, StudyYear $studyYear, StudyClass $studyClass)
     {
-        $students = $studyClass->students()
-            ->wherePivot('study_year_id', $studyYear->id)
-            ->where('status',$request->status)
-            ->get();
+        // بدء الاستعلام
+        $studentsQuery = $studyClass->students()
+            ->wherePivot('study_year_id', $studyYear->id);
 
-        return $this->okResponse(StudentResource::collection($students), 'students inside class have retrived successfully');
+        // فلترة بحسب الحالة إذا كانت موجودة
+        if ($request->status) {
+            $studentsQuery->where('status', $request->status);
+        }
+
+        // تطبيق البحث إذا كانت موجودة
+        if ($request->search) {
+            $studentsQuery = $this->Search($studentsQuery->getQuery(), $request, ['first_name', 'last_name']);
+        }
+
+        return $this->okResponse(StudentResource::collection($studentsQuery->get()), 'تم استرجاع الطلاب بنجاح');
     }
 }
