@@ -3,29 +3,33 @@
 namespace App\Http\Controllers\Api\Teachers;
 
 use App\Http\Controllers\Controller;
-use App\Models\UserRole;
 use App\Models\AcademicYear\Semester;
-use App\Models\Accounts\Role;
 use App\Models\SemesterUser;
+use App\Traits\Searchable;
 use Illuminate\Http\Request;
 
 class GetRegisteredUsersController extends Controller
 {
+    use Searchable;
     /**
-     * Handle the incoming request.
+     *  مع امكانية الفلترة بجسب الدور عرض المستخدمين المسجلين ضمن فصل دراسي معين
+     * , البحث عم مستخدم معين مسجل
      */
     public function __invoke(Request $request, Semester $semester)
     {
-        $role = Role::where('name', $request->role)->first();
-        
-        $assignedUserIds = SemesterUser::where('semester_id', $semester->id)
-            ->pluck('user_role_id');
+        $query = SemesterUser::where('semester_id', $semester->id)
+            ->with('userRole.user.profile:first_name,father_name,last_name,user_id');
+        //filter by role
+        if ($request->role_id)
+            $query->whereHas('userRole', function ($q) use ($request) {
+                $q->where('role_id', $request->role_id);
+            });
+        //search by fullname
+        if ($request->search)
+            $query->whereHas('userRole.user.profile', function ($q) use ($request) {
+                return $this->Search($q, $request, ['first_name', 'father_name', 'last_name']);
+            });
 
-        $unassignedUsers = UserRole::where('role_id', $role->id)
-            ->whereIn('id', $assignedUserIds)
-            ->with('user.profile:first_name,father_name,last_name,user_id')
-            ->get();
-
-        return $this->okResponse( $unassignedUsers,'teacher  registered in semester retrived successfully');
+        return $this->okResponse($query->get(), 'teacher  registered in semester retrived successfully');
     }
 }
