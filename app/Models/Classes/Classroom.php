@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\AssignmentSupervisor;
 use App\Models\AssignmentTeacher;
 use App\Models\Exam;
+use App\Models\ExamProgram;
 use App\Models\studentClassroom;
+use App\Models\WeekProgram;
 
 class Classroom extends Model
 {
@@ -37,11 +39,21 @@ class Classroom extends Model
 
     public function studentClassrooms()
     {
-        return $this->hasMany(studentClassroom::class,'classroom_id');
+        return $this->hasMany(studentClassroom::class, 'classroom_id');
     }
 
-    public function exams(){
-        return $this->hasMany(Exam::class,'classroom_id');
+    public function exams()
+    {
+        return $this->hasMany(Exam::class, 'classroom_id');
     }
 
+    public function ExamPrograms()
+    {
+        return $this->hasMany(ExamProgram::class, 'classroom_id');
+    }
+     
+    public function WeekPrograms()
+    {
+        return $this->hasMany(WeekProgram::class, 'classroom_id');
+    }
 }

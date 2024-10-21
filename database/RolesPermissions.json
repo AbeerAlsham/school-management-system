@@ -33,7 +33,9 @@
         "count-semester-attendance", "count-year-attendance", "show-semester-report-card",
 
         "create-exam", "update-exam", "delete-exam", "show-exam", "show-subject-exams", "show-teacher-exams",
-        "add-note", "update-note", "delete-note", "index-note", "index-teacher-note"
+        "add-note", "update-note", "delete-note", "index-note", "index-teacher-note",
+        "show-exam-programs", "create-exam-programs", "update-exam-programs", "delete-exam-programs",
+        "show-week-programs", "create-week-programs", "update-week-programs", "delete-week-programs"
     ],
 
     "roles": [{
@@ -55,7 +57,7 @@
                 "register-semester-teacher", "get-subject-not-assign-classroom", "get-supervisor-classes", "get-teacher-classes",
                 "index-classroom-unassign_subjects", "get-unassign-supervisor-classes", "get-unassign-teacher-classes",
                 "index-supervisor-years", "index-teacher-years", "add-class-subject", "index-semester-teacher-subjects",
-                "index-guardian",
+                "index-guardian", "get-class-students",
                 "index-student", "show-student", "get-guardian-students",
                 "add-leaving-student", "show-leaving-student", "update-leaving-student",
                 "add-mark", "update-mark", "delete-mark", "accept-mark", "show-student-mark", "get-students-marks",
@@ -63,7 +65,9 @@
                 "show-academic-report-card",
                 "count-semester-attendance", "count-year-attendance",
                 "show-exam", "show-subject-exams", "show-semester-report-card",
-                "add-note", "update-note", "delete-note", "index-note", "index-teacher-note"
+                "add-note", "update-note", "delete-note", "index-note", "index-teacher-note",
+                "show-exam-programs", "create-exam-programs", "update-exam-programs", "delete-exam-programs",
+                "show-week-programs", "create-week-programs", "update-week-programs", "delete-week-programs"
             ]
         },
         {

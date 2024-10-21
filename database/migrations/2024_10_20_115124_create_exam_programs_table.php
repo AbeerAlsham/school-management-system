@@ -11,17 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('leaving_schools', function (Blueprint $table) {
+        Schema::create('exam_programs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('student_id')->constrained('students')
+            $table->string('program_path');
+            $table->foreignId('classroom_id')->constrained('classrooms')
                 ->onDelete('cascade')->onUpdate('cascade');
-            $table->foreignId('study_class_id')->constrained('study_classes')
+            $table->foreignId('semester_id')->constrained('semesters')
                 ->onDelete('cascade')->onUpdate('cascade');
-            $table->date('leave_date');
-            $table->string('cause');
-            $table->string('document_type');
-            $table->integer('document_number');
-            $table->date('document_date');
             $table->timestamps();
         });
     }
@@ -31,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('leaving_schools');
+        Schema::dropIfExists('exam_programs');
     }
 };

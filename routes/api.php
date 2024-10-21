@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\ExamProgram;
 use Illuminate\Support\Facades\Route;
 
 Route::group(
@@ -202,6 +203,20 @@ Route::group(
                     Route::post('/notes', 'AddNoteController')->name('add-note');
                     Route::post('notes/{note}', 'UpdateNoteController')->name('update-note');
                     Route::delete('notes/{note}', 'DeleteNoteController')->name('delete-note');
+                });
+
+                Route::group(['namespace' => 'ExamPrograms'], function () {
+                    Route::get('/exam-programs/{examProgram}', 'ShowExamProgramController')->name('show-exam-programs');
+                    Route::post('/exam-programs', 'CreateExamProgramController')->name('create-exam-programs');
+                    Route::post('/exam-programs/{examProgram}', 'UpdateExamProgramController')->name('update-exam-programs');
+                    Route::delete('/exam-programs/{examProgram}', 'DeleteExamProgramController')->name('delete-exam-programs');
+                });
+
+                Route::group(['namespace' => 'WeekPrograms'], function () {
+                    Route::get('/week-programs/{weekProgram}', 'ShowWeekProgramController')->name('show-week-programs');
+                    Route::post('/week-programs', 'CreateWeekProgramController')->name('create-week-programs');
+                    Route::post('/week-programs/{weekProgram}', 'UpdateWeekProgramController')->name('update-week-programs');
+                    Route::delete('/week-programs/{weekProgram}', 'DeleteWeekProgramController')->name('delete-week-programs');
                 });
             }
         );
