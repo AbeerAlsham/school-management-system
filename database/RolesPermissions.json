@@ -35,7 +35,13 @@
         "create-exam", "update-exam", "delete-exam", "show-exam", "show-subject-exams", "show-teacher-exams",
         "add-note", "update-note", "delete-note", "index-note", "index-teacher-note",
         "show-exam-programs", "create-exam-programs", "update-exam-programs", "delete-exam-programs",
-        "show-week-programs", "create-week-programs", "update-week-programs", "delete-week-programs"
+        "show-week-programs", "create-week-programs", "update-week-programs", "delete-week-programs",
+
+        "delete-book-delivery", " show-book-delivery", "update-book-delivery", "delete-book",
+        "show-book", "update-book", "create-book-delivery", "craete-book", "get-subject-books",
+        "create-year-book", "update-year-book", "show-year-book", "get-year-book",
+        "get-classroom-book-deliveries", "get-student-book-deliveries"
+
     ],
 
     "roles": [{
@@ -67,7 +73,11 @@
                 "show-exam", "show-subject-exams", "show-semester-report-card",
                 "add-note", "update-note", "delete-note", "index-note", "index-teacher-note",
                 "show-exam-programs", "create-exam-programs", "update-exam-programs", "delete-exam-programs",
-                "show-week-programs", "create-week-programs", "update-week-programs", "delete-week-programs"
+                "show-week-programs", "create-week-programs", "update-week-programs", "delete-week-programs",
+                "delete-book-delivery", " show-book-delivery", "update-book-delivery", "delete-book",
+                "show-book", "update-book", "create-book-delivery", "craete-book", "get-subject-books",
+                "create-year-book", "update-year-book", "show-year-book", "get-year-book",
+                "get-classroom-book-deliveries", "get-student-book-deliveries"
             ]
         },
         {

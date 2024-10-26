@@ -43,6 +43,12 @@ class studentClass extends Model
     {
         return $this->hasMany(Note::class, 'student_class_id');
     }
+
+    public function bookDeliveries()
+    {
+        return $this->hasMany(BookDelivery::class, 'student_class_id');
+    }
+
     // protected $casts = [
     //     'status' => StudentStatus::class,
     // ];

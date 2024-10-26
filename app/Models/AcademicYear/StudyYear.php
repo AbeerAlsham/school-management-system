@@ -4,8 +4,8 @@ namespace App\Models\AcademicYear;
 
 use App\Models\Classes\Classroom;
 use App\Models\Holiday;
-use App\Models\studentClass;
 use App\Models\Students\Student;
+use App\Models\YearBook;
 use Illuminate\Database\Eloquent\Model;
 
 class StudyYear extends Model
@@ -36,6 +36,10 @@ class StudyYear extends Model
     // {
     //     return $this->hasMany(studentClass::class);
     // }
+
+    public function yearBooks(){
+        return $this->hasMany(YearBook::class,'study_year_id');
+    }
 
     public function students()
     {

@@ -15,7 +15,7 @@ class ClassSubject extends Model
     {
         return $this->belongsTo(StudyClass::class, 'class_id');
     }
-    
+
     public function subject()
     {
         return $this->belongsTo(Subject::class, 'subject_id');
@@ -29,5 +29,10 @@ class ClassSubject extends Model
     public function assignmentTeachers()
     {
         return $this->hasMany(AssignmentTeacher::class);
+    }
+
+    public function books()
+    {
+        return $this->hasMany(Book::class, 'class_subject_id');
     }
 }

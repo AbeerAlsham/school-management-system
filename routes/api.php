@@ -218,6 +218,29 @@ Route::group(
                     Route::post('/week-programs/{weekProgram}', 'UpdateWeekProgramController')->name('update-week-programs');
                     Route::delete('/week-programs/{weekProgram}', 'DeleteWeekProgramController')->name('delete-week-programs');
                 });
+
+                Route::group(['namespace' => 'Books'], function () {
+                    Route::post('class-subject/{classSubject}/books/create-book', 'CreateBookController')->name('craete-book');
+                    Route::delete('/books/{book}', 'DeleteBookController')->name('delete-book');
+                    Route::get('class-subject/{classSubject}/books/index-book', 'indexSubjectBookController')->name('get-subject-books');
+                    Route::get('/books/{book}', 'ShowBookController')->name('show-book');
+                    Route::post('/books/{book}', 'UpdateBookController')->name('update-book');
+                });
+                Route::group(['namespace' => 'BooksDeliveries'], function () {
+                    Route::post('/books/{book}/book-deliveries/create-book-delivery', 'CreateBookDeliveryController')->name('create-book-delivery');
+                    Route::delete('/book-deliveries/{bookDelivery}', 'DeleteBookDeliveryController')->name('delete-book-delivery');
+                    Route::get('classrooms/{classroom}/books/{book}/book-deliveries', 'GetClassroomBookDeliveriesController')->name('get-classroom-book-deliveries');
+                    Route::get('student-classes/{studentClass}/book-deliveries', 'GetStudentBookDeliveriesController')->name('get-student-book-deliveries');
+                    Route::get('book-deliveries/{bookDelivery}', 'ShowBookDeliveriesController')->name('show-book-delivery');
+                    Route::post('book-deliveries/update-book-deliveries', 'UpdateBookDeliveryController')->name('update-book-delivery');
+                });
+                Route::group(['namespace' => 'YearBooks'], function () {
+                    Route::post('year-books', 'CreateYearBookController')->name('create-year-book');
+                    Route::post('year-books/{yearBook}', 'UpdateYearBookController')->name('update-year-book');
+
+                    Route::get('year-books/{yearBook}', 'showYearBookController')->name('show-year-book');
+                    Route::get('study-years/{studyYear}/year-books','getYearBookController')->name('get-year-book');
+                });
             }
         );
     }
