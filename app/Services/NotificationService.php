@@ -2,8 +2,8 @@
 
 namespace App\Services;
 
-use App\Models\Accounts\UserDeviceToken;
-use App\Models\Notification;
+use App\Models\Account\UserDeviceToken;
+use App\Models\Notification\Notification;
 use Illuminate\Support\Facades\Log;
 use Kreait\Firebase\Factory;
 use Kreait\Firebase\Messaging\CloudMessage;

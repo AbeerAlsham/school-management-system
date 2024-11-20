@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\BooksDeliveries;
 
 use App\Http\Controllers\Controller;
-use App\Models\Book;
-use App\Models\Classes\Classroom;
+use App\Models\Book\Book;
+use App\Models\Class\Classroom;
 use Illuminate\Http\Request;
 
 class GetClassroomBookDeliveriesController extends Controller

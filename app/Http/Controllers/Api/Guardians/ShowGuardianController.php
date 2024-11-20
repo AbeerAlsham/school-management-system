@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\Guardians;
 
 use App\Http\Controllers\Controller;
-use App\Models\Accounts\User;
+use App\Models\Account\User;
 use Illuminate\Http\Request;
 
 class ShowGuardianController extends Controller

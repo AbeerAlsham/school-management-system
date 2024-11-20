@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\Students;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Students\AssignClassStudentsRequest;
-use App\Models\studentClass;
+use App\Models\AssignmentStudent\studentClass;
 
 class AssignClassStudentsController extends Controller
 {

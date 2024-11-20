@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Api\Teachers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\AcademicYear\Semester;
-use App\Models\SemesterUser;
-use App\Models\Subjects\Subject;
+use App\Models\AssignmentUser\SemesterUser;
+use App\Models\Subject\Subject;
 
 class GetSubjectTeachersController extends Controller
 {

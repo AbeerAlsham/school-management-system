@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\Classrooms;
 
 use App\Http\Controllers\Controller;
 use App\Models\AcademicYear\StudyYear;
-use App\Models\Classes\StudyClass;
+use App\Models\Class\StudyClass;
 use Illuminate\Http\Request;
 
 class GetClassroomByClassController extends Controller

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\BooksDeliveries;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BooksDeliveries\CreateBookDeliveryRequest;
-use App\Models\Book;
+use App\Models\Book\Book;
 
 class CreateBookDeliveryController extends Controller
 {

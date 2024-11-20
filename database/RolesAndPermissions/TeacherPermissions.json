@@ -1,0 +1,9 @@
+{
+    "name": "معلم",
+    "permissions": [
+        "users.show", "users.update", "users.changeMyPassword",
+        "years.indexTeacher",
+        "semesters.show",
+        "holidays.index"
+    ]
+}

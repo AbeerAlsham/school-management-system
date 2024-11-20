@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\Students;
 
 use App\Http\Controllers\Controller;
-use App\Models\Accounts\User;
+use App\Models\Account\User;
 use Illuminate\Http\Request;
 
 class GetGuardinStudentsController extends Controller

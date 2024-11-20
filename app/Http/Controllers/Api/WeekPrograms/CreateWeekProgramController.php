@@ -5,10 +5,7 @@ namespace App\Http\Controllers\Api\WeekPrograms;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\WeekPrograms\CreateWeekProgramRequest;
 use App\Jobs\SendNotificationWeekProgramJob;
-use App\Models\AcademicYear\Semester;
-use App\Models\UserRole;
-use App\Models\WeekProgram;
-use App\Services\NotificationService;
+use App\Models\Document\WeekProgram;
 
 class CreateWeekProgramController extends Controller
 {

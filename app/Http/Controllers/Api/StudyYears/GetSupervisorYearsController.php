@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\StudyYears;
 
 use App\Http\Controllers\Controller;
 use App\Models\AcademicYear\StudyYear;
-use App\Models\Accounts\User;
+use App\Models\Account\User;
 use Illuminate\Http\Request;
 
 

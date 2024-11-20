@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\Subjects;
 
 use App\Http\Controllers\Controller;
-use App\Models\Classes\StudyClass;
-use App\Models\Subjects\Subject;
+use App\Models\Class\StudyClass;
+use App\Models\Subject\Subject;
 use Illuminate\Http\Request;
 
 class addSubjectToClassController extends Controller

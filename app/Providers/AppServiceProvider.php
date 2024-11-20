@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Models\Attendance;
-use App\Models\BookDelivery;
+use App\Models\Attendance\Attendance;
+use App\Models\Book\BookDelivery;
 use App\Observers\AttendanceObserver;
 use App\Observers\BookDeliveryObserver;
 use Illuminate\Support\ServiceProvider;

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\Classes;
 
 use App\Http\Controllers\Controller;
-use App\Models\Classes\StudyClass;
+use App\Models\Class\StudyClass;
 use App\Http\Requests\StudyClass\CreateClassRequest;
 
 class updateClasscontroller extends Controller

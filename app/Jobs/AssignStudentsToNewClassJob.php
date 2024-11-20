@@ -4,7 +4,7 @@ namespace App\Jobs;
 
 use App\Enums\StudentStatus;
 use App\Models\AcademicYear\StudyYear;
-use App\Models\studentClass;
+use App\Models\AssignmentStudent\studentClass;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;

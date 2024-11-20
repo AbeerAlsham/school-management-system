@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\Holidays;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Holidays\UpdateHolidayRequest;
-use App\Models\Holiday;
+use App\Models\AcademicYear\Holiday;
 
 class UpdateHolidayController extends Controller
 {

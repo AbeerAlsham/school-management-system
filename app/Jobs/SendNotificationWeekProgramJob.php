@@ -3,7 +3,7 @@
 namespace App\Jobs;
 
 use App\Models\AcademicYear\Semester;
-use App\Models\UserRole;
+use App\Models\Account\UserRole;
 use App\Services\NotificationService;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;

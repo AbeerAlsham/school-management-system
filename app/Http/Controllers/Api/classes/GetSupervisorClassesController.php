@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Api\Classes;
 
 use App\Http\Controllers\Controller;
+use App\Models\AssignmentUser\SemesterUser;
 use Illuminate\Http\Request;
-use App\Models\SemesterUser;
-use App\Models\Classes\StudyClass;
+
+use App\Models\Class\StudyClass;
 //الحصو لعى الصفوفو الشعب ل موجه معين
 class GetSupervisorClassesController extends Controller
 {

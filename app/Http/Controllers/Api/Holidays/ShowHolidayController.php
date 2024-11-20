@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\Holidays;
 
 use App\Http\Controllers\Controller;
-use App\Models\Holiday;
+use App\Models\AcademicYear\Holiday;
 use Illuminate\Http\Request;
 
 class ShowHolidayController extends Controller

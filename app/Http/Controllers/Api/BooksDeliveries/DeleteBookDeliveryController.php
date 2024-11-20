@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\BooksDeliveries;
 
 use App\Http\Controllers\Controller;
-use App\Models\BookDelivery;
+use App\Models\Book\BookDelivery;
 use Illuminate\Http\Request;
 
 class DeleteBookDeliveryController extends Controller

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\Notifications;
 
 use App\Http\Controllers\Controller;
-use App\Models\Notification;
+use App\Models\Notification\Notification;
 use Illuminate\Http\Request;
 
 class ReadNotificationController extends Controller

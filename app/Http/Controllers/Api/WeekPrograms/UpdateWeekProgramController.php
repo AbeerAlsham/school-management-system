@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api\WeekPrograms;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\WeekPrograms\UpdateWeekProgramRequest;
 use App\Jobs\SendNotificationWeekProgramJob;
-use App\Models\WeekProgram;
+use App\Models\Document\WeekProgram;
 
 class UpdateWeekProgramController extends Controller
 {

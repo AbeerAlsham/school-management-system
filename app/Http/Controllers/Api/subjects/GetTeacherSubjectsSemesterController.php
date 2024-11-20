@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Api\Subjects;
 
 use App\Http\Controllers\Controller;
-use App\Models\SemesterUser;
+use App\Models\AssignmentUser\SemesterUser;
 use Illuminate\Http\Request;
-use App\Models\Subjects\Subject;
+use App\Models\Subject\Subject;
 
 class GetTeacherSubjectsSemesterController extends Controller
 {

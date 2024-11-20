@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Api\Subjects;
 
 use App\Http\Controllers\Controller;
 use App\Models\AcademicYear\Semester;
-use App\Models\Classes\{StudyClass, Classroom};
+use App\Models\Class\{StudyClass, Classroom};
+use App\Models\Subject\ClassSubject;
 use Illuminate\Http\Request;
-use App\Models\ClassSubject;
-use App\Models\Subjects\Subject;
+use App\Models\Subject\Subject;
 
 class GetUnAssignmentSubjectController extends Controller
 {

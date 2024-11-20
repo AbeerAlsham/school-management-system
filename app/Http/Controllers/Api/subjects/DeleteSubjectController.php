@@ -4,15 +4,16 @@ namespace App\Http\Controllers\Api\Subjects;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Subjects\Subject;
+use App\Models\Subject\Subject;
+
 class DeleteSubjectController extends Controller
 {
     /**
      * Handle the incoming request.
      */
-    public function __invoke(Request $request,Subject $subject)
+    public function __invoke(Request $request, Subject $subject)
     {
         $subject->delete();
-       return  $this->noContentResponse();
+        return  $this->noContentResponse();
     }
 }

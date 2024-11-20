@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\Books;
 
 use App\Http\Controllers\Controller;
-use App\Models\ClassSubject;
+use App\Models\Subject\ClassSubject;
 use Illuminate\Http\Request;
 
 class indexSubjectBookController extends Controller

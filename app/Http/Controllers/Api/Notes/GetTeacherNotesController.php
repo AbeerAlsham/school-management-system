@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Api\Notes;
 
 use App\Http\Controllers\Controller;
-use App\Models\Note;
-use App\Models\SemesterUser;
-use App\Models\studentClass;
+use App\Models\AssignmentStudent\studentClass;
+use App\Models\AssignmentUser\SemesterUser;
+use App\Models\Note\Note;
 use Illuminate\Http\Request;
 
 class GetTeacherNotesController extends Controller

@@ -4,10 +4,10 @@ namespace Database\Seeders;
 
 use App\Models\AcademicYear\StudyYear;
 use Illuminate\Support\Facades\Hash;
-use App\Models\Accounts\User;
-use App\Models\Classes\StudyClass;
-use App\Models\ExamType;
-use App\Models\Subjects\Subject;
+use App\Models\Account\User;
+use App\Models\Class\StudyClass;
+use App\Models\Exam\ExamType;
+use App\Models\Subject\Subject;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder

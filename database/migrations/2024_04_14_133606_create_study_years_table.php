@@ -17,6 +17,7 @@ return new class extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->boolean('is_current')->default(1);
+            $table->boolean('is_opened')->default(1);
             $table->timestamps();
         });
     }

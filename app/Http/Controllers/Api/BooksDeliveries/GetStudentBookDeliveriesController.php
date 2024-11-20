@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\BooksDeliveries;
 
 use App\Http\Controllers\Controller;
-use App\Models\ClassSubject;
-use App\Models\studentClass;
+use App\Models\AssignmentStudent\studentClass;
+use App\Models\Subject\ClassSubject;
 use Illuminate\Http\Request;
 
 class GetStudentBookDeliveriesController extends Controller
@@ -12,7 +12,7 @@ class GetStudentBookDeliveriesController extends Controller
     /**
      *  ما عرض حالة جميع الكتب الدراسية من اجل  طالب
      */
-    public function __invoke(Request $request, StudentClass $studentClass)
+    public function __invoke(Request $request, studentClass $studentClass)
     {
         // جلب المواد الدراسية المرتبطة بالصف
         $classSubjects = ClassSubject::where('class_id', $studentClass->study_class_id)

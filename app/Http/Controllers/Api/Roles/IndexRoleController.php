@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\Roles;
 
 use App\Http\Controllers\Controller;
-use App\Models\Accounts\Role;
+use App\Models\Account\Role;
 use Illuminate\Http\Request;
 
 class IndexRoleController extends Controller
@@ -13,6 +13,6 @@ class IndexRoleController extends Controller
      */
     public function __invoke(Request $request)
     {
-        return $this->okResponse(Role::get(), 'the roles retrieved successfully');
+        return $this->okResponse(Role::whereNOt('name','ولي أمر')->get(), 'the roles retrieved successfully');
     }
 }

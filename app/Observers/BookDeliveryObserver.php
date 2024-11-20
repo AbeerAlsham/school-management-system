@@ -2,7 +2,7 @@
 
 namespace App\Observers;
 
-use App\Models\BookDelivery;
+use App\Models\Book\BookDelivery;
 
 class BookDeliveryObserver
 {

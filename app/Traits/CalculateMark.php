@@ -2,7 +2,7 @@
 
 namespace App\Traits;
 
-use App\Models\ExamType;
+use App\Models\Exam\ExamType;
 use NumberToWords\NumberToWords;
 
 trait CalculateMark

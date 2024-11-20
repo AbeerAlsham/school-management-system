@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\YearBooks;
 
 use App\Http\Controllers\Controller;
-use App\Models\YearBook;
+use App\Models\Book\YearBook;
 use Illuminate\Http\Request;
 
 class showYearBookController extends Controller

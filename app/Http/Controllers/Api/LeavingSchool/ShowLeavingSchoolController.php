@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\LeavingSchool;
 
 use App\Http\Controllers\Controller;
-use App\Models\Students\Student;
+use App\Models\Student\Student;
 use Illuminate\Http\Request;
 
 class ShowLeavingSchoolController extends Controller

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\Teachers;
 
 use App\Http\Controllers\Controller;
-use App\Models\AssignmentTeacher;
 use App\Http\Requests\Teachers\AssignmentTeacherRequest;
+use App\Models\AssignmentUser\AssignmentTeacher;
 
 class AssignmentTeacherController extends Controller
 {

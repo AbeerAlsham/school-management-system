@@ -33,10 +33,10 @@ class CreateUserRequest extends FormRequest
                     ->numbers()
                     ->symbols()
             ],
-            'profile.first_name' => 'required|min:3|max:255',
-            'profile.father_name' => 'required|min:3|max:255',
-            'profile.mother_name' => 'required|min:3|max:255',
-            'profile.last_name' => 'required|min:3|max:255',
+            'profile.first_name' => 'required|min:2|max:255',
+            'profile.father_name' => 'required|min:2|max:255',
+            'profile.mother_name' => 'required|min:2|max:255',
+            'profile.last_name' => 'required|min:2|max:255',
             'profile.study_level' => 'required',
             'profile.university' => 'required',
             'profile.specialist'=>'string|required',

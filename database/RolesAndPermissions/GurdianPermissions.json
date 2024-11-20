@@ -1,0 +1,6 @@
+{
+    "name": "ولي أمر",
+    "permissions": [
+        "users.show", "users.update", "users.changeMyPassword"
+    ]
+}

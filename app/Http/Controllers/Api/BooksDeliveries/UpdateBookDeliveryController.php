@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Api\BooksDeliveries;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\BooksDeliveries\UpdateBookDeliveryRequest;
-use App\Models\BookDelivery;
+use App\Models\Book\BookDelivery;
+
 
 class UpdateBookDeliveryController extends Controller
 {

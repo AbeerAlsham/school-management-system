@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Api\Marks;
 
 use App\Http\Controllers\Controller;
 use App\Models\AcademicYear\Semester;
+use App\Models\AssignmentStudent\studentClass;
+use App\Models\Student\Student ;
 use Illuminate\Http\Request;
-use App\Models\studentClass;
-use App\Models\Students\Student;
 use App\Traits\CalculateFinalMark;
 use App\Traits\CalculateAttendance;
 use App\Traits\CalculateMark;

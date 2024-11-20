@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\Notes;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Notes\AddNoteRequest;
-use App\Models\Note;
+use App\Models\Note\Note;
 
 class AddNoteController extends Controller
 {

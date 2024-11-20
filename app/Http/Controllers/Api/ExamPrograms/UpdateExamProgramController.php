@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api\ExamPrograms;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ExamPrograms\UpdateExamProgramRequest;
 use App\Jobs\SendNotificationExamProgramJob;
-use App\Models\ExamProgram;
+use App\Models\Document\ExamProgram;
 
 class UpdateExamProgramController extends Controller
 {

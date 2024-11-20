@@ -2,7 +2,7 @@
 
 namespace App\Traits;
 
-use App\Models\Attendance;
+use App\Models\Attendnce\Attendance;
 
 trait CalculateAttendance
 {

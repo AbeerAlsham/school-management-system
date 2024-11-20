@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\Attendances;
 
 use App\Http\Controllers\Controller;
-use App\Models\Attendance;
+use App\Models\Attendnce\Attendance;
 use Illuminate\Http\Request;
 
 class ShowAttendanceController extends Controller

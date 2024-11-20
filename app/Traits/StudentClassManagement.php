@@ -2,8 +2,9 @@
 
 namespace App\Traits;
 
-use App\Models\Classes\StudyClass ;
-use App\Models\studentClass;
+use App\Models\AssignmentStudent\studentClass;
+use App\Models\Class\StudyClass ;
+
 
 trait StudentClassManagement
 {

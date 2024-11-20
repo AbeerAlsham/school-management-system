@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\StudyYears;
 
 use App\Http\Controllers\Controller;
 use App\Models\AcademicYear\StudyYear;
-use App\Models\UserRole;
+use App\Models\Account\UserRole;
 use Illuminate\Http\Request;
 
 class GetTeacherYearsController extends Controller

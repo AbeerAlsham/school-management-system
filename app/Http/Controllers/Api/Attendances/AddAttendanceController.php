@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\Attendances;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Attendences\AddAttendanceRequest;
-use App\Models\Attendance;
+use App\Models\Attendance\Attendance;
 
 class AddAttendanceController extends Controller
 {

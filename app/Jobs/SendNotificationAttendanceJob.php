@@ -2,8 +2,8 @@
 
 namespace App\Jobs;
 
+use App\Models\Attendnce\Attendance;
 use App\Services\NotificationService;
-use App\Models\Attendance;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;

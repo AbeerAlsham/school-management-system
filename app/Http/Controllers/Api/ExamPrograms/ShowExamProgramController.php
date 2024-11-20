@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\ExamPrograms;
 
 use App\Http\Controllers\Controller;
-use App\Models\ExamProgram;
+use App\Models\Document\ExamProgram;
 use Illuminate\Http\Request;
 
 class ShowExamProgramController extends Controller

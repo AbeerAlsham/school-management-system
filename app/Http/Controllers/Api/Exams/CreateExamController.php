@@ -5,8 +5,8 @@ namespace App\Http\Controllers\Api\Exams;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Exams\CreateExamRequest;
 use App\Models\AcademicYear\Semester;
-use App\Models\Exam;
-use App\Models\ExamType;
+use App\Models\Exam\Exam;
+use App\Models\Exam\ExamType;
 
 class CreateExamController extends Controller
 {

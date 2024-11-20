@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\Users;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\UpdateProfileRequest;
-use App\Models\Accounts\Profile;
+use App\Models\Account\Profile;
 use Illuminate\Support\Facades\Auth;
 
 class UpdateProfileController extends Controller

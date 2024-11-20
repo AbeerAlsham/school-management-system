@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
 use App\Traits\ApiResponder;
+
 class CheckOwnerMiddleware
 {
     use ApiResponder;
@@ -17,9 +18,8 @@ class CheckOwnerMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-
         $user = $request->route('user');
-        if (Auth::user()->id !== $user->id) {
+        if (auth('sanctum')->user()->id !== $user->id) {
             return $this->forbiddenResponse('You are not authorized to apply this action');;
         }
 

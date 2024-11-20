@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api\ExamPrograms;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ExamPrograms\createExamProgramRequest;
 use App\Jobs\SendNotificationExamProgramJob;
-use App\Models\ExamProgram;
+use App\Models\Document\ExamProgram;
 
 class CreateExamProgramController extends Controller
 {

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\Exams;
 
 use App\Http\Controllers\Controller;
-use App\Models\Exam;
+use App\Models\Exam\Exam;
 use Illuminate\Http\Request;
 
 class DeleteExamController extends Controller

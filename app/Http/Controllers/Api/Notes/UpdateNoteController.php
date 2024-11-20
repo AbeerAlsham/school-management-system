@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Api\Notes;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Notes\updateNoteRequest;
-use App\Models\Note;
-use Illuminate\Http\Request;
+use App\Models\Note\Note;
 
 class UpdateNoteController extends Controller
 {

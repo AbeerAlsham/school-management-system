@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Api\Marks;
 
 use App\Http\Controllers\Controller;
-use App\Models\Classes\Classroom;
-use App\Models\Exam;
-use App\Models\studentClassroom;
+use App\Models\Exam\Exam;
 use Illuminate\Http\Request;
 
 class GetClassroomExamMarksController extends Controller

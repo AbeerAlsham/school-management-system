@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\Teachers;
 
 use App\Http\Controllers\Controller;
 use App\Models\AcademicYear\Semester;
-use App\Models\SemesterUser;
+use App\Models\AssignmentUser\SemesterUser;
 use App\Traits\Searchable;
 use Illuminate\Http\Request;
 

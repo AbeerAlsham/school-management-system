@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Api\Attendances;
 
 use App\Http\Controllers\Controller;
 use App\Models\AcademicYear\Semester;
-use App\Models\Attendance;
-use App\Models\Students\Student;
+use App\Models\Student\Student;
 use Illuminate\Http\Request;
 use App\Traits\CalculateAttendance;
 

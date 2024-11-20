@@ -2,6 +2,8 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\AcademicYear\Semester;
+use App\Models\Account\UserRole;
 use Closure;
 use Illuminate\Http\Request;
 use App\Traits\ApiResponder;
@@ -19,12 +21,19 @@ class checkPermession
     public function handle(Request $request, Closure $next): Response
     {
         $user = auth('sanctum')->user();
+        $semesters = Semester::availableSemester();
         $roles = $user->roles;
         $permissionName = Route::currentRouteName();
 
         foreach ($roles as $role) {
             if ($role->hasPermession($permissionName)) {
-                return $next($request);
+
+                $is_available = UserRole::find($role->pivot->id)->whereHas('semesters', function ($query) use ($semesters) {
+                    $query->whereIn('semesters.id', $semesters);
+                })->exists(); // تحقق مما إذا كانت هناك نتائج
+
+                if ($is_available)
+                    return $next($request);
             }
         }
         return $this->forbiddenResponse('You are not authorized to apply this action');

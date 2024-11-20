@@ -2,10 +2,11 @@
 
 namespace App\Observers;
 
-use App\Models\Attendance;
-use App\Models\UserRole;
+
 use App\Services\NotificationService;
 use App\Jobs\SendNotificationAttendanceJob;
+use App\Models\Account\UserRole;
+use App\Models\Attendance\Attendance;
 
 class AttendanceObserver
 {

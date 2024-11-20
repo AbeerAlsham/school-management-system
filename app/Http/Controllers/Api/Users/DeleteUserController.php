@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\Users;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Accounts\User;
+use App\Models\Account\User;
 
 class DeleteUserController extends Controller
 {

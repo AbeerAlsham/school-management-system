@@ -4,7 +4,6 @@ namespace App\Rules;
 
 use App\Models\AcademicYear\StudyYear;
 use Illuminate\Contracts\Validation\ValidationRule;
-use Illuminate\Support\Facades\Http;
 use Closure;
 
 class SemesterDateRule implements ValidationRule

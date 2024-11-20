@@ -25,6 +25,7 @@ class updateSemesterRequest extends FormRequest
     {
         $rules = [
             'name' => 'string|min:8|max:255',
+            'is_opened'=>'boolean'
         ];
 
         if ($this->has('start_date') && !$this->has('end_date')) {

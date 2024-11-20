@@ -2,8 +2,6 @@
 
 namespace App\Traits;
 
-use App\Models\Subjects\Subject;
-
 trait HelperMarks
 {
     public function addHelperMark($result_subjects)

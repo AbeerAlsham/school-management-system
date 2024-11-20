@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Api\Students;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\StudentClassResource;
 use App\Models\AcademicYear\StudyYear;
-use App\Models\Classes\StudyClass;
-use App\Models\studentClass;
+use App\Models\AssignmentStudent\studentClass;
+use App\Models\Class\StudyClass;
+
 use Illuminate\Http\Request;
 
 class UnassignedStudentsInClassroomController extends Controller
@@ -25,6 +25,6 @@ class UnassignedStudentsInClassroomController extends Controller
             ->whereDoesntHave('studentClassroom')
             ->get();
 
-        return $this->okResponse( $studentClass, 'studentClass have added successfully');
+        return $this->okResponse($studentClass, 'studentClass have added successfully');
     }
 }

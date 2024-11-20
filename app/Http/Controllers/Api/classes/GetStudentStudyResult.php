@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\Classes;
 
 use App\Http\Controllers\Controller;
-use App\Models\Classes\StudyClass;
-use App\Models\Students\Student;
+use App\Models\Class\StudyClass;
+use App\Models\Student\Student;
 use Illuminate\Http\Request;
 
 class GetStudentStudyResult extends Controller

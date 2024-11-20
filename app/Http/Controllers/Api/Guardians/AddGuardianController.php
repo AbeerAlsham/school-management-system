@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api\Guardians;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Guardians\AddGuardianRequest;
-use App\Models\Accounts\ContactNumber;
-use App\Models\Accounts\User;
+use App\Models\Account\ContactNumber;
+use App\Models\Account\User;
 use Illuminate\Support\Facades\Hash;
 
 class AddGuardianController extends Controller

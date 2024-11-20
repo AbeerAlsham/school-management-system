@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api\Students;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\StudentResource;
 use App\Models\AcademicYear\StudyYear;
-use App\Models\Classes\StudyClass;
+use App\Models\Class\StudyClass;
 use Illuminate\Http\Request;
 use App\Traits\Searchable;
 

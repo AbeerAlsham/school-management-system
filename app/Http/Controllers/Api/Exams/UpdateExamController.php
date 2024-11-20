@@ -4,8 +4,7 @@ namespace App\Http\Controllers\Api\Exams;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Exams\UpdateExamRequest;
-use App\Models\Exam;
-use Illuminate\Http\Request;
+use App\Models\Exam\Exam;
 
 class UpdateExamController extends Controller
 {

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\Notes;
 
 use App\Http\Controllers\Controller;
-use App\Models\Note;
+use App\Models\Note\Note;
 use Illuminate\Http\Request;
 
 class DeleteNoteController extends Controller

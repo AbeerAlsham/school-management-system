@@ -2,13 +2,13 @@
 
 namespace App\Models\AcademicYear;
 
-use App\Models\Attendance;
-use App\Models\ExamProgram;
-use App\Models\Mark;
+use App\Models\Account\UserRole;
+use App\Models\AssignmentUser\SemesterUser;
+use App\Models\Attendance\Attendance;
+use App\Models\Document\ExamProgram;
+use App\Models\Mark\mark;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\UserRole;
-use App\Models\SemesterUser;
-use DateTime;
+
 
 class Semester extends Model
 {
@@ -33,7 +33,7 @@ class Semester extends Model
 
     public function marks()
     {
-        return $this->hasMany(Mark::class);
+        return $this->hasMany(mark::class);
     }
 
     public function attendance()
@@ -46,13 +46,24 @@ class Semester extends Model
         return $this->hasMany(ExamProgram::class, 'semester_id');
     }
 
-    public static function currentSemester()
+    public static function availableSemester()
     {
-        $currentDate = new DateTime();
-
-        return self::where('start_date', '<=', $currentDate)
-                    ->where('end_date', '>=', $currentDate)
-                    ->first();
+        return self::where('is_current', true)
+            ->orWhere('is_opened', true)->pluck('id')->toArray();
     }
 
+    ///event for add new semester to change is_current to fals for last semester
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($semester) {
+            // تحديث حالة الفصل السابق إلى غير خالية
+            $semester = self::latest()->first();
+            if ($semester) {
+                $semester->is_current = 0;
+                $semester->save();
+            }
+        });
+    }
 }

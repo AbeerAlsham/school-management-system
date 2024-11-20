@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Api\Students;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Students\AddStudentRequest;
-use App\Models\Students\Sibling;
-use App\Models\Students\Student;
+use App\Models\Student\Sibling;
+use App\Models\Student\Student;
 
 class AddStudentController extends Controller
 {

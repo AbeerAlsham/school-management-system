@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\Notes;
 
 use App\Http\Controllers\Controller;
-use App\Models\studentClass;
+use App\Models\AssignmentStudent\studentClass;
 use Illuminate\Http\Request;
 
 class GetAllNoteController extends Controller

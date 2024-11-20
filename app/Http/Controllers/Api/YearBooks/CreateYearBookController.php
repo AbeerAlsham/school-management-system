@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\YearBooks;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\YearBooks\CreateYearBookRequest;
-use App\Models\YearBook;
+use App\Models\Book\YearBook;
 
 class createYearBookController extends Controller
 {

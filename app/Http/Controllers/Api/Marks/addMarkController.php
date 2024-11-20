@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Marks\addMarkRequest;
 use App\Jobs\SendNotificationExamMarkJob;
 use App\Jobs\SendNotificationMarkTOGuardiansJob;
-use App\Models\Exam;
+use App\Models\Exam\Exam;
 
 
 class addMarkController extends Controller

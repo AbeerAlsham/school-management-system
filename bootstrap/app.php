@@ -8,6 +8,7 @@ use Illuminate\Foundation\Configuration\Middleware;
 
 use App\Traits\ApiResponder;
 use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Validation\UnauthorizedException;
 use Illuminate\Validation\ValidationException;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
@@ -16,7 +17,12 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
         web: __DIR__ . '/../routes/web.php',
-        api: __DIR__ . '/../routes/api.php',
+        using: function () {
+            Route::middleware('api')
+                ->prefix('api')
+                ->namespace('App\Http\Controllers\Api')
+                ->group(base_path('routes/api.php'));
+        },
         commands: __DIR__ . '/../routes/console.php',
 
         health: '/up',
@@ -35,7 +41,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $exceptions->renderable(function (NotFoundHttpException $e) {
             return response()->json([
-                'message' => 'Route not found.'
+                'message' => 'the object not found.'
             ], 404);
         });
 

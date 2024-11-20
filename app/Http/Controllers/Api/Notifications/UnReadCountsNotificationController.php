@@ -4,9 +4,8 @@ namespace App\Http\Controllers\Api\Notifications;
 
 use App\Http\Controllers\Controller;
 use App\Models\AcademicYear\Semester;
-use App\Models\Notification;
-use App\Models\SemesterUser;
-use App\Models\UserRole;
+use App\Models\Account\UserRole;
+use App\Models\Notification\Notification;
 use Illuminate\Http\Request;
 
 class UnReadCountsNotificationController extends Controller

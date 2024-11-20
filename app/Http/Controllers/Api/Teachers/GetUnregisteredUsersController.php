@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Api\Teachers;
 
 use App\Http\Controllers\Controller;
-use App\Models\UserRole;
 use App\Models\AcademicYear\Semester;
-use App\Models\Accounts\Role;
-use App\Models\SemesterUser;
+use App\Models\Account\Role;
+use App\Models\Account\UserRole;
+use App\Models\AssignmentUser\SemesterUser;
 use Illuminate\Http\Request;
 
 class GetUnregisteredUsersController extends Controller

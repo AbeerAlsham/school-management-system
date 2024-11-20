@@ -3,9 +3,7 @@
 namespace App\Http\Controllers\Api\Students;
 
 use App\Http\Controllers\Controller;
-use App\Models\AcademicYear\StudyYear;
-use App\Models\Classes\Classroom;
-use App\Http\Resources\StudentClassroomResource;
+use App\Models\Class\Classroom;
 use App\Traits\Searchable;
 use Illuminate\Http\Request;
 

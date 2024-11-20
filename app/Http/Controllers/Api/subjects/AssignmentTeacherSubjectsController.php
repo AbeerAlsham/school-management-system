@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\APi\Subjects;
 
-use App\Models\Accounts\User;
+use App\Models\Account\User;
 use App\Http\Requests\Subjects\AssignTeacherSubjectRequest;
 use App\Http\Controllers\Controller;
 

@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\Subjects;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Subjects\CreateSubjectRequest;
-use App\Models\Subjects\{Subject, Section};
+use App\Models\Subject\{Subject, Section};
 
 class createSubjectController extends Controller
 {

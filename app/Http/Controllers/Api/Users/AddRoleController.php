@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\Users;
 
 use App\Http\Controllers\Controller;
-use App\Models\Accounts\User;
+use App\Models\Account\User;
 use App\Http\Requests\Users\AddRoleRequest;
 
 class AddRoleController extends Controller

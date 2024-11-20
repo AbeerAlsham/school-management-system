@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\Students;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Students\AssignClassroomStudentsRequest;
-use App\Models\studentClassroom;
+use App\Models\AssignmentStudent\studentClassroom;
 
 //تسجيل الطلاب ضمن شعبة دراسية
 class AssignClassroomStudentsController extends Controller

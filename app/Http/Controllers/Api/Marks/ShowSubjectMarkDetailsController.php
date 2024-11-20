@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Api\Marks;
 
 use App\Http\Controllers\Controller;
-use App\Models\ExamType;
-use App\Models\Subjects\Section;
-use App\Models\Subjects\Subject;
+use App\Models\Exam\ExamType;
+use App\Models\Subject\Section;
+use App\Models\Subject\Subject;
 use Illuminate\Http\Request;
 use App\Traits\CalculateFinalMark;
 
@@ -33,6 +33,6 @@ class ShowSubjectMarkDetailsController extends Controller
         $subject = Subject::find($request->subject_id);
         $section = Section::find($request->section_id);
         $result = $this->calculateMarkDetails($marks,  $subject,  $section);
-        return $this->okResponse([$marks, $result], 'the marks retrived successfully');
+        return $this->okResponse(['exams with marks' => $marks, 'final_result' => $result], 'the marks retrived successfully');
     }
 }

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\Guardians;
 
 use App\Http\Controllers\Controller;
-use App\Models\Accounts\ContactNumber;
-use App\Models\Accounts\Guardian;
+use App\Models\Account\ContactNumber;
+use App\Models\Account\Guardian;
 use Illuminate\Http\Request;
 
 class EditGuardianController extends Controller
@@ -20,7 +20,7 @@ class EditGuardianController extends Controller
         $phone_numbers = array_map(function ($phone_number) {
             return new ContactNumber($phone_number);
         }, $request->phone_numbers);
-        
+
         $guardian->user()->contactNumbers()->saveMany($phone_numbers);
 
         return $this->createdResponse($guardian,'تم تعديل معلومات ولي الأمر بنجاح ');

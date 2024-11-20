@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Api\Classes;
 
 use App\Http\Controllers\Controller;
+use App\Models\AssignmentUser\SemesterUser;
+use App\Models\Class\StudyClass;
 use Illuminate\Http\Request;
-use App\Models\SemesterUser;
-use App\Models\Classes\StudyClass;
+
 
 class GetTeacherClassesController extends Controller
 {

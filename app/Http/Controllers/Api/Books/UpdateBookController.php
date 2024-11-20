@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\Books;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Books\UpdateBookRequest;
-use App\Models\Book;
+use App\Models\Book\Book;
 
 class UpdateBookController extends Controller
 {

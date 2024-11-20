@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\WeekPrograms;
 
 use App\Http\Controllers\Controller;
-use App\Models\WeekProgram;
+use App\Models\Document\WeekProgram;
 use Illuminate\Http\Request;
 
 class ShowWeekProgramController extends Controller

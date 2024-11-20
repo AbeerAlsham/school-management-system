@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api\Teachers;
 
 use App\Http\Controllers\Controller;
-use App\Models\AssignmentSupervisor;
+use App\Models\AssignmentUser\AssignmentSupervisor;
 use Illuminate\Http\Request;
 
 class AssignmentSupervisorController extends Controller

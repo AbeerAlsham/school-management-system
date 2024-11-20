@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Api\Classes;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\AcademicYear\Semester;
-use App\Models\Classes\StudyClass;
+use App\Models\Class\StudyClass;
 
 class GetUnRegisteredSupervisorsClassesController extends Controller
 {

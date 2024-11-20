@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\Marks;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Marks\UpdateMarkRequest;
-use App\Models\Mark;
+use App\Models\Mark\mark;
 
 class updateMarkController extends Controller
 {

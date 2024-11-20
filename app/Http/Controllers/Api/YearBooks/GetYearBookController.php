@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api\YearBooks;
 
 use App\Http\Controllers\Controller;
 use App\Models\AcademicYear\StudyYear;
-use App\Models\Book;
+use App\Models\Book\Book;
 use Illuminate\Http\Request;
 
 class getYearBookController extends Controller

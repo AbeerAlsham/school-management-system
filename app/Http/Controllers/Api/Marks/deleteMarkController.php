@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Api\Marks;
 
 use App\Http\Controllers\Controller;
-use App\Models\Exam;
-use App\Models\Mark;
+use App\Models\Exam\Exam;
+use App\Models\Mark\mark;
 use Illuminate\Http\Request;
 
 class deleteMarkController extends Controller

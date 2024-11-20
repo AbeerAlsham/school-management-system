@@ -23,9 +23,10 @@ class UpdateYearRequest extends FormRequest
     {
         return [
 
-                'name'=>'string|min:8|max:255|unique:study_years,name',
-                'startDate'=>'date',
-                'endDate'=>'date|after:startDate',
+            'name' => 'string|min:8|max:255|unique:study_years,name',
+            'startDate' => 'date',
+            'endDate' => 'date|after:startDate',
+            'is_opened' => 'boolean'
         ];
     }
 }

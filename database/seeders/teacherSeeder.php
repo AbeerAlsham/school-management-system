@@ -2,11 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Accounts\User;
-use App\Models\AssignmentTeacher;
-use App\Models\Exam;
-use App\Models\SemesterUser;
-use App\Models\UserRole;
+use App\Models\Account\User;
+use App\Models\AssignmentUser\AssignmentTeacher;
+use App\Models\Exam\Exam;
+use App\Models\AssignmentUser\SemesterUser;
+use App\Models\Account\UserRole;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Seeder;
 
@@ -92,13 +92,14 @@ class teacherSeeder extends Seeder
         ]);
 
         Exam::create([
-            'semester_id' =>4,
+            'semester_id' => 4,
             'subject_id' => 5,
             'section_id' => 4,
             'exam_type_id' => 3,
             'semester_user_id' => $semesterUser1->id,
             'classroom_id' => 1,
             'test_name' => 'مذاكرة أولى',
-            'total_mark' => 100]);
+            'total_mark' => 100
+        ]);
     }
 }
