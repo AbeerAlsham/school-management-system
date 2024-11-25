@@ -4,7 +4,7 @@ namespace App\Http\Requests\Subjects;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateSubjectRequest extends FormRequest
+class UpdateSubjectRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,11 +22,9 @@ class CreateSubjectRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string|min:2|max:20|unique:subjects,name',
-            'min_mark' => 'required|integer|gt:0',
-            'max_mark' => 'required|integer|gt:min_mark',
-            'sections.*.name' => 'string|min:2|max:20|unique:sections,name',
-            'section.*.max_mark' => 'integer|lte: max_mark'
+            'name'=>'string|min:3|max:20|unique:subjects,name',
+            'min_mark'=>'integer|gt:0',
+            'max_mark'=>'integer|gt:min_mark'
         ];
     }
 }

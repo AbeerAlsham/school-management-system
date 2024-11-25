@@ -4,7 +4,7 @@ namespace App\Http\Requests\Subjects;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateSubjectRequest extends FormRequest
+class AddSectionRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,12 +21,10 @@ class CreateSubjectRequest extends FormRequest
      */
     public function rules(): array
     {
+        $mark_subject = $this->subject->max_mark;
         return [
-            'name' => 'required|string|min:2|max:20|unique:subjects,name',
-            'min_mark' => 'required|integer|gt:0',
-            'max_mark' => 'required|integer|gt:min_mark',
-            'sections.*.name' => 'string|min:2|max:20|unique:sections,name',
-            'section.*.max_mark' => 'integer|lte: max_mark'
+            'name' => 'required|string|min:2|max:20|unique:sections,name',
+            'max_mark' => ['required', 'integer', 'gt:0', 'lt:' . $mark_subject,]
         ];
     }
 }

@@ -21,7 +21,7 @@ class AssignmentTeacherSubjectsController extends Controller
 
     public function checkTeacher(User $user): bool
     {
-        if ($user->roles->contains('name', 'teacher'))
+        if ($user->roles->contains('name', 'معلم'))
             return true;
         return false;
     }
