@@ -21,6 +21,6 @@ class GetSupervisorClassesController extends Controller
         }])->get();
 
 
-        $this->okResponse($classesAndClassroom, 'classes and classroom retrived succsessfully');
+       return $this->okResponse($classesAndClassroom, 'classes and classroom retrived succsessfully');
     }
 }

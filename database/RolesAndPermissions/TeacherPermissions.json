@@ -6,6 +6,7 @@
         "semesters.show",
         "holidays.index",
         "subjects.getForTeacher",
-        "subjects.semester.teacher.index"
+        "subjects.semester.teacher.index",
+        "classes.teacher.index"
     ]
 }

@@ -29,7 +29,7 @@ class StudyClass extends Model
 
     public function assignmentSupervisors()
     {
-        return $this->hasMany(AssignmentSupervisor::class);
+        return $this->hasMany(AssignmentSupervisor::class,'class_id');
     }
 
     public function assignmentTeachers()

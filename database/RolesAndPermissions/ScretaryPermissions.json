@@ -1,6 +1,7 @@
 {
     "name": "أمين سر",
     "permissions": [
-        "users.show", "users.update", "users.changeMyPassword", "years.show", "holidays.index"
+        "users.show", "users.update", "users.changeMyPassword", "years.show", "holidays.index",
+        "classes.student.getResult"
     ]
 }
