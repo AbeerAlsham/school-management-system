@@ -4,6 +4,8 @@
         "users.show", "users.update", "users.changeMyPassword",
         "years.indexTeacher",
         "semesters.show",
-        "holidays.index"
+        "holidays.index",
+        "subjects.getForTeacher",
+        "subjects.semester.teacher.index"
     ]
 }
