@@ -15,12 +15,20 @@ class GetUserController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $users = User::with('profile', 'roles')->when($request->has('search'), function ($query) use ($request) {
+        $users = User::with('profile', 'roles')
+        ->when($request->has('search'), function ($query) use ($request) {
             return $query->whereHas('profile', function ($q) use ($request) {
                 return $this->Search($q, $request, ['first_name', 'father_name', 'last_name']);
             });
         })
-            ->paginate(10);
-        return $this->okResponse($users, 'users retrived successfully');
+        ->when($request->has('role_id'), function ($query) use ($request) {
+            return $query->whereHas('roles', function ($q) use ($request) {
+                $q->where('role_id', $request->role_id);
+            });
+        })
+        ->get(); // Don't forget to call get() to execute the query and retrieve the results.
+
+    return $this->okResponse($users, 'Users retrieved successfully');
+
     }
 }

@@ -31,7 +31,7 @@ class UpdateProfileRequest extends FormRequest
             'last_name' => 'min:4|max:255',
             'national_number' => 'unique|integer|digits:11',
             'family_book_number'=>'integer',
-            'specialist'=>'string|required',
+            'specialist'=>'string',
             'study_level' =>'min:4|max:255|string' ,
             'university' =>'min:4|max:255|string',
         ];
