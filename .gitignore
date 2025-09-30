@@ -3,6 +3,7 @@
 /public/build
 /public/hot
 /public/storage
+storage/app/notification.json
 /storage/*.key
 /vendor
 .env
